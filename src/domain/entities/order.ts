@@ -3,6 +3,7 @@ type Order = {
   takeAway: boolean;
   orderNumber?: number;
   customerName?: string;
+  products: Product[];
   user?: User;
   table?: Table;
   restaurant: Restaurant;
