@@ -4,5 +4,4 @@ type Restaurant = {
   address: string;
   logo: string;
   colorScheme: number;
-  restaurant: Restaurant;
 };
