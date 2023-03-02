@@ -3,16 +3,10 @@
  * /orders/order
  */
 
-type PostOrderRequest = {
-  //product id array
+type PostOrderRequestBody = {
   products: string[];
-
-  //table id
   table?: string;
-
-  //user id
   user?: string;
-
   orderNumber?: string;
   customerName?: string;
   restaurant: string;

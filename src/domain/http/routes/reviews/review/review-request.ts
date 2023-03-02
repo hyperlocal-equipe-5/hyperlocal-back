@@ -3,7 +3,7 @@
  * /reviews/review
  */
 
-type ReviewRequest = {
+type ReviewRequestBody = {
   stars: number;
   comment: string;
   user?: User;

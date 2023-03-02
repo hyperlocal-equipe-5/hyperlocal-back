@@ -3,4 +3,4 @@
  * /reviews/review
  */
 
-type ReviewResponse = HttpResponse<null>;
+type ReviewResponse = HttpResponse<Review>;
