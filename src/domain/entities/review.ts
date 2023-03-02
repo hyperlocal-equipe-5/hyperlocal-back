@@ -1,4 +1,6 @@
-type Review = {
+import { Restaurant } from './restaurant';
+
+export type Review = {
   id: string;
   stars: number;
   comment: string;

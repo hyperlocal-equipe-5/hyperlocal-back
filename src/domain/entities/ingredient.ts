@@ -1,4 +1,6 @@
-type Ingredient = {
+import { Restaurant } from './restaurant';
+
+export type Ingredient = {
   name: string;
   price: number;
   image: string;

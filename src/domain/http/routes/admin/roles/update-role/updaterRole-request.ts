@@ -5,9 +5,8 @@
  */
 
 type UpdateRoleAdminRequestBody = {
-  name: string;
-  restaurant: Restaurant;
-  access: {
+  name?: string;
+  access?: {
     createResteurants?: boolean;
     createUsers?: boolean;
     createProducts?: boolean;

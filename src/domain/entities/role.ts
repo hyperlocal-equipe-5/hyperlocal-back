@@ -1,4 +1,6 @@
-type Role = {
+import { Restaurant } from './restaurant';
+
+export type Role = {
   id: string;
   name: string;
   restaurant: Restaurant;

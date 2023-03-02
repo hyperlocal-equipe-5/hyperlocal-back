@@ -5,6 +5,6 @@
  */
 
 type UpdateTableAdminRequestBody = {
-  number: number;
+  number?: number;
   restaurant: Restaurant;
 };
