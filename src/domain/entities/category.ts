@@ -3,5 +3,6 @@ type Category = {
   name: string;
   highlight: boolean;
   image: string;
+  products: Product[];
   restaurant: Restaurant;
 };
