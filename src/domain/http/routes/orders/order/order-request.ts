@@ -3,7 +3,7 @@
  * /orders/order
  */
 
-type PostOrderRequestBody = {
+export type PostOrderRequestBody = {
   products: string[];
   table?: string;
   user?: string;

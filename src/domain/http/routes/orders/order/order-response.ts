@@ -3,4 +3,6 @@
  * /orders/order
  */
 
-type PostOrderResponse = HttpResponse<Order>;
+import { Order } from 'src/domain/entities/order';
+
+export type PostOrderResponse = HttpResponse<Order>;

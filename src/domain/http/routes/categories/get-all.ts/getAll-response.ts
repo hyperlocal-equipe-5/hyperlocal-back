@@ -1,5 +1,8 @@
 /**
- * /categories/get-all?limit=10&offset=0
+ * type get
+ * /categories/get-all
  */
 
-type GetAllCategoriesResponse = HttpResponse<Category[]>;
+import { Category } from 'src/domain/entities/category';
+
+export type GetAllCategoriesResponse = HttpResponse<Category[]>;

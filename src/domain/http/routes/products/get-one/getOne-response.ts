@@ -1,5 +1,8 @@
 /**
- * /products/get-one?id=d387462384
+ * type get
+ * /products/get-one?id=d387462384&restaurant=4rx234r
  */
 
-type GetOneProductResponse = HttpResponse<Product>;
+import { Product } from 'src/domain/entities/product';
+
+export type GetOneProductResponse = HttpResponse<Product>;

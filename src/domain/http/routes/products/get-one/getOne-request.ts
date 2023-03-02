@@ -1,4 +1,4 @@
 /**
  * type get
- * /products/get-one?product=d387462384&restaurant=12
+ * /products/get-one?id=d387462384&restaurant=4rx234r
  */

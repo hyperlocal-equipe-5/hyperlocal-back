@@ -3,4 +3,6 @@
  * /reviews/review
  */
 
-type ReviewResponse = HttpResponse<Review>;
+import { Review } from 'src/domain/entities/review';
+
+export type ReviewResponse = HttpResponse<Review>;

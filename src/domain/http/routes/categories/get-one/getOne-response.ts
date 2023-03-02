@@ -1,5 +1,8 @@
 /**
- * /categories/get-one?id=d387462384&limit=10&offset=0
+ * type get
+ * /categories/get-one?id=d387462384
  */
 
-type GetOneCategorieResponse = HttpResponse<Category>;
+import { Category } from 'src/domain/entities/category';
+
+export type GetOneCategorieResponse = HttpResponse<Category>;
