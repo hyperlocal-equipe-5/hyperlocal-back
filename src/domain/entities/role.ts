@@ -37,4 +37,6 @@ type Role = {
     deleteTables: boolean;
     defineAccess: boolean;
   };
+  createdOn: string;
+  updatedOn: string;
 };

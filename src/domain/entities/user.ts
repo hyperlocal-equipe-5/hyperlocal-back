@@ -7,4 +7,6 @@ type User = {
   cellphone?: number;
   role: Role;
   restaurant: Restaurant;
+  createdOn: string;
+  updatedOn: string;
 };

@@ -5,4 +5,6 @@ type Category = {
   image: string;
   products: Product[];
   restaurant: Restaurant;
+  createdOn: string;
+  updatedOn: string;
 };

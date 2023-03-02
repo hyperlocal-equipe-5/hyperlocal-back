@@ -4,4 +4,6 @@ type Ingredient = {
   image: string;
   quantity?: number;
   restaurant: Restaurant;
+  createdOn: string;
+  updatedOn: string;
 };

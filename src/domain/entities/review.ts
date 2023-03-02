@@ -4,4 +4,6 @@ type Review = {
   comment: string;
   user?: User;
   restaurant: Restaurant;
+  createdOn: string;
+  updatedOn: string;
 };

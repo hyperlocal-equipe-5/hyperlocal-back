@@ -7,4 +7,6 @@ type Product = {
   ingredients: Ingredient[];
   category: Category;
   restaurant: Restaurant;
+  createdOn: string;
+  updatedOn: string;
 };

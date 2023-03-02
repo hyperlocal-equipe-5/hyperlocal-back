@@ -6,4 +6,6 @@ type Restaurant = {
   address: string;
   logo: string;
   colorScheme: number;
+  createdOn: string;
+  updatedOn: string;
 };
