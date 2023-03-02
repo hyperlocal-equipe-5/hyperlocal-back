@@ -1,7 +1,7 @@
 type Ingredient = {
   name: string;
   price: number;
-  quantity: number;
   image: string;
+  quantity?: number;
   restaurant: Restaurant;
 };

@@ -1,5 +1,7 @@
 type Restaurant = {
   id: string;
+  telephone: number;
+  email: string;
   name: string;
   address: string;
   logo: string;

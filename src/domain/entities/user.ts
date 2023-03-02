@@ -3,7 +3,8 @@ type User = {
   name: string;
   email: string;
   password: string;
-  image: string;
+  image?: string;
+  cellphone?: number;
   role: Role;
   restaurant: Restaurant;
 };
