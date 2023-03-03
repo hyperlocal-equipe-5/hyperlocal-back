@@ -4,7 +4,7 @@
  * /admin/user/create-user
  */
 
-type CreateUserRequestBody = {
+export type CreateUserRequestBody = {
   name: string;
   email: string;
   password: string;
