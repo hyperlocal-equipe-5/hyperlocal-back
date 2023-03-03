@@ -3,7 +3,6 @@ import { UpdateIngredientDto } from 'src/domain/dto/ingredient/updateIngredient-
 import { Ingredient } from 'src/domain/entities/ingredient';
 
 export interface IngredientEntityInterface {
-  constructor(ingredientDto: CreateIngredientDto | UpdateIngredientDto): void;
   validate(): void;
   getBody(): Ingredient;
   updateBody(mainIngredient: Ingredient): Ingredient;

@@ -3,7 +3,6 @@ import { UpdateRestaurantDto } from 'src/domain/dto/restaurant/updateRestaurant-
 import { Restaurant } from 'src/domain/entities/restaurant';
 
 export interface RestaurantEntityInterface {
-  constructor(restaurantDto: CreateRestaurantDto | UpdateRestaurantDto): void;
   validate(): void;
   getBody(): Restaurant;
   updateBody(mainRestaurant: Restaurant): Restaurant;
