@@ -32,7 +32,7 @@ $ npm run start:prod
 
 O desenvolvimento inicial da Aplicação foi discutido em grupo, com o uso da plataforma do miro pelo seguinte link:
 
-- https://miro.com/welcomeonboard/OTRyWmRvNDlSRVY2Z3RIQ2Z0bmpGRHRVdHdGZzdXRzdlRVFmVXRTaEhKVWhqaEJkd082UVd1ZlhyS2dQSEdyMHwzNDU4NzY0NTQwMjExMzk1OTI3fDI=?share_link_id=634135003547
+- <a href="https://miro.com/welcomeonboard/OTRyWmRvNDlSRVY2Z3RIQ2Z0bmpGRHRVdHdGZzdXRzdlRVFmVXRTaEhKVWhqaEJkd082UVd1ZlhyS2dQSEdyMHwzNDU4NzY0NTQwMjExMzk1OTI3fDI=?share_link_id=634135003547"> Miro <a/>
 
 ##  Authors
 
