@@ -1,4 +1,9 @@
-type Product = {
+import { Category } from './category';
+import { Ingredient } from './ingredient';
+import { Restaurant } from './restaurant';
+
+export type Product = {
+  id: string;
   name: string;
   price: number;
   description: string;
@@ -7,4 +12,6 @@ type Product = {
   ingredients: Ingredient[];
   category: Category;
   restaurant: Restaurant;
+  createdOn: string;
+  updatedOn: string;
 };
