@@ -1,14 +1,9 @@
 /**
  * type patch
  * with bearer authorization header
- * /admin/user/update-user?id=328nr283r7&restaurant=8u93u8z3
+ * /admin/user/update-user
  */
 
-export type UpdateUserAdminRequestBody = {
-  name?: string;
-  email?: string;
-  password?: string;
-  image?: string;
-  cellphone?: number;
-  role?: string;
-};
+import { UpdateUserDto } from 'src/domain/dto/user/updateUser-dto';
+
+export type UpdateUserAdminRequestBody = UpdateUserDto;

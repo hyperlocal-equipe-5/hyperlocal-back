@@ -4,9 +4,6 @@
  * /admin/category/create-category
  */
 
-export type CreateCategoryRequestBody = {
-  name: string;
-  highlight: boolean;
-  image: string;
-  restaurant: string;
-};
+import { CreateCategoryDto } from 'src/domain/dto/category/createCategory-dto';
+
+export type CreateCategoryRequestBody = CreateCategoryDto;

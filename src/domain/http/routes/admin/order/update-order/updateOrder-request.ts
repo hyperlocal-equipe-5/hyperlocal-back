@@ -1,15 +1,9 @@
 /**
  * type patch
  * with bearer authorization header
- * /admin/order/update-order?id=328nr283r7&restaurant=4334f23d32
+ * /admin/order/update-order
  */
 
-export type UpdateOrderAdminRequestBody = {
-  products?: string[];
-  takeAway?: boolean;
-  orderNumber?: number;
-  customerName?: string;
-  user?: string;
-  table?: string;
-  restaurant: string;
-};
+import { UpdateOrderDto } from 'src/domain/dto/order/updateOrder-dto';
+
+export type UpdateOrderAdminRequestBody = UpdateOrderDto;

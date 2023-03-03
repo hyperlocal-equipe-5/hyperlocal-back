@@ -3,12 +3,6 @@
  * /reviews/review
  */
 
-import { Restaurant } from 'src/domain/entities/restaurant';
-import { User } from 'src/domain/entities/user';
+import { CreateReviewDto } from 'src/domain/dto/review/createReview-dto';
 
-export type ReviewRequestBody = {
-  stars: number;
-  comment: string;
-  user?: User;
-  restaurant: Restaurant;
-};
+export type ReviewRequestBody = CreateReviewDto;

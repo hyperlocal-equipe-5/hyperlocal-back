@@ -4,12 +4,6 @@
  * /admin/order/create-order
  */
 
-export type CreateOrderRequestBody = {
-  products: string[];
-  takeAway: boolean;
-  orderNumber?: number;
-  customerName?: string;
-  user?: string;
-  table?: string;
-  restaurant: string;
-};
+import { CreateOrderDto } from 'src/domain/dto/order/createOrder-dto';
+
+export type CreateOrderRequestBody = CreateOrderDto;

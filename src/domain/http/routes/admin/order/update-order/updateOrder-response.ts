@@ -1,7 +1,7 @@
 /**
  * type patch
  * with bearer authorization header
- * /admin/order/update-order?id=328nr283r7&restaurant=4334f23d32
+ * /admin/order/update-order
  */
 
 import { Order } from 'src/domain/entities/order';
