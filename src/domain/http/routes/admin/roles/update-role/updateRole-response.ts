@@ -5,5 +5,6 @@
  */
 
 import { Role } from 'src/domain/entities/role';
+import { HttpResponse } from 'src/domain/http/response';
 
 export type UpdateRoleAdminResponse = HttpResponse<Role>;

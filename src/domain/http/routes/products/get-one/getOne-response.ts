@@ -4,5 +4,6 @@
  */
 
 import { Product } from 'src/domain/entities/product';
+import { HttpResponse } from 'src/domain/http/response';
 
 export type GetOneProductResponse = HttpResponse<Product>;

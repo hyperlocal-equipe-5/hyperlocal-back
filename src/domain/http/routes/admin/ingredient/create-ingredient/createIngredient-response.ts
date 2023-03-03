@@ -5,5 +5,6 @@
  */
 
 import { Ingredient } from 'src/domain/entities/ingredient';
+import { HttpResponse } from 'src/domain/http/response';
 
 export type CreateIngredientResponse = HttpResponse<Ingredient>;
