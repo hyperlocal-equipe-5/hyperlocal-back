@@ -1,7 +1,10 @@
+import { CreateRestaurantDto } from 'src/domain/dto/restaurant/createRestaurant-dto';
+import { UpdateRestaurantDto } from 'src/domain/dto/restaurant/updateRestaurant-dto';
 import { Restaurant } from 'src/domain/entities/restaurant';
 
 export interface RestaurantEntityInterface {
+  constructor(restaurantDto: CreateRestaurantDto | UpdateRestaurantDto): void;
   validate(): void;
   getBody(): Restaurant;
-  updateBody(): Restaurant;
+  updateBody(mainRestaurant: Restaurant): Restaurant;
 }
