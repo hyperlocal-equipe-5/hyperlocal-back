@@ -4,4 +4,6 @@
  * /admin/user/delete-user?id=23r32rfg&restaurant=859f83u
  */
 
-type DeleteUserAdminResponse = HttpResponse<User>;
+import { User } from 'src/domain/entities/user';
+
+export type DeleteUserAdminResponse = HttpResponse<User>;

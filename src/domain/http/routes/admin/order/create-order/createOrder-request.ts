@@ -4,12 +4,12 @@
  * /admin/order/create-order
  */
 
-type CreateOrderRequestBody = {
+export type CreateOrderRequestBody = {
   products: string[];
   takeAway: boolean;
   orderNumber?: number;
   customerName?: string;
-  user?: User;
-  table?: Table;
-  restaurant: Restaurant;
+  user?: string;
+  table?: string;
+  restaurant: string;
 };

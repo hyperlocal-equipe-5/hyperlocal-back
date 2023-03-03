@@ -4,4 +4,6 @@
  * /admin/review/get-all-reviews?restaurant=8u93u8z3
  */
 
-type GetAllReviewsAdminResponse = HttpResponse<Review[]>;
+import { Review } from 'src/domain/entities/review';
+
+export type GetAllReviewsAdminResponse = HttpResponse<Review[]>;

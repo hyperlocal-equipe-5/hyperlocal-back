@@ -4,4 +4,6 @@
  * /admin/role/delete-role?id=23r32rfg&restaurant=859f83u
  */
 
-type DeleteRoleAdminResponse = HttpResponse<Role>;
+import { Role } from 'src/domain/entities/role';
+
+export type DeleteRoleAdminResponse = HttpResponse<Role>;

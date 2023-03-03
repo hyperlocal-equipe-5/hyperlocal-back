@@ -4,4 +4,6 @@
  * /admin/ingredient/delete-ingredient?id=23r32rfg&restaurant=859f83u
  */
 
-type DeleteIngredientAdminResponse = HttpResponse<Ingredient>;
+import { Ingredient } from 'src/domain/entities/ingredient';
+
+export type DeleteIngredientAdminResponse = HttpResponse<Ingredient>;

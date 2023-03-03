@@ -4,4 +4,6 @@
  * /admin/table/get-one-table?id=iuedy8723y283&restaurant=8u93u8z3
  */
 
-type GetOneTableAdminResponse = HttpResponse<Table>;
+import { Table } from 'src/domain/entities/table';
+
+export type GetOneTableAdminResponse = HttpResponse<Table>;

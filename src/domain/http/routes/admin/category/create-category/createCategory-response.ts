@@ -4,4 +4,6 @@
  * /admin/category/create-category
  */
 
-type CreateCategoryResponse = HttpResponse<Category>;
+import { Category } from 'src/domain/entities/category';
+
+export type CreateCategoryResponse = HttpResponse<Category>;

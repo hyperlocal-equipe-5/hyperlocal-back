@@ -4,4 +4,6 @@
  * /admin/ingredient/create-ingredient
  */
 
-type CreateIngredientResponse = HttpResponse<Ingredient>;
+import { Ingredient } from 'src/domain/entities/ingredient';
+
+export type CreateIngredientResponse = HttpResponse<Ingredient>;

@@ -4,4 +4,6 @@
  * /admin/table/create-table
  */
 
-type CreateTableResponse = HttpResponse<Table>;
+import { Table } from 'src/domain/entities/table';
+
+export type CreateTableResponse = HttpResponse<Table>;

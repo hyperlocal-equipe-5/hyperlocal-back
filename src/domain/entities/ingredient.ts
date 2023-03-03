@@ -1,6 +1,7 @@
 import { Restaurant } from './restaurant';
 
 export type Ingredient = {
+  id: string;
   name: string;
   price: number;
   image: string;

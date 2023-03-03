@@ -10,6 +10,6 @@ type CreateUserRequestBody = {
   password: string;
   image?: string;
   cellphone?: number;
-  role: Role;
-  restaurant: Restaurant;
+  roled: string;
+  restaurant: string;
 };

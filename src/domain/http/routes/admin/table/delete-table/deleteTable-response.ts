@@ -4,4 +4,6 @@
  * /admin/table/delete-table?id=23r32rfg&restaurant=859f83u
  */
 
-type DeleteTableAdminResponse = HttpResponse<Table>;
+import { Table } from 'src/domain/entities/table';
+
+export type DeleteTableAdminResponse = HttpResponse<Table>;

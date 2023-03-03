@@ -4,4 +4,6 @@
  * /admin/restaurant/create-restaurant
  */
 
-type CreateRestaurantResponse = HttpResponse<Restaurant>;
+import { Restaurant } from 'src/domain/entities/restaurant';
+
+export type CreateRestaurantResponse = HttpResponse<Restaurant>;

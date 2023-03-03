@@ -4,4 +4,6 @@
  * /admin/role/create-role
  */
 
-type CreateRoleResponse = HttpResponse<Role>;
+import { Role } from 'src/domain/entities/role';
+
+export type CreateRoleResponse = HttpResponse<Role>;

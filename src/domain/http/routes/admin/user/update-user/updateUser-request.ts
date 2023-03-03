@@ -4,11 +4,11 @@
  * /admin/user/update-user?id=328nr283r7&restaurant=8u93u8z3
  */
 
-type UpdateUserAdminRequestBody = {
+export type UpdateUserAdminRequestBody = {
   name?: string;
   email?: string;
   password?: string;
   image?: string;
   cellphone?: number;
-  role?: Role;
+  role?: string;
 };

@@ -4,4 +4,6 @@
  * /admin/product/get-one-product?id=iuedy8723y283&restaurant=8u93u8z3
  */
 
-type GetOneProductAdminResponse = HttpResponse<Product>;
+import { Product } from 'src/domain/entities/product';
+
+export type GetOneProductAdminResponse = HttpResponse<Product>;

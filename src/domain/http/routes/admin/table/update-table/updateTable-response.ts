@@ -4,4 +4,6 @@
  * /admin/table/update-table?id=328nr283r7&restaurant=8u93u8z3
  */
 
-type UpdateTableAdminResponse = HttpResponse<Table>;
+import { Table } from 'src/domain/entities/table';
+
+export type UpdateTableAdminResponse = HttpResponse<Table>;

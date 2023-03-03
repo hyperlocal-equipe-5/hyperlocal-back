@@ -3,6 +3,7 @@ import { Ingredient } from './ingredient';
 import { Restaurant } from './restaurant';
 
 export type Product = {
+  id: string;
   name: string;
   price: number;
   description: string;

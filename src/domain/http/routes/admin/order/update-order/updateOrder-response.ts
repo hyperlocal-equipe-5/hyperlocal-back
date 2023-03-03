@@ -1,7 +1,9 @@
 /**
  * type patch
  * with bearer authorization header
- * /admin/order/update-order?id=328nr283r7
+ * /admin/order/update-order?id=328nr283r7&restaurant=4334f23d32
  */
 
-type UpdateOrderAdminResponse = HttpResponse<Order>;
+import { Order } from 'src/domain/entities/order';
+
+export type UpdateOrderAdminResponse = HttpResponse<Order>;

@@ -1,4 +1,5 @@
 import { Restaurant } from './restaurant';
+import { User } from './user';
 
 export type Review = {
   id: string;

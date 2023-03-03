@@ -4,4 +4,6 @@
  * /admin/user/create-user
  */
 
-type CreateUserResponse = HttpResponse<User>;
+import { User } from 'src/domain/entities/user';
+
+export type CreateUserResponse = HttpResponse<User>;

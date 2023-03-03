@@ -4,7 +4,7 @@
  * /admin/restaurant/create-restaurant
  */
 
-type CreateRestaurantRequestBody = {
+export type CreateRestaurantRequestBody = {
   telephone: number;
   email: string;
   name: string;

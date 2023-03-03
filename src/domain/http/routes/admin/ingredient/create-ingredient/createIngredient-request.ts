@@ -4,10 +4,10 @@
  * /admin/ingredient/create-ingredient
  */
 
-type CreateIngredientRequestBody = {
+export type CreateIngredientRequestBody = {
   name: string;
   price?: number;
   image?: string;
   quantity?: number;
-  restaurant: Restaurant;
+  restaurant: string;
 };

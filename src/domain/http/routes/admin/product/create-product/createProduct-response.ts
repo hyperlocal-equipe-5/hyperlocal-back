@@ -4,4 +4,6 @@
  * /admin/product/create-product
  */
 
-type CreateProductResponse = HttpResponse<Product>;
+import { Product } from 'src/domain/entities/product';
+
+export type CreateProductResponse = HttpResponse<Product>;

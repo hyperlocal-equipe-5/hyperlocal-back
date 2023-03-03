@@ -4,4 +4,6 @@
  * /admin/review/get-one-review?id=8732y8723ye78?restaurant=8u93u8z3
  */
 
-type GetOneReviewAdminResponse = HttpResponse<Review>;
+import { Review } from 'src/domain/entities/review';
+
+export type GetOneReviewAdminResponse = HttpResponse<Review>;

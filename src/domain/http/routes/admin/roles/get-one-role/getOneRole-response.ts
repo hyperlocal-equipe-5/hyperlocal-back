@@ -4,4 +4,6 @@
  * /admin/role/get-one-role?id=iuedy8723y283&restaurant=8u93u8z3
  */
 
-type GetOneRoleAdminResponse = HttpResponse<Role>;
+import { Role } from 'src/domain/entities/role';
+
+export type GetOneRoleAdminResponse = HttpResponse<Role>;

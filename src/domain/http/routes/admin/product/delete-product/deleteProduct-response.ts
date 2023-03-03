@@ -4,4 +4,6 @@
  * /admin/product/delete-product?id=23r32rfg&restaurant=859f83u
  */
 
-type DeleteProductAdminResponse = HttpResponse<Product>;
+import { Product } from 'src/domain/entities/product';
+
+export type DeleteProductAdminResponse = HttpResponse<Product>;

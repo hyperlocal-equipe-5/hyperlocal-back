@@ -4,7 +4,7 @@
  * /admin/table/create-table
  */
 
-type CreateTableRequestBody = {
+export type CreateTableRequestBody = {
   number: number;
-  restaurant: Restaurant;
+  restaurant: string;
 };

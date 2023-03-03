@@ -4,4 +4,6 @@
  * /admin/restaurant/delete-restaurant?id=23r32rfg
  */
 
-type DeleteRestaurantAdminResponse = HttpResponse<Restaurant>;
+import { Restaurant } from 'src/domain/entities/restaurant';
+
+export type DeleteRestaurantAdminResponse = HttpResponse<Restaurant>;

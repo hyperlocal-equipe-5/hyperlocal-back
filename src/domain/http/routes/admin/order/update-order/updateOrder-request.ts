@@ -1,15 +1,15 @@
 /**
  * type patch
  * with bearer authorization header
- * /admin/order/update-order?id=328nr283r7
+ * /admin/order/update-order?id=328nr283r7&restaurant=4334f23d32
  */
 
-type UpdateOrderAdminRequestBody = {
+export type UpdateOrderAdminRequestBody = {
   products?: string[];
   takeAway?: boolean;
   orderNumber?: number;
   customerName?: string;
-  user?: User;
-  table?: Table;
-  restaurant: Restaurant;
+  user?: string;
+  table?: string;
+  restaurant: string;
 };

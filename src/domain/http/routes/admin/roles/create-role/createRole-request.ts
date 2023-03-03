@@ -4,9 +4,9 @@
  * /admin/role/create-role
  */
 
-type CreateRoleRequestBody = {
+export type CreateRoleRequestBody = {
   name: string;
-  restaurant: Restaurant;
+  restaurant: string;
   access?: {
     createResteurants?: boolean;
     createUsers?: boolean;

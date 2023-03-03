@@ -4,7 +4,7 @@
  * /admin/category/create-category
  */
 
-type CreateCategoryRequestBody = {
+export type CreateCategoryRequestBody = {
   name: string;
   highlight: boolean;
   image: string;

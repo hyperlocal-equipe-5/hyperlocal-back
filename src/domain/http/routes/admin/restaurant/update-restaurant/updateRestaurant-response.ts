@@ -4,4 +4,6 @@
  * /admin/restaurant/update-restaurant?id=328nr283r7
  */
 
-type UpdateRestaurantAdminResponse = HttpResponse<Restaurant>;
+import { Restaurant } from 'src/domain/entities/restaurant';
+
+export type UpdateRestaurantAdminResponse = HttpResponse<Restaurant>;

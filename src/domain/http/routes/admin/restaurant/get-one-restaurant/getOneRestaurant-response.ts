@@ -4,4 +4,6 @@
  * /admin/restaurant/get-one-restaurant?id=iuedy8723y283
  */
 
-type GetOneRestaurantAdminResponse = HttpResponse<Restaurant>;
+import { Restaurant } from 'src/domain/entities/restaurant';
+
+export type GetOneRestaurantAdminResponse = HttpResponse<Restaurant>;
