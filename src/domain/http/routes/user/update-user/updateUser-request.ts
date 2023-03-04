@@ -6,4 +6,4 @@
 
 import { UpdateUserDto } from 'src/domain/dto/user/updateUser-dto';
 
-export type UpdateUserAdminRequestBody = UpdateUserDto;
+export type UpdateUserRequestBody = UpdateUserDto;

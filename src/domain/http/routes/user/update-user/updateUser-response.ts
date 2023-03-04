@@ -7,4 +7,4 @@
 import { User } from 'src/domain/entities/user';
 import { HttpResponse } from 'src/domain/http/response';
 
-export type UpdateUserAdminResponse = HttpResponse<User>;
+export type UpdateUserResponse = HttpResponse<User>;
