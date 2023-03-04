@@ -2,6 +2,7 @@ import { CreateIngredientDto } from 'src/domain/dto/ingredient/createIngredient-
 import { UpdateIngredientDto } from 'src/domain/dto/ingredient/updateIngredient-dto';
 import { Ingredient } from 'src/domain/entities/ingredient';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { IngredientEntityInterface } from './abstract/interfaces/ingredientEntity-interface';
 import { IngredientType } from './abstract/types/ingredint-type';
 import { Entity } from './entity';
@@ -23,7 +24,13 @@ export class IngredientEntity
   }
 
   public validate(): void {
-    throw new Error('Method not implemented.');
+    if (!this.ingredientDto.name) {
+      throw new MissingParamError('name');
+    }
+
+    if (!this.ingredientDto.restaurant) {
+      throw new MissingParamError('restaurant');
+    }
   }
 
   public getBody(): IngredientType {

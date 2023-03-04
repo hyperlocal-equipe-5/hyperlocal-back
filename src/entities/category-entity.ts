@@ -2,6 +2,7 @@ import { CreateCategoryDto } from 'src/domain/dto/category/createCategory-dto';
 import { UpdateCategoryDto } from 'src/domain/dto/category/updateCategory-dto';
 import { Category } from 'src/domain/entities/category';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { CategoryEntityInterface } from './abstract/interfaces/categoryEntity-interface';
 import { CategoryType } from './abstract/types/category-type';
 import { Entity } from './entity';
@@ -20,7 +21,13 @@ export class CategoryEntity extends Entity implements CategoryEntityInterface {
   }
 
   public validate(): void {
-    throw new Error('Method not implemented.');
+    if (!this.categoryDto.name) {
+      throw new MissingParamError('name');
+    }
+
+    if (!this.categoryDto.restaurant) {
+      throw new MissingParamError('restaurant');
+    }
   }
 
   public getBody(): CategoryType {

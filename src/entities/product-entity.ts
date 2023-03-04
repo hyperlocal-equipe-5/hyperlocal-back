@@ -2,6 +2,7 @@ import { CreateProductDto } from 'src/domain/dto/product/createProduct-dto';
 import { UpdateProductDto } from 'src/domain/dto/product/updateProduct-dto';
 import { Product } from 'src/domain/entities/product';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { ProductEntityInterface } from './abstract/interfaces/productEntity-interface';
 import { ProductType } from './abstract/types/product-type';
 import { Entity } from './entity';
@@ -20,7 +21,13 @@ export class ProductEntity extends Entity implements ProductEntityInterface {
   }
 
   public validate(): void {
-    throw new Error('Method not implemented.');
+    if (!this.productDto.name) {
+      throw new MissingParamError('name');
+    }
+
+    if (!this.productDto.restaurant) {
+      throw new MissingParamError('restaurant');
+    }
   }
 
   public getBody(): ProductType {

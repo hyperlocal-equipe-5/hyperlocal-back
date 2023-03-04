@@ -2,6 +2,7 @@ import { CreateRestaurantDto } from 'src/domain/dto/restaurant/createRestaurant-
 import { UpdateRestaurantDto } from 'src/domain/dto/restaurant/updateRestaurant-dto';
 import { Restaurant } from 'src/domain/entities/restaurant';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { RestaurantEntityInterface } from './abstract/interfaces/restaurantEntity-interface';
 import { RestaurantType } from './abstract/types/restaurant-type';
 import { Entity } from './entity';
@@ -23,7 +24,9 @@ export class RestaurantEntity
   }
 
   public validate(): void {
-    throw new Error('Method not implemented.');
+    if (!this.restaurantDto.name) {
+      throw new MissingParamError('name');
+    }
   }
 
   public getBody(): RestaurantType {

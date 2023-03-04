@@ -2,6 +2,7 @@ import { CreateReviewDto } from 'src/domain/dto/review/createReview-dto';
 import { UpdateReviewDto } from 'src/domain/dto/review/updateReview-dto';
 import { Review } from 'src/domain/entities/review';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { ReviewEntityInterface } from './abstract/interfaces/reviewEntity-interface';
 import { ReviewType } from './abstract/types/review-type';
 import { Entity } from './entity';
@@ -20,7 +21,13 @@ export class ReviewEntity extends Entity implements ReviewEntityInterface {
   }
 
   public validate(): void {
-    throw new Error('Method not implemented.');
+    if (!this.reviewDto.stars) {
+      throw new MissingParamError('starts');
+    }
+
+    if (!this.reviewDto.restaurant) {
+      throw new MissingParamError('restaurant');
+    }
   }
 
   public getBody(): ReviewType {

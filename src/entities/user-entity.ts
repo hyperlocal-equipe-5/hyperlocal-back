@@ -3,6 +3,7 @@ import { UpdateUserDto } from 'src/domain/dto/user/updateUser-dto';
 import { User } from 'src/domain/entities/user';
 import { HasherAdapterInterface } from 'src/utils/adapters/abstract/hasherAdapter-interface';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { UserEntityInterface } from './abstract/interfaces/userEntity-interface';
 import { UserType } from './abstract/types/user-type';
 import { Entity } from './entity';
@@ -24,7 +25,21 @@ export class UserEntity extends Entity implements UserEntityInterface {
   }
 
   validate(): void {
-    throw new Error('Method not implemented.');
+    if (!this.userDto.name) {
+      throw new MissingParamError('name');
+    }
+
+    if (!this.userDto.email) {
+      throw new MissingParamError('email');
+    }
+
+    if (!this.userDto.password) {
+      throw new MissingParamError('password');
+    }
+
+    if (!this.userDto.restaurant) {
+      throw new MissingParamError('restaurant');
+    }
   }
 
   getBody(): UserType {
