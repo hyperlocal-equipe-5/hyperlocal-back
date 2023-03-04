@@ -1,6 +1,5 @@
-export type UpdateProductDto = {
+export type ProductType = {
   id: string;
-  restaurant: string;
   name: string;
   price: number;
   description: string;
@@ -8,4 +7,7 @@ export type UpdateProductDto = {
   image: string;
   ingredients: string[];
   category: string;
+  restaurant: string;
+  createdOn: string;
+  updatedOn: string;
 };
