@@ -1,10 +1,10 @@
 /**
- * type post
+ * type get
  * with bearer authorization header
- * /admin/user/create-user
+ * /user/get-one-user?id=iuedy8723y283&restaurant=8u93u8z3
  */
 
 import { User } from 'src/domain/entities/user';
 import { HttpResponse } from 'src/domain/http/response';
 
-export type CreateUserResponse = HttpResponse<User>;
+export type GetOneUserAdminResponse = HttpResponse<User>;

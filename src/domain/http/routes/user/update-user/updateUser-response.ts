@@ -1,10 +1,10 @@
 /**
- * type delete
+ * type patch
  * with bearer authorization header
- * /admin/user/delete-user?id=23r32rfg&restaurant=859f83u
+ * /user/update-user
  */
 
 import { User } from 'src/domain/entities/user';
 import { HttpResponse } from 'src/domain/http/response';
 
-export type DeleteUserAdminResponse = HttpResponse<User>;
+export type UpdateUserAdminResponse = HttpResponse<User>;

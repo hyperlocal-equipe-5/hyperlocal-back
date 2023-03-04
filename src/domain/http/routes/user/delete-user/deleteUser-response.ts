@@ -1,10 +1,10 @@
 /**
- * type get
+ * type delete
  * with bearer authorization header
- * /admin/user/get-all-users?restaurant=8u93u8z3
+ * /user/delete-user?id=23r32rfg&restaurant=859f83u
  */
 
 import { User } from 'src/domain/entities/user';
 import { HttpResponse } from 'src/domain/http/response';
 
-export type GetAllUsersAdminResponse = HttpResponse<User[]>;
+export type DeleteUserAdminResponse = HttpResponse<User>;
