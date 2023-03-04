@@ -4,6 +4,6 @@ export type CreateUserDto = {
   password: string;
   image?: string;
   cellphone?: number;
-  role: string;
+  role?: string;
   restaurant: string;
 };
