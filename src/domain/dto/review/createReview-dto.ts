@@ -1,6 +1,6 @@
 export type CreateReviewDto = {
   stars: number;
-  comment: string;
+  comment?: string;
   user?: string;
   restaurant: string;
 };

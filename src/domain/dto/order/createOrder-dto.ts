@@ -1,6 +1,6 @@
 export type CreateOrderDto = {
   products: string[];
-  takeAway: boolean;
+  takeAway?: boolean;
   orderNumber?: number;
   customerName?: string;
   user?: string;

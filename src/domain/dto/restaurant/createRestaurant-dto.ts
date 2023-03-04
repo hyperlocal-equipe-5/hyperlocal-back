@@ -1,8 +1,8 @@
 export type CreateRestaurantDto = {
-  telephone: number;
-  email: string;
   name: string;
-  address: string;
-  logo: string;
-  colorScheme: number;
+  email?: string;
+  telephone?: number;
+  address?: string;
+  logo?: string;
+  colorScheme?: number;
 };
