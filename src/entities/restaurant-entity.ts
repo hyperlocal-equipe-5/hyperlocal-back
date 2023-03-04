@@ -1,22 +1,56 @@
 import { CreateRestaurantDto } from 'src/domain/dto/restaurant/createRestaurant-dto';
 import { UpdateRestaurantDto } from 'src/domain/dto/restaurant/updateRestaurant-dto';
 import { Restaurant } from 'src/domain/entities/restaurant';
-import { RestaurantEntityInterface } from './abstract/restaurantEntity-interface';
+import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { RestaurantEntityInterface } from './abstract/interfaces/restaurantEntity-interface';
+import { RestaurantType } from './abstract/types/restaurant-type';
+import { Entity } from './entity';
 
-export class RestaurantEntity implements RestaurantEntityInterface {
-  constructor(
-    private readonly restaurantDto: CreateRestaurantDto | UpdateRestaurantDto,
-  ) {}
+export class RestaurantEntity
+  extends Entity
+  implements RestaurantEntityInterface
+{
+  private readonly restaurantDto: CreateRestaurantDto | UpdateRestaurantDto;
+  private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
 
-  validate(): void {
+  public constructor(
+    restaurantDto: CreateRestaurantDto | UpdateRestaurantDto,
+    idGeneratorAdapter: IdGeneratorAdapterInterface,
+  ) {
+    super();
+    this.restaurantDto = restaurantDto;
+    this.idGeneratorAdapter = idGeneratorAdapter;
+  }
+
+  public validate(): void {
     throw new Error('Method not implemented.');
   }
 
-  getBody(): Restaurant {
-    throw new Error('Method not implemented.');
+  public getBody(): RestaurantType {
+    return {
+      id: this.idGeneratorAdapter.generateId(),
+      name: this.restaurantDto.name ?? '',
+      telephone: this.restaurantDto.telephone ?? 0,
+      email: this.restaurantDto.email ?? '',
+      address: this.restaurantDto.address,
+      logo: this.restaurantDto.logo,
+      colorScheme: this.restaurantDto.colorScheme ?? 0,
+      createdOn: this.getDate(),
+      updatedOn: this.getDate(),
+    };
   }
 
-  updateBody(mainRestaurant: Restaurant): Restaurant {
-    throw new Error('Method not implemented.');
+  public updateBody(mainRestaurant: Restaurant): RestaurantType {
+    return {
+      id: this.idGeneratorAdapter.generateId(),
+      name: this.restaurantDto.name ?? mainRestaurant.name,
+      telephone: this.restaurantDto.telephone ?? mainRestaurant.telephone,
+      email: this.restaurantDto.email ?? mainRestaurant.email,
+      address: this.restaurantDto.address ?? mainRestaurant.address,
+      logo: this.restaurantDto.logo ?? mainRestaurant.logo,
+      colorScheme: this.restaurantDto.colorScheme ?? mainRestaurant.colorScheme,
+      createdOn: mainRestaurant.createdOn,
+      updatedOn: this.getDate(),
+    };
   }
 }

@@ -1,20 +1,49 @@
 import { CreateReviewDto } from 'src/domain/dto/review/createReview-dto';
 import { UpdateReviewDto } from 'src/domain/dto/review/updateReview-dto';
 import { Review } from 'src/domain/entities/review';
-import { ReviewEntityInterface } from './abstract/reviewEntity-interface';
+import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { ReviewEntityInterface } from './abstract/interfaces/reviewEntity-interface';
+import { ReviewType } from './abstract/types/review-type';
+import { Entity } from './entity';
 
-export class ReviewEntity implements ReviewEntityInterface {
-  constructor(private readonly reviewDto: CreateReviewDto | UpdateReviewDto) {}
+export class ReviewEntity extends Entity implements ReviewEntityInterface {
+  private readonly reviewDto: CreateReviewDto | UpdateReviewDto;
+  private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
 
-  validate(): void {
+  public constructor(
+    reviewDto: CreateReviewDto | UpdateReviewDto,
+    idGeneratorAdapter: IdGeneratorAdapterInterface,
+  ) {
+    super();
+    this.reviewDto = reviewDto;
+    this.idGeneratorAdapter = idGeneratorAdapter;
+  }
+
+  public validate(): void {
     throw new Error('Method not implemented.');
   }
 
-  getBody(): Review {
-    throw new Error('Method not implemented.');
+  public getBody(): ReviewType {
+    return {
+      id: this.idGeneratorAdapter.generateId(),
+      stars: this.reviewDto.stars ?? 0,
+      comment: this.reviewDto.comment ?? '',
+      user: this.reviewDto.user ?? '',
+      restaurant: this.reviewDto.restaurant,
+      createdOn: this.getDate(),
+      updatedOn: this.getDate(),
+    };
   }
 
-  updateBody(mainReview: Review): Review {
-    throw new Error('Method not implemented.');
+  public updateBody(mainReview: Review): ReviewType {
+    return {
+      id: mainReview.id,
+      stars: this.reviewDto.stars ?? mainReview.stars,
+      comment: this.reviewDto.comment ?? mainReview.comment,
+      user: this.reviewDto.user ?? mainReview.user.id,
+      restaurant: this.reviewDto.restaurant,
+      createdOn: mainReview.createdOn,
+      updatedOn: this.getDate(),
+    };
   }
 }
