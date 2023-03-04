@@ -1,5 +1,5 @@
 import { Ingredient } from 'src/domain/entities/ingredient';
-import { IngredientType } from '../types/ingredint-type';
+import { IngredientType } from '../../../domain/types/ingredint-type';
 
 export interface IngredientEntityInterface {
   validate(): void;

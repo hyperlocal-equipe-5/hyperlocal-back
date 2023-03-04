@@ -4,7 +4,7 @@ import { Category } from 'src/domain/entities/category';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { CategoryEntityInterface } from './abstract/interfaces/categoryEntity-interface';
-import { CategoryType } from './abstract/types/category-type';
+import { CategoryType } from '../domain/types/category-type';
 import { Entity } from './entity';
 
 export class CategoryEntity extends Entity implements CategoryEntityInterface {

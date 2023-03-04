@@ -4,7 +4,7 @@ import { Order } from 'src/domain/entities/order';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { OrderEntityInterface } from './abstract/interfaces/orderEntity-interface';
-import { OrderType } from './abstract/types/order-type';
+import { OrderType } from '../domain/types/order-type';
 import { Entity } from './entity';
 
 export class OrderEntity extends Entity implements OrderEntityInterface {

@@ -4,7 +4,7 @@ import { Review } from 'src/domain/entities/review';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { ReviewEntityInterface } from './abstract/interfaces/reviewEntity-interface';
-import { ReviewType } from './abstract/types/review-type';
+import { ReviewType } from '../domain/types/review-type';
 import { Entity } from './entity';
 
 export class ReviewEntity extends Entity implements ReviewEntityInterface {

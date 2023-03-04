@@ -1,5 +1,5 @@
 import { Category } from 'src/domain/entities/category';
-import { CategoryType } from '../types/category-type';
+import { CategoryType } from '../../../domain/types/category-type';
 
 export interface CategoryEntityInterface {
   validate(): void;

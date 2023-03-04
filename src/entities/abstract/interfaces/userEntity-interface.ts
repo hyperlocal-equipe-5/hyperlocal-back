@@ -1,5 +1,5 @@
 import { User } from 'src/domain/entities/user';
-import { UserType } from '../types/user-type';
+import { UserType } from '../../../domain/types/user-type';
 
 export interface UserEntityInterface {
   validate(): void;

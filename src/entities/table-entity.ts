@@ -4,7 +4,7 @@ import { Table } from 'src/domain/entities/table';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { TableEntityInterface } from './abstract/interfaces/tableEntity-interface';
-import { TableType } from './abstract/types/table-type';
+import { TableType } from '../domain/types/table-type';
 import { Entity } from './entity';
 
 export class TableEntity extends Entity implements TableEntityInterface {

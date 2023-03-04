@@ -4,7 +4,7 @@ import { Role } from 'src/domain/entities/role';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { RoleEntityInterface } from './abstract/interfaces/roleEntity-interface';
-import { RoleType } from './abstract/types/role-type';
+import { RoleType } from '../domain/types/role-type';
 import { Entity } from './entity';
 
 export class RoleEntity extends Entity implements RoleEntityInterface {

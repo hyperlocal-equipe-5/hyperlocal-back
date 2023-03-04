@@ -5,7 +5,7 @@ import { HasherAdapterInterface } from 'src/utils/adapters/abstract/hasherAdapte
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { UserEntityInterface } from './abstract/interfaces/userEntity-interface';
-import { UserType } from './abstract/types/user-type';
+import { UserType } from '../domain/types/user-type';
 import { Entity } from './entity';
 
 export class UserEntity extends Entity implements UserEntityInterface {

@@ -1,5 +1,5 @@
 import { Restaurant } from 'src/domain/entities/restaurant';
-import { RestaurantType } from '../types/restaurant-type';
+import { RestaurantType } from '../../../domain/types/restaurant-type';
 
 export interface RestaurantEntityInterface {
   validate(): void;

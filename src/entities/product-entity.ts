@@ -4,7 +4,7 @@ import { Product } from 'src/domain/entities/product';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { ProductEntityInterface } from './abstract/interfaces/productEntity-interface';
-import { ProductType } from './abstract/types/product-type';
+import { ProductType } from '../domain/types/product-type';
 import { Entity } from './entity';
 
 export class ProductEntity extends Entity implements ProductEntityInterface {

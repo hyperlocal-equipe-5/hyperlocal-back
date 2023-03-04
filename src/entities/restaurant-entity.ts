@@ -4,7 +4,7 @@ import { Restaurant } from 'src/domain/entities/restaurant';
 import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { RestaurantEntityInterface } from './abstract/interfaces/restaurantEntity-interface';
-import { RestaurantType } from './abstract/types/restaurant-type';
+import { RestaurantType } from '../domain/types/restaurant-type';
 import { Entity } from './entity';
 
 export class RestaurantEntity
