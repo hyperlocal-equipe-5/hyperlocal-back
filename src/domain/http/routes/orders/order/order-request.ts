@@ -3,11 +3,6 @@
  * /orders/order
  */
 
-export type PostOrderRequestBody = {
-  products: string[];
-  table?: string;
-  user?: string;
-  orderNumber?: string;
-  customerName?: string;
-  restaurant: string;
-};
+import { CreateOrderDto } from 'src/domain/dto/order/createOrder-dto';
+
+export type PostOrderRequestBody = CreateOrderDto;
