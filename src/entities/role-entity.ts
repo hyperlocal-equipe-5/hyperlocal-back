@@ -16,7 +16,7 @@ export class RoleEntity extends Entity implements RoleEntityInterface {
     this.idGeneratorAdapter = idGeneratorAdapter;
   }
 
-  public setData(roleDto: CreateRoleDto | UpdateRoleDto) {
+  public setData(roleDto: CreateRoleDto | UpdateRoleDto): void {
     this.roleDto = roleDto;
   }
 

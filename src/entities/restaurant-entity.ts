@@ -19,7 +19,9 @@ export class RestaurantEntity
     this.idGeneratorAdapter = idGeneratorAdapter;
   }
 
-  public setData(restaurantDto: CreateRestaurantDto | UpdateRestaurantDto) {
+  public setData(
+    restaurantDto: CreateRestaurantDto | UpdateRestaurantDto,
+  ): void {
     this.restaurantDto = restaurantDto;
   }
 

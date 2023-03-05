@@ -16,7 +16,7 @@ export class ReviewEntity extends Entity implements ReviewEntityInterface {
     this.idGeneratorAdapter = idGeneratorAdapter;
   }
 
-  public setData(reviewDto: CreateReviewDto | UpdateReviewDto) {
+  public setData(reviewDto: CreateReviewDto | UpdateReviewDto): void {
     this.reviewDto = reviewDto;
   }
 

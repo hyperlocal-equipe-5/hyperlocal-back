@@ -16,7 +16,7 @@ export class ProductEntity extends Entity implements ProductEntityInterface {
     this.idGeneratorAdapter = idGeneratorAdapter;
   }
 
-  public setData(productDto: CreateProductDto | UpdateProductDto) {
+  public setData(productDto: CreateProductDto | UpdateProductDto): void {
     this.productDto = productDto;
   }
 

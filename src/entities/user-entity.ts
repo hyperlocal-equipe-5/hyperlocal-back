@@ -13,7 +13,7 @@ export class UserEntity extends Entity implements UserEntityInterface {
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
   private readonly hasherAdapter: HasherAdapterInterface;
 
-  constructor(
+  public constructor(
     idGeneratorAdapter: IdGeneratorAdapterInterface,
     hasherAdapter: HasherAdapterInterface,
   ) {
@@ -23,11 +23,11 @@ export class UserEntity extends Entity implements UserEntityInterface {
     this.hasherAdapter = hasherAdapter;
   }
 
-  setData(userDto: CreateUserDto | UpdateUserDto) {
+  public setData(userDto: CreateUserDto | UpdateUserDto): void {
     this.userDto = userDto;
   }
 
-  validate(): void {
+  public validate(): void {
     if (!this.userDto.name) {
       throw new MissingParamError('name');
     }
@@ -45,7 +45,7 @@ export class UserEntity extends Entity implements UserEntityInterface {
     }
   }
 
-  getBody(): UserType {
+  public getBody(): UserType {
     return {
       id: this.idGeneratorAdapter.generateId(),
       name: this.userDto.name ?? '',
@@ -62,7 +62,7 @@ export class UserEntity extends Entity implements UserEntityInterface {
     };
   }
 
-  updateBody(mainUser: User): UserType {
+  public updateBody(mainUser: User): UserType {
     return {
       id: this.idGeneratorAdapter.generateId(),
       name: this.userDto.name ?? mainUser.name,

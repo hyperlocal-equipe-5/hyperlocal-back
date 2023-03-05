@@ -19,7 +19,9 @@ export class IngredientEntity
     this.idGeneratorAdapter = idGeneratorAdapter;
   }
 
-  public setData(ingredientDto: CreateIngredientDto | UpdateIngredientDto) {
+  public setData(
+    ingredientDto: CreateIngredientDto | UpdateIngredientDto,
+  ): void {
     this.ingredientDto = ingredientDto;
   }
 

@@ -16,7 +16,7 @@ export class TableEntity extends Entity implements TableEntityInterface {
     this.idGeneratorAdapter = idGeneratorAdapter;
   }
 
-  public setData(tableDto: CreateTableDto | UpdateTableDto) {
+  public setData(tableDto: CreateTableDto | UpdateTableDto): void {
     this.tableDto = tableDto;
   }
 

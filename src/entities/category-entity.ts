@@ -16,7 +16,7 @@ export class CategoryEntity extends Entity implements CategoryEntityInterface {
     this.idGeneratorAdapter = idGeneratorAdapter;
   }
 
-  public setData(categoryDto: CreateCategoryDto | UpdateCategoryDto) {
+  public setData(categoryDto: CreateCategoryDto | UpdateCategoryDto): void {
     this.categoryDto = categoryDto;
   }
 

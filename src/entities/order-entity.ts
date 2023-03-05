@@ -16,7 +16,7 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
     this.idGeneratorAdapter = idGeneratorAdapter;
   }
 
-  public setData(orderDto: CreateOrderDto | UpdateOrderDto) {
+  public setData(orderDto: CreateOrderDto | UpdateOrderDto): void {
     this.orderDto = orderDto;
   }
 
