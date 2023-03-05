@@ -1,9 +1,19 @@
 import { CreateTableUseCaseInterface } from 'src/data/abstract/usecases/table/createTableUseCase-interface';
 import { CreateTableDto } from 'src/domain/dto/table/createTable-dto';
 import { Table } from 'src/domain/entities/table';
+import { TableEntityInterface } from 'src/entities/abstract/interfaces/tableEntity-interface';
+import { TableRepositoryInterface } from 'src/infra/abstract/repositories/tableRepository-interface';
 
 export class CreateTableUseCase implements CreateTableUseCaseInterface {
-  public execute(createTableDto: CreateTableDto): Promise<Table> {
-    throw new Error('Method not implemented.');
+  private readonly entity: TableEntityInterface;
+  private readonly repository: TableRepositoryInterface;
+
+  public async execute(createTableDto: CreateTableDto): Promise<Table> {
+    this.entity.setData(createTableDto);
+
+    const body = this.entity.getBody();
+    const response = await this.repository.create(body);
+
+    return response;
   }
 }

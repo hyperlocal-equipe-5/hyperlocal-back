@@ -1,8 +1,17 @@
 import { GetOneTableUseCaseInterface } from 'src/data/abstract/usecases/table/getOneTableUseCase-interface';
 import { Table } from 'src/domain/entities/table';
+import { TableRepositoryInterface } from 'src/infra/abstract/repositories/tableRepository-interface';
 
 export class GetOneTableUseCase implements GetOneTableUseCaseInterface {
+  private readonly repository: TableRepositoryInterface;
+
+  public constructor(repository: TableRepositoryInterface) {
+    this.repository = repository;
+  }
+
   public execute(tableId: string, restaurantId: string): Promise<Table> {
-    throw new Error('Method not implemented.');
+    const data = this.repository.getOne(tableId, restaurantId);
+
+    return data;
   }
 }

@@ -1,13 +1,23 @@
 import { CreateRestaurantUseCaseInterface } from 'src/data/abstract/usecases/restaurant/createRestaurantUseCase-interface';
 import { CreateRestaurantDto } from 'src/domain/dto/restaurant/createRestaurant-dto';
 import { Restaurant } from 'src/domain/entities/restaurant';
+import { RestaurantEntityInterface } from 'src/entities/abstract/interfaces/restaurantEntity-interface';
+import { RestaurantRepositoryInterface } from 'src/infra/abstract/repositories/restaurantRepository-interface';
 
 export class CreateRestaurantUseCase
   implements CreateRestaurantUseCaseInterface
 {
-  public execute(
+  private readonly entity: RestaurantEntityInterface;
+  private readonly repository: RestaurantRepositoryInterface;
+
+  public async execute(
     createRestaurantDto: CreateRestaurantDto,
   ): Promise<Restaurant> {
-    throw new Error('Method not implemented.');
+    this.entity.setData(createRestaurantDto);
+
+    const body = this.entity.getBody();
+    const response = await this.repository.create(body);
+
+    return response;
   }
 }

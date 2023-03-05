@@ -12,7 +12,14 @@ export class CreateCategoryUseCase implements CreateCategoryUseCaseInterface {
     this.repository = repository;
   }
 
-  public execute(createCategoryDto: CreateCategoryDto): Promise<Category> {
-    throw new Error('Method not implemented.');
+  public async execute(
+    createCategoryDto: CreateCategoryDto,
+  ): Promise<Category> {
+    this.entity.setData(createCategoryDto);
+
+    const body = this.entity.getBody();
+    const response = await this.repository.create(body);
+
+    return response;
   }
 }

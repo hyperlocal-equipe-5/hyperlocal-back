@@ -5,6 +5,6 @@ export interface RestaurantRepositoryInterface {
   create(restaurantBody: RestaurantType): Promise<Restaurant>;
   delete(restaurantId: string): Promise<Restaurant>;
   getOne(restaurantId: string): Promise<Restaurant>;
-  getAll(restaurantId: string): Promise<Restaurant[]>;
+  getAll(): Promise<Restaurant[]>;
   update(restaurantBody: RestaurantType): Promise<Restaurant>;
 }
