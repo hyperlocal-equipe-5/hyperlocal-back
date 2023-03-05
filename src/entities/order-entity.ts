@@ -8,16 +8,16 @@ import { OrderType } from '../domain/types/order-type';
 import { Entity } from './entity';
 
 export class OrderEntity extends Entity implements OrderEntityInterface {
-  private readonly orderDto: CreateOrderDto | UpdateOrderDto;
+  private orderDto: CreateOrderDto | UpdateOrderDto;
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
 
-  public constructor(
-    orderDto: CreateOrderDto | UpdateOrderDto,
-    idGeneratorAdapter: IdGeneratorAdapterInterface,
-  ) {
+  public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
     super();
-    this.orderDto = orderDto;
     this.idGeneratorAdapter = idGeneratorAdapter;
+  }
+
+  public setData(orderDto: CreateOrderDto | UpdateOrderDto) {
+    this.orderDto = orderDto;
   }
 
   public validate(): void {

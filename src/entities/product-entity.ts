@@ -8,16 +8,16 @@ import { ProductType } from '../domain/types/product-type';
 import { Entity } from './entity';
 
 export class ProductEntity extends Entity implements ProductEntityInterface {
-  private readonly productDto: CreateProductDto | UpdateProductDto;
+  private productDto: CreateProductDto | UpdateProductDto;
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
 
-  public constructor(
-    productDto: CreateProductDto | UpdateProductDto,
-    idGeneratorAdapter: IdGeneratorAdapterInterface,
-  ) {
+  public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
     super();
-    this.productDto = productDto;
     this.idGeneratorAdapter = idGeneratorAdapter;
+  }
+
+  public setData(productDto: CreateProductDto | UpdateProductDto) {
+    this.productDto = productDto;
   }
 
   public validate(): void {

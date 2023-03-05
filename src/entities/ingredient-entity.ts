@@ -11,16 +11,16 @@ export class IngredientEntity
   extends Entity
   implements IngredientEntityInterface
 {
-  private readonly ingredientDto: CreateIngredientDto | UpdateIngredientDto;
+  private ingredientDto: CreateIngredientDto | UpdateIngredientDto;
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
 
-  public constructor(
-    ingredientDto: CreateIngredientDto | UpdateIngredientDto,
-    idGeneratorAdapter: IdGeneratorAdapterInterface,
-  ) {
+  public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
     super();
-    this.ingredientDto = ingredientDto;
     this.idGeneratorAdapter = idGeneratorAdapter;
+  }
+
+  public setData(ingredientDto: CreateIngredientDto | UpdateIngredientDto) {
+    this.ingredientDto = ingredientDto;
   }
 
   public validate(): void {

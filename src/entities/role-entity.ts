@@ -8,16 +8,16 @@ import { RoleType } from '../domain/types/role-type';
 import { Entity } from './entity';
 
 export class RoleEntity extends Entity implements RoleEntityInterface {
-  private readonly roleDto: CreateRoleDto | UpdateRoleDto;
+  private roleDto: CreateRoleDto | UpdateRoleDto;
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
 
-  public constructor(
-    roleDto: CreateRoleDto | UpdateRoleDto,
-    idGeneratorAdapter: IdGeneratorAdapterInterface,
-  ) {
+  public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
     super();
-    this.roleDto = roleDto;
     this.idGeneratorAdapter = idGeneratorAdapter;
+  }
+
+  public setData(roleDto: CreateRoleDto | UpdateRoleDto) {
+    this.roleDto = roleDto;
   }
 
   public validate(): void {

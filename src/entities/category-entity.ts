@@ -8,16 +8,16 @@ import { CategoryType } from '../domain/types/category-type';
 import { Entity } from './entity';
 
 export class CategoryEntity extends Entity implements CategoryEntityInterface {
-  private readonly categoryDto: CreateCategoryDto | UpdateCategoryDto;
+  private categoryDto: CreateCategoryDto | UpdateCategoryDto;
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
 
-  public constructor(
-    categoryDto: CreateCategoryDto | UpdateCategoryDto,
-    idGeneratorAdapter: IdGeneratorAdapterInterface,
-  ) {
+  public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
     super();
-    this.categoryDto = categoryDto;
     this.idGeneratorAdapter = idGeneratorAdapter;
+  }
+
+  public setData(categoryDto: CreateCategoryDto | UpdateCategoryDto) {
+    this.categoryDto = categoryDto;
   }
 
   public validate(): void {

@@ -8,16 +8,16 @@ import { ReviewType } from '../domain/types/review-type';
 import { Entity } from './entity';
 
 export class ReviewEntity extends Entity implements ReviewEntityInterface {
-  private readonly reviewDto: CreateReviewDto | UpdateReviewDto;
+  private reviewDto: CreateReviewDto | UpdateReviewDto;
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
 
-  public constructor(
-    reviewDto: CreateReviewDto | UpdateReviewDto,
-    idGeneratorAdapter: IdGeneratorAdapterInterface,
-  ) {
+  public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
     super();
-    this.reviewDto = reviewDto;
     this.idGeneratorAdapter = idGeneratorAdapter;
+  }
+
+  public setData(reviewDto: CreateReviewDto | UpdateReviewDto) {
+    this.reviewDto = reviewDto;
   }
 
   public validate(): void {

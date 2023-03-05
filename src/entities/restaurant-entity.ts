@@ -11,16 +11,16 @@ export class RestaurantEntity
   extends Entity
   implements RestaurantEntityInterface
 {
-  private readonly restaurantDto: CreateRestaurantDto | UpdateRestaurantDto;
+  private restaurantDto: CreateRestaurantDto | UpdateRestaurantDto;
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
 
-  public constructor(
-    restaurantDto: CreateRestaurantDto | UpdateRestaurantDto,
-    idGeneratorAdapter: IdGeneratorAdapterInterface,
-  ) {
+  public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
     super();
-    this.restaurantDto = restaurantDto;
     this.idGeneratorAdapter = idGeneratorAdapter;
+  }
+
+  public setData(restaurantDto: CreateRestaurantDto | UpdateRestaurantDto) {
+    this.restaurantDto = restaurantDto;
   }
 
   public validate(): void {

@@ -8,16 +8,16 @@ import { TableType } from '../domain/types/table-type';
 import { Entity } from './entity';
 
 export class TableEntity extends Entity implements TableEntityInterface {
-  private readonly tableDto: CreateTableDto | UpdateTableDto;
+  private tableDto: CreateTableDto | UpdateTableDto;
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
 
-  public constructor(
-    tableDto: CreateTableDto | UpdateTableDto,
-    idGeneratorAdapter: IdGeneratorAdapterInterface,
-  ) {
+  public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
     super();
-    this.tableDto = tableDto;
     this.idGeneratorAdapter = idGeneratorAdapter;
+  }
+
+  public setData(tableDto: CreateTableDto | UpdateTableDto) {
+    this.tableDto = tableDto;
   }
 
   public validate(): void {

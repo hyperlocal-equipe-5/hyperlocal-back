@@ -9,19 +9,22 @@ import { UserType } from '../domain/types/user-type';
 import { Entity } from './entity';
 
 export class UserEntity extends Entity implements UserEntityInterface {
-  private readonly userDto: CreateUserDto | UpdateUserDto;
+  private userDto: CreateUserDto | UpdateUserDto;
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
   private readonly hasherAdapter: HasherAdapterInterface;
 
   constructor(
-    userDto: CreateUserDto | UpdateUserDto,
     idGeneratorAdapter: IdGeneratorAdapterInterface,
     hasherAdapter: HasherAdapterInterface,
   ) {
     super();
-    this.userDto = userDto;
+
     this.idGeneratorAdapter = idGeneratorAdapter;
     this.hasherAdapter = hasherAdapter;
+  }
+
+  setData(userDto: CreateUserDto | UpdateUserDto) {
+    this.userDto = userDto;
   }
 
   validate(): void {
