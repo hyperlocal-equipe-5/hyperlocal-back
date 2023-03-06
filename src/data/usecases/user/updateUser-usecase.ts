@@ -1,0 +1,21 @@
+import { UpdateUserUseCaseInterface } from 'src/data/abstract/usecases/user/updateUserUseCase-interface';
+import { UpdateUserDto } from 'src/domain/dto/user/updateUser-dto';
+import { User } from 'src/domain/entities/user';
+import { UserEntityInterface } from 'src/entities/abstract/interfaces/userEntity-interface';
+import { UserRepositoryInterface } from 'src/infra/abstract/repositories/userRepository-interface';
+
+export class UpdateUserUseCase implements UpdateUserUseCaseInterface {
+  private readonly entity: UserEntityInterface;
+  private readonly repository: UserRepositoryInterface;
+
+  public async execute(updateUserDto: UpdateUserDto): Promise<User> {
+    this.entity.setData(updateUserDto);
+
+    const { id, restaurant } = updateUserDto;
+    const foundCategory = await this.repository.getOneById(id, restaurant);
+    const body = this.entity.updateBody(foundCategory);
+    const response = await this.repository.update(body);
+
+    return response;
+  }
+}

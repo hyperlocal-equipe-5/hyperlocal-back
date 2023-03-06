@@ -5,5 +5,6 @@
  */
 
 import { User } from 'src/domain/entities/user';
+import { HttpResponse } from 'src/domain/http/response';
 
-export type CreateUserResponse = HttpResponse<User>;
+export type CreateUserAdminResponse = HttpResponse<User>;

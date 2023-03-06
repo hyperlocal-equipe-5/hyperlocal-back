@@ -4,7 +4,6 @@
  * /admin/table/create-table
  */
 
-export type CreateTableRequestBody = {
-  number: number;
-  restaurant: string;
-};
+import { CreateTableDto } from 'src/domain/dto/table/createTable-dto';
+
+export type CreateTableRequestBody = CreateTableDto;

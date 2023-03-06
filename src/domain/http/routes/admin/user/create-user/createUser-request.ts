@@ -4,12 +4,6 @@
  * /admin/user/create-user
  */
 
-export type CreateUserRequestBody = {
-  name: string;
-  email: string;
-  password: string;
-  image?: string;
-  cellphone?: number;
-  roled: string;
-  restaurant: string;
-};
+import { CreateUserDto } from 'src/domain/dto/user/createUser-dto';
+
+export type CreateUserAdminRequestBody = CreateUserDto;

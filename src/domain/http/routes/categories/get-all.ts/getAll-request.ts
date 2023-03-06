@@ -1,4 +1,4 @@
 /**
  * type get
- * /categories/get-all
+ * /categories/get-all?restaurant=u92umf923
  */

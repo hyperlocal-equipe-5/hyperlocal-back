@@ -1,14 +1,9 @@
 /**
  * type patch
  * with bearer authorization header
- * /admin/restaurant/update-restaurant?id=328nr283r7
+ * /admin/restaurant/update-restaurant
  */
 
-export type UpdateRestaurantAdminRequestBody = {
-  telephone?: number;
-  email?: string;
-  name?: string;
-  address?: string;
-  logo?: string;
-  colorScheme?: number;
-};
+import { UpdateRestaurantDto } from 'src/domain/dto/restaurant/updateRestaurant-dto';
+
+export type UpdateRestaurantAdminRequestBody = UpdateRestaurantDto;

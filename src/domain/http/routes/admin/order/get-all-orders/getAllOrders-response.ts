@@ -5,5 +5,6 @@
  */
 
 import { Order } from 'src/domain/entities/order';
+import { HttpResponse } from 'src/domain/http/response';
 
 export type GetAllOrderAdminResponse = HttpResponse<Order[]>;

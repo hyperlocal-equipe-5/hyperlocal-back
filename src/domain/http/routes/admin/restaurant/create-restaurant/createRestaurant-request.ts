@@ -4,11 +4,6 @@
  * /admin/restaurant/create-restaurant
  */
 
-export type CreateRestaurantRequestBody = {
-  telephone: number;
-  email: string;
-  name: string;
-  address: string;
-  logo: string;
-  colorScheme: number;
-};
+import { CreateRestaurantDto } from 'src/domain/dto/restaurant/createRestaurant-dto';
+
+export type CreateRestaurantRequestBody = CreateRestaurantDto;
