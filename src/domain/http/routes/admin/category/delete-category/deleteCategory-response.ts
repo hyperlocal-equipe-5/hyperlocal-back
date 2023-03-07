@@ -5,6 +5,6 @@
  */
 
 import { Category } from 'src/domain/entities/category';
-import { HttpResponse } from 'src/domain/http/response';
+import { HttpResponse } from 'src/domain/http/httpResponse';
 
 export type DeleteCategoryAdminResponse = HttpResponse<Category>;

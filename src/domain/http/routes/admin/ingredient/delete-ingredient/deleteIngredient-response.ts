@@ -5,6 +5,6 @@
  */
 
 import { Ingredient } from 'src/domain/entities/ingredient';
-import { HttpResponse } from 'src/domain/http/response';
+import { HttpResponse } from 'src/domain/http/httpResponse';
 
 export type DeleteIngredientAdminResponse = HttpResponse<Ingredient>;

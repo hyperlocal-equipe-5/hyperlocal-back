@@ -1,8 +1,9 @@
 import { CreateUserUseCaseInterface } from 'src/data/abstract/usecases/user/createUserUsecase-interface';
 import { User } from 'src/domain/entities/user';
-import { HttpRequest } from 'src/domain/http/request';
-import { HttpResponse } from 'src/domain/http/response';
+import { HttpRequest } from 'src/domain/http/httpRequest';
+import { HttpResponse } from 'src/domain/http/httpResponse';
 import { CreateUserControllerInterface } from 'src/presentation/abstract/controllers/user/createUserController-interface';
+import { Response } from 'src/utils/http/response';
 
 export class CreateUserController implements CreateUserControllerInterface {
   private readonly createUserUseCase: CreateUserUseCaseInterface;
@@ -16,23 +17,9 @@ export class CreateUserController implements CreateUserControllerInterface {
       const createUserDto = httpRequest.body;
       const createdUser = await this.createUserUseCase.execute(createUserDto);
 
-      const response = {
-        error: false,
-        statusCode: 201,
-        message: 'User created',
-        body: createdUser,
-      };
-
-      return response;
+      return Response.created(createdUser);
     } catch (error) {
-      const response = {
-        error: true,
-        statusCode: 401,
-        message: error.message,
-        body: {},
-      };
-
-      return response;
+      return Response.badRequest(error.message);
     }
   }
 }

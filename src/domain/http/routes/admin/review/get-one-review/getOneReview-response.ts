@@ -5,6 +5,6 @@
  */
 
 import { Review } from 'src/domain/entities/review';
-import { HttpResponse } from 'src/domain/http/response';
+import { HttpResponse } from 'src/domain/http/httpResponse';
 
 export type GetOneReviewAdminResponse = HttpResponse<Review>;
