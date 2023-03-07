@@ -8,6 +8,14 @@ export class CreateProductUseCase implements CreateProductUseCaseInterface {
   private readonly entity: ProductEntityInterface;
   private readonly repository: ProductRepositoryInterface;
 
+  public constructor(
+    entity: ProductEntityInterface,
+    repository: ProductRepositoryInterface,
+  ) {
+    this.entity = entity;
+    this.repository = repository;
+  }
+
   public async execute(createProductDto: CreateProductDto): Promise<Product> {
     this.entity.setData(createProductDto);
 

@@ -8,6 +8,14 @@ export class CreateReviewUseCase implements CreateReviewUseCaseInterface {
   private readonly entity: ReviewEntityInterface;
   private readonly repository: ReviewRepositoryInterface;
 
+  public constructor(
+    entity: ReviewEntityInterface,
+    repository: ReviewRepositoryInterface,
+  ) {
+    this.entity = entity;
+    this.repository = repository;
+  }
+
   public async execute(createReviewDto: CreateReviewDto): Promise<Review> {
     this.entity.setData(createReviewDto);
 

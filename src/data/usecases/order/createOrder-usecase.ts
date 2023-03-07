@@ -8,6 +8,14 @@ export class CreateOrderUseCase implements CreateOrderUseCaseInterface {
   private readonly entity: OrderEntityInterface;
   private readonly repository: OrderRepositoryInterface;
 
+  public constructor(
+    entity: OrderEntityInterface,
+    repository: OrderRepositoryInterface,
+  ) {
+    this.entity = entity;
+    this.repository = repository;
+  }
+
   public async execute(createOrderDto: CreateOrderDto): Promise<Order> {
     this.entity.setData(createOrderDto);
 

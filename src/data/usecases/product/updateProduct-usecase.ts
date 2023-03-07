@@ -8,6 +8,14 @@ export class UpdateProductUseCase implements UpdateProductUseCaseInterface {
   private readonly entity: ProductEntityInterface;
   private readonly repository: ProductRepositoryInterface;
 
+  public constructor(
+    entity: ProductEntityInterface,
+    repository: ProductRepositoryInterface,
+  ) {
+    this.entity = entity;
+    this.repository = repository;
+  }
+
   public async execute(updateProductDto: UpdateProductDto): Promise<Product> {
     this.entity.setData(updateProductDto);
 

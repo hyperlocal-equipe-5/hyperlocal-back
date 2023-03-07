@@ -8,6 +8,14 @@ export class UpdateTableUseCase implements UpdateTableUseCaseInterface {
   private readonly entity: TableEntityInterface;
   private readonly repository: TableRepositoryInterface;
 
+  public constructor(
+    entity: TableEntityInterface,
+    repository: TableRepositoryInterface,
+  ) {
+    this.entity = entity;
+    this.repository = repository;
+  }
+
   public async execute(updateTableDto: UpdateTableDto): Promise<Table> {
     this.entity.setData(updateTableDto);
 

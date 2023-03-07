@@ -10,6 +10,14 @@ export class CreateIngredientUseCase
   private readonly entity: IngredientEntityInterface;
   private readonly repository: IngredientRepositoryInterface;
 
+  public constructor(
+    entity: IngredientEntityInterface,
+    repository: IngredientRepositoryInterface,
+  ) {
+    this.entity = entity;
+    this.repository = repository;
+  }
+
   public async execute(
     createIngredientDto: CreateIngredientDto,
   ): Promise<Ingredient> {

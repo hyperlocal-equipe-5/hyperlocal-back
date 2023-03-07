@@ -10,6 +10,14 @@ export class UpdateRestaurantUseCase
   private readonly entity: RestaurantEntityInterface;
   private readonly repository: RestaurantRepositoryInterface;
 
+  public constructor(
+    entity: RestaurantEntityInterface,
+    repository: RestaurantRepositoryInterface,
+  ) {
+    this.entity = entity;
+    this.repository = repository;
+  }
+
   public async execute(
     updateRestaurantDto: UpdateRestaurantDto,
   ): Promise<Restaurant> {
