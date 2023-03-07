@@ -1,4 +1,3 @@
-import { Res } from "@nestjs/common";
 import { GetOneRestaurantUseCaseInterface } from "src/data/abstract/usecases/restaurant/getOneRestaurantUseCase-interface";
 import { Restaurant } from "src/domain/entities/restaurant";
 import { HttpRequest } from "src/domain/http/httpRequest";
