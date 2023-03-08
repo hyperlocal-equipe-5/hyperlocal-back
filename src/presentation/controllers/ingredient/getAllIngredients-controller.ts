@@ -5,7 +5,7 @@ import { HttpResponse } from "src/domain/http/httpResponse";
 import { GetAllIngredientsInterface } from "src/presentation/abstract/controllers/ingredient/getAllIngredientsController-interface";
 import { Response } from "src/utils/http/response";
 
-export class GetAllIngredients implements GetAllIngredientsInterface{
+export class GetAllIngredientsController implements GetAllIngredientsInterface{
   private readonly getAllIngredientsUseCase: GetAllIngredientsUseCaseInterface;
   public constructor(getAllIngredientsUseCase: GetAllIngredientsUseCaseInterface){
     this.getAllIngredientsUseCase = getAllIngredientsUseCase
