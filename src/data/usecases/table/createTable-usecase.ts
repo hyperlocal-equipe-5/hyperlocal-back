@@ -8,6 +8,14 @@ export class CreateTableUseCase implements CreateTableUseCaseInterface {
   private readonly entity: TableEntityInterface;
   private readonly repository: TableRepositoryInterface;
 
+  public constructor(
+    entity: TableEntityInterface,
+    repository: TableRepositoryInterface,
+  ) {
+    this.entity = entity;
+    this.repository = repository;
+  }
+
   public async execute(createTableDto: CreateTableDto): Promise<Table> {
     this.entity.setData(createTableDto);
 

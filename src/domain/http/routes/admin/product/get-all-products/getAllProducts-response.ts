@@ -5,6 +5,6 @@
  */
 
 import { Product } from 'src/domain/entities/product';
-import { HttpResponse } from 'src/domain/http/response';
+import { HttpResponse } from 'src/domain/http/httpResponse';
 
 export type GetAllProductsAdminResponse = HttpResponse<Product[]>;

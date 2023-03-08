@@ -4,6 +4,6 @@
  */
 
 import { LoggedType } from 'src/domain/types/logged-type';
-import { HttpResponse } from '../../response';
+import { HttpResponse } from '../../httpResponse';
 
 export type LoginResponse = HttpResponse<LoggedType>;

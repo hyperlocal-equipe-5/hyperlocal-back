@@ -11,7 +11,7 @@ export class MakeLoginUseCase implements MakeLoginUseCaseInterface {
   private readonly hasher: HasherAdapterInterface;
   private readonly tokenHandler: TokenHandlerAdapterInterface;
 
-  constructor(
+  public constructor(
     repository: UserRepositoryInterface,
     hasher: HasherAdapterInterface,
     tokenHandler: TokenHandlerAdapterInterface,

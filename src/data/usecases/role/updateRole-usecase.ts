@@ -8,6 +8,14 @@ export class UpdateRoleUseCase implements UpdateRoleUseCaseInterface {
   private readonly entity: RoleEntityInterface;
   private readonly repository: RoleRepositoryInterface;
 
+  public constructor(
+    entity: RoleEntityInterface,
+    repository: RoleRepositoryInterface,
+  ) {
+    this.entity = entity;
+    this.repository = repository;
+  }
+
   public async execute(updateRoleDto: UpdateRoleDto): Promise<Role> {
     this.entity.setData(updateRoleDto);
 

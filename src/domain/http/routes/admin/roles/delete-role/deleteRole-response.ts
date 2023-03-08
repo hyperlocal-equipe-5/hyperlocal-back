@@ -5,6 +5,6 @@
  */
 
 import { Role } from 'src/domain/entities/role';
-import { HttpResponse } from 'src/domain/http/response';
+import { HttpResponse } from 'src/domain/http/httpResponse';
 
 export type DeleteRoleAdminResponse = HttpResponse<Role>;

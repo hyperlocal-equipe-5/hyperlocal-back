@@ -5,6 +5,6 @@
  */
 
 import { User } from 'src/domain/entities/user';
-import { HttpResponse } from 'src/domain/http/response';
+import { HttpResponse } from 'src/domain/http/httpResponse';
 
 export type DeleteUserAdminResponse = HttpResponse<User>;

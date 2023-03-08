@@ -8,8 +8,17 @@ export class CreateUserUseCase implements CreateUserUseCaseInterface {
   private readonly entity: UserEntityInterface;
   private readonly repository: UserRepositoryInterface;
 
+  public constructor(
+    entity: UserEntityInterface,
+    repository: UserRepositoryInterface,
+  ) {
+    this.entity = entity;
+    this.repository = repository;
+  }
+
   public async execute(createUserDto: CreateUserDto): Promise<User> {
     this.entity.setData(createUserDto);
+    this.entity.validate();
 
     const body = this.entity.getBody();
     const response = await this.repository.create(body);

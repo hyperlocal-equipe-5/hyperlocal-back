@@ -5,6 +5,6 @@
  */
 
 import { Table } from 'src/domain/entities/table';
-import { HttpResponse } from 'src/domain/http/response';
+import { HttpResponse } from 'src/domain/http/httpResponse';
 
 export type UpdateTableAdminResponse = HttpResponse<Table>;

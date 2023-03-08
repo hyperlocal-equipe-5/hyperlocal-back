@@ -8,6 +8,14 @@ export class CreateRoleUseCase implements CreateRoleUseCaseInterface {
   private readonly entity: RoleEntityInterface;
   private readonly repository: RoleRepositoryInterface;
 
+  public constructor(
+    entity: RoleEntityInterface,
+    repository: RoleRepositoryInterface,
+  ) {
+    this.entity = entity;
+    this.repository = repository;
+  }
+
   public async execute(createRoleDto: CreateRoleDto): Promise<Role> {
     this.entity.setData(createRoleDto);
 
