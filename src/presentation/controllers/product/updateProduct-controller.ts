@@ -18,7 +18,7 @@ export class UpdateProductController implements UpdateProductInterface{
 
       return Response.ok(updatedProduct)
     } catch (error) {
-      return Response.notFound(error)
+      return Response.notFound(error.message)
     }
   }
 }

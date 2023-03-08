@@ -19,7 +19,7 @@ export class GetOneCategoryController implements GetOneCategoryInterface{
 
       return Response.ok(oneCategory)
     } catch (error) {
-      return Response.notFound(error)
+      return Response.notFound(error.message)
     }
   }
 }

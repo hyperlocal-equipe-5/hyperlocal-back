@@ -18,7 +18,7 @@ export class GetAllCategoriesController implements GetAllCategoriesInterface{
 
       return Response.ok(allCategories)
     } catch (error) {
-      return Response.notFound(error)
+      return Response.notFound(error.message)
     }
   }
 }

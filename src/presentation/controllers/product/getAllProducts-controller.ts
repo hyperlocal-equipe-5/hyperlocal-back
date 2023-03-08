@@ -18,7 +18,7 @@ export class GetAllProductsController implements GetAllProductsInterface{
 
       return Response.ok(allProducts)
     } catch (error) {
-      return Response.notFound(error)
+      return Response.notFound(error.message)
     }
   }
 }

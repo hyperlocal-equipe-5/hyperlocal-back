@@ -18,7 +18,7 @@ export class CreateCategoryController implements CreateCategoryInterface{
 
       return Response.created(createdCategory)
     } catch (error) {
-      return Response.badRequest(error)
+      return Response.badRequest(error.message)
     }
   }
 }

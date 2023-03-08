@@ -5,8 +5,7 @@ import { HttpResponse } from "src/domain/http/httpResponse";
 import { GetOneUserControllerInterface } from "src/presentation/abstract/controllers/user/getOneUserController-interface";
 import { Response } from "src/utils/http/response";
 
-export class
- getOneUserController implements GetOneUserControllerInterface{
+export class GetOneUserController implements GetOneUserControllerInterface{
   private readonly getOneUserUseCase: GetOneUserUseCaseInterface;
   public constructor (getOneUserUsecase: GetOneUserUseCaseInterface){
     this.getOneUserUseCase = getOneUserUsecase

@@ -18,7 +18,7 @@ export class UpdateCategoryController implements UpdateCategoryInterface{
 
       return Response.ok(updatedCategory)
     } catch (error) {
-      return Response.notFound(error)
+      return Response.notFound(error.message)
     }
   }
 }

@@ -5,7 +5,7 @@ import { HttpResponse } from "src/domain/http/httpResponse";
 import { CreateTableInterface } from "src/presentation/abstract/controllers/table/createTableController-interface";
 import { Response } from "src/utils/http/response";
 
-export class createTablerController implements CreateTableInterface{
+export class CreateTablerController implements CreateTableInterface{
 private readonly createTableUseCase: CreateTableUseCaseInterface
 public constructor(createTableUseCase: CreateTableUseCaseInterface){
   this.createTableUseCase = createTableUseCase

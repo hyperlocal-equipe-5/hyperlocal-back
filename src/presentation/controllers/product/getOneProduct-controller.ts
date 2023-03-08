@@ -19,7 +19,7 @@ export class GetOneProductController implements GetOneProductInterface{
 
       return Response.ok(oneProduct)
     } catch (error) {
-      return Response.notFound(error)
+      return Response.notFound(error.message)
     }
   }
 }

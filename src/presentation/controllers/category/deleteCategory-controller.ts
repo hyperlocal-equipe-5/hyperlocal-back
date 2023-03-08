@@ -19,7 +19,7 @@ export class DeleteCategoryController implements DeleteCategoryInterface{
 
       return Response.ok(deletedCategory)
     } catch (error) {
-      return Response.notFound(error)
+      return Response.notFound(error.message)
     }
   }
 }

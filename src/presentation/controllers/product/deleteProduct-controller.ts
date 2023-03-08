@@ -19,7 +19,7 @@ export class DeleteProductController implements DeleteProductInterface{
 
       return Response.ok(deletedProduct)
     } catch (error) {
-      return Response.notFound(error)
+      return Response.notFound(error.message)
     }
   }
 }

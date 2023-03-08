@@ -5,7 +5,7 @@ import { HttpResponse } from "src/domain/http/httpResponse";
 import { GetOneTableInterface } from "src/presentation/abstract/controllers/table/getOneTableController-interface";
 import { Response } from "src/utils/http/response";
 
-export class getOneTableController implements GetOneTableInterface{
+export class GetOneTableController implements GetOneTableInterface{
 private readonly getOneTableUseCase: GetOneTableUseCaseInterface
 public constructor(getOneTableUseCase: GetOneTableUseCaseInterface){
   this.getOneTableUseCase = getOneTableUseCase
