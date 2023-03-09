@@ -1,7 +1,7 @@
 /**
  * type patch
  * with bearer authorization header
- * //user/update-user
+ * /user/update-user
  */
 
 import { UpdateUserDto } from 'src/domain/dto/user/updateUser-dto';

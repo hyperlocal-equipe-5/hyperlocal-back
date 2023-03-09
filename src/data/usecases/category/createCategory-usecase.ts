@@ -8,8 +8,12 @@ export class CreateCategoryUseCase implements CreateCategoryUseCaseInterface {
   private readonly repository: CategoryRepositoryInterface;
   private readonly entity: CategoryEntityInterface;
 
-  public constructor(repository: CategoryRepositoryInterface) {
+  public constructor(
+    repository: CategoryRepositoryInterface,
+    entity: CategoryEntityInterface,
+  ) {
     this.repository = repository;
+    this.entity = entity;
   }
 
   public async execute(
