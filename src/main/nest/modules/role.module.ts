@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { LoginMiddleware } from '../middlewares/login.middleware';
 import { makeCreateRoleFactory } from 'src/main/factories/role/createRole-factory';
 import { makeDeleteRoleFactory } from 'src/main/factories/role/deleteRole-factory';
 import { makeGetAllRoleFactory } from 'src/main/factories/role/getAllRoles-factory';
@@ -36,4 +37,8 @@ import { RoleControllerAdmin } from '../controllers/role.controller.admin';
     },
   ],
 })
-export class RoleModule {}
+export class RoleModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoginMiddleware).forRoutes('/admin');
+  }
+}

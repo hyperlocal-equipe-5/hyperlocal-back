@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { LoginMiddleware } from '../middlewares/login.middleware';
 import { makeCreateTableFactory } from 'src/main/factories/table/createTable-factory';
 import { makeDeleteTableFactory } from 'src/main/factories/table/deleteTable-factory';
 import { makeGetAllTableFactory } from 'src/main/factories/table/getAllTables-factory';
@@ -36,4 +37,8 @@ import { TableControllerAdmin } from '../controllers/table.controller.admin';
     },
   ],
 })
-export class TableModule {}
+export class TableModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoginMiddleware).forRoutes('/admin');
+  }
+}

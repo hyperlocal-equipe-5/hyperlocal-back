@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { LoginMiddleware } from '../middlewares/login.middleware';
 import { makeCreateReviewFactory } from 'src/main/factories/review/createReview-factory';
 import { makeDeleteReviewFactory } from 'src/main/factories/review/deleteReview-factory';
 import { makeGetAllReviewFactory } from 'src/main/factories/review/getAllReviews-factory';
@@ -31,4 +32,8 @@ import { ReviewControllerAdmin } from '../controllers/review.controller.admin';
     },
   ],
 })
-export class ReviewModule {}
+export class ReviewModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoginMiddleware).forRoutes('/admin');
+  }
+}

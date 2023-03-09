@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { LoginMiddleware } from '../middlewares/login.middleware';
 import { makeCreateOrderFactory } from 'src/main/factories/order/createOrder-factory';
 import { makeDeleteOrderFactory } from 'src/main/factories/order/deleteOrder-factory';
 import { makeGetAllOrderFactory } from 'src/main/factories/order/getAllOrders-factory';
@@ -37,4 +38,8 @@ import { OrderControllerAdmin } from '../controllers/order.controller.admin';
     },
   ],
 })
-export class OrderModule {}
+export class OrderModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoginMiddleware).forRoutes('/admin');
+  }
+}

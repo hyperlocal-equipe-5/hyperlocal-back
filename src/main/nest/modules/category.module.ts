@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { LoginMiddleware } from '../middlewares/login.middleware';
 import { makeCreateCategoryFactory } from 'src/main/factories/category/createCategory-factory';
 import { makeDeleteCategoryFactory } from 'src/main/factories/category/deleteCategory-factory';
 import { makeGetAllCategoryFactory } from 'src/main/factories/category/getAllCategories-factory';
@@ -37,4 +38,8 @@ import { CategoryControllerAdmin } from '../controllers/category.controller.admi
     },
   ],
 })
-export class CategoryModule {}
+export class CategoryModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoginMiddleware).forRoutes('/admin');
+  }
+}
