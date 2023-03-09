@@ -1,6 +1,6 @@
 /**
  * type get
- * /categories/get-all?restaurant=u92umf923
+ * /categoriy/get-all?restaurant=u92umf923
  */
 
 import { Category } from 'src/domain/entities/category';
