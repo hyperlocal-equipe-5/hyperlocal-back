@@ -19,7 +19,7 @@ export class IngredientControllerAdmin {
   constructor(
     private readonly createIngredientController: CreateIngredientController,
     private readonly deleteIngredientController: DeleteIngredientController,
-    private readonly UpdateIngredientController: UpdateIngredientController,
+    private readonly updateIngredientController: UpdateIngredientController,
     private readonly getAllIngredientsController: GetAllIngredientsController,
     private readonly getOneIngredientController: GetOneIngredientController,
   ) {}
@@ -40,7 +40,7 @@ export class IngredientControllerAdmin {
   @Patch('/update-ingredient')
   async update(@Body() body) {
     const httpRequest: HttpRequest = { body };
-    return await this.UpdateIngredientController.execute(httpRequest);
+    return await this.updateIngredientController.execute(httpRequest);
   }
 
   @Get('/get-one-ingredient')

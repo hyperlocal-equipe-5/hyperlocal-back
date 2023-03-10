@@ -19,7 +19,7 @@ export class RoleControllerAdmin {
   constructor(
     private readonly createRoleController: CreateRoleController,
     private readonly deleteRoleController: DeleteRoleController,
-    private readonly UpdateRoleController: UpdateRoleController,
+    private readonly updateRoleController: UpdateRoleController,
     private readonly getAllRolesController: GetAllRolesController,
     private readonly getOneRoleController: GetOneRoleController,
   ) {}
@@ -40,7 +40,7 @@ export class RoleControllerAdmin {
   @Patch('/update-role')
   async update(@Body() body) {
     const httpRequest: HttpRequest = { body };
-    return await this.UpdateRoleController.execute(httpRequest);
+    return await this.updateRoleController.execute(httpRequest);
   }
 
   @Get('/get-one-role')

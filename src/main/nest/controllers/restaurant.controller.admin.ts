@@ -19,7 +19,7 @@ export class RestaurantControllerAdmin {
   constructor(
     private readonly createRestaurantController: CreateRestaurantController,
     private readonly deleteRestaurantController: DeleteRestaurantController,
-    private readonly UpdateRestaurantController: UpdateRestaurantController,
+    private readonly updateRestaurantController: UpdateRestaurantController,
     private readonly getAllRestaurantsController: GetAllRestaurantsController,
     private readonly getOneRestaurantController: GetOneRestaurantController,
   ) {}
@@ -40,7 +40,7 @@ export class RestaurantControllerAdmin {
   @Patch('/update-restaurant')
   async update(@Body() body) {
     const httpRequest: HttpRequest = { body };
-    return await this.UpdateRestaurantController.execute(httpRequest);
+    return await this.updateRestaurantController.execute(httpRequest);
   }
 
   @Get('/get-one-restaurant')

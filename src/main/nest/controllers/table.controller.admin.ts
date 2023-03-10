@@ -19,7 +19,7 @@ export class TableControllerAdmin {
   constructor(
     private readonly createTableController: CreateTableController,
     private readonly deleteTableController: DeleteTableController,
-    private readonly UpdateTableController: UpdateTableController,
+    private readonly updateTableController: UpdateTableController,
     private readonly getAllTablesController: GetAllTablesController,
     private readonly getOneTableController: GetOneTableController,
   ) {}
@@ -40,7 +40,7 @@ export class TableControllerAdmin {
   @Patch('/update-table')
   async update(@Body() body) {
     const httpRequest: HttpRequest = { body };
-    return await this.UpdateTableController.execute(httpRequest);
+    return await this.updateTableController.execute(httpRequest);
   }
 
   @Get('/get-one-table')

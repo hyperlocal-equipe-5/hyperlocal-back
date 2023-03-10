@@ -18,7 +18,7 @@ export class UserController {
   constructor(
     private readonly createUserController: CreateUserController,
     private readonly deleteUserController: DeleteUserController,
-    private readonly UpdateUserController: UpdateUserController,
+    private readonly updateUserController: UpdateUserController,
     private readonly getOneUserController: GetOneUserController,
   ) {}
 
@@ -38,7 +38,7 @@ export class UserController {
   @Patch('/update-user')
   async update(@Body() body) {
     const httpRequest: HttpRequest = { body };
-    return await this.UpdateUserController.execute(httpRequest);
+    return await this.updateUserController.execute(httpRequest);
   }
 
   @Get('/get-one-user')

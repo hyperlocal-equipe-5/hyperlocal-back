@@ -19,7 +19,7 @@ export class UserControllerAdmin {
   constructor(
     private readonly createUserController: CreateUserController,
     private readonly deleteUserController: DeleteUserController,
-    private readonly UpdateUserController: UpdateUserController,
+    private readonly updateUserController: UpdateUserController,
     private readonly getAllUsersController: GetAllUsersController,
     private readonly getOneUserController: GetOneUserController,
   ) {}
@@ -40,7 +40,7 @@ export class UserControllerAdmin {
   @Patch('/update-user')
   async update(@Body() body) {
     const httpRequest: HttpRequest = { body };
-    return await this.UpdateUserController.execute(httpRequest);
+    return await this.updateUserController.execute(httpRequest);
   }
 
   @Get('/get-one-user')

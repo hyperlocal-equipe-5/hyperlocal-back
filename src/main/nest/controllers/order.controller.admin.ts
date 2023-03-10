@@ -19,7 +19,7 @@ export class OrderControllerAdmin {
   constructor(
     private readonly createOrderController: CreateOrderController,
     private readonly deleteOrderController: DeleteOrderController,
-    private readonly UpdateOrderController: UpdateOrderController,
+    private readonly updateOrderController: UpdateOrderController,
     private readonly getAllOrdersController: GetAllOrdersController,
     private readonly getOneOrderController: GetOneOrderController,
   ) {}
@@ -40,7 +40,7 @@ export class OrderControllerAdmin {
   @Patch('/update-order')
   async update(@Body() body) {
     const httpRequest: HttpRequest = { body };
-    return await this.UpdateOrderController.execute(httpRequest);
+    return await this.updateOrderController.execute(httpRequest);
   }
 
   @Get('/get-one-order')

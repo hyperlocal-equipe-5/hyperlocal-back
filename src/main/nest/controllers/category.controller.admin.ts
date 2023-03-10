@@ -19,7 +19,7 @@ export class CategoryControllerAdmin {
   constructor(
     private readonly createCategoryController: CreateCategoryController,
     private readonly deleteCategoryController: DeleteCategoryController,
-    private readonly UpdateCategoryController: UpdateCategoryController,
+    private readonly updateCategoryController: UpdateCategoryController,
     private readonly getAllCategoriesController: GetAllCategoriesController,
     private readonly getOneCategoryController: GetOneCategoryController,
   ) {}
@@ -40,7 +40,7 @@ export class CategoryControllerAdmin {
   @Patch('/update-category')
   async update(@Body() body) {
     const httpRequest: HttpRequest = { body };
-    return await this.UpdateCategoryController.execute(httpRequest);
+    return await this.updateCategoryController.execute(httpRequest);
   }
 
   @Get('/get-one-category')

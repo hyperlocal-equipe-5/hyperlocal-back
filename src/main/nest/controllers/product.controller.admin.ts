@@ -19,7 +19,7 @@ export class ProductControllerAdmin {
   constructor(
     private readonly createProductController: CreateProductController,
     private readonly deleteProductController: DeleteProductController,
-    private readonly UpdateProductController: UpdateProductController,
+    private readonly updateProductController: UpdateProductController,
     private readonly getAllProductsController: GetAllProductsController,
     private readonly getOneProductController: GetOneProductController,
   ) {}
@@ -40,7 +40,7 @@ export class ProductControllerAdmin {
   @Patch('/update-product')
   async update(@Body() body) {
     const httpRequest: HttpRequest = { body };
-    return await this.UpdateProductController.execute(httpRequest);
+    return await this.updateProductController.execute(httpRequest);
   }
 
   @Get('/get-one-product')
