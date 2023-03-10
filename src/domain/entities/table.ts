@@ -1,9 +1,11 @@
+import { Order } from './order';
 import { Restaurant } from './restaurant';
 
 export type Table = {
-  id: string;
+  tableId: string;
   number: number;
+  createdAt: string;
+  updatedAt: string;
+  orders: Order[];
   restaurant: Restaurant;
-  createdOn: string;
-  updatedOn: string;
 };

@@ -1,12 +1,14 @@
+import { Product } from './product';
 import { Restaurant } from './restaurant';
 
 export type Ingredient = {
-  id: string;
+  ingredientId: string;
   name: string;
   price: number;
-  image: string;
   quantity?: number;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
+  product: Product[];
   restaurant: Restaurant;
-  createdOn: string;
-  updatedOn: string;
 };

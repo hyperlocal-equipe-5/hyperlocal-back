@@ -32,25 +32,25 @@ export class ReviewEntity extends Entity implements ReviewEntityInterface {
 
   public getBody(): ReviewType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      reviewId: this.idGeneratorAdapter.generateId(),
       stars: this.reviewDto.stars ?? 0,
       comment: this.reviewDto.comment ?? '',
       user: this.reviewDto.user ?? '',
       restaurant: this.reviewDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
   public updateBody(mainReview: Review): ReviewType {
     return {
-      id: mainReview.id,
+      reviewId: mainReview.reviewId,
       stars: this.reviewDto.stars ?? mainReview.stars,
       comment: this.reviewDto.comment ?? mainReview.comment,
-      user: this.reviewDto.user ?? mainReview.user.id,
+      user: this.reviewDto.user ?? mainReview.user.userId,
       restaurant: this.reviewDto.restaurant,
-      createdOn: mainReview.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainReview.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

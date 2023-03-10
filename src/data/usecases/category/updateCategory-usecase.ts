@@ -21,8 +21,8 @@ export class UpdateCategoryUseCase implements UpdateCategoryUseCaseInterface {
   ): Promise<Category> {
     this.entity.setData(updateCategoryDto);
 
-    const { id, restaurant } = updateCategoryDto;
-    const foundCategory = await this.repository.getOne(id, restaurant);
+    const { categoryId, restaurant } = updateCategoryDto;
+    const foundCategory = await this.repository.getOne(categoryId, restaurant);
     const body = this.entity.updateBody(foundCategory);
     const response = await this.repository.update(body);
 

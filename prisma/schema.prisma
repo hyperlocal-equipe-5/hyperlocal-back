@@ -1,0 +1,170 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  categoryId   String     @id
+  name         String
+  highlight    Boolean
+  image        String
+  createdAt    String
+  updatedAt    String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [restaurantId])
+  restaurantId String
+  products     Product[]
+}
+
+model Ingredient {
+  ingredientId String     @id
+  name         String
+  price        Float
+  image        String
+  quantity     Int?
+  createdAt    String
+  updatedAt    String
+  product      Product    @relation(fields: [productId], references: [productId])
+  productId    String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [restaurantId])
+  restaurantId String
+}
+
+model Order {
+  orderId      String     @id
+  takeAway     Boolean
+  orderNumber  Int?
+  customerName String?
+  createdAt    String
+  updatedAt    String
+  products     Product    @relation(fields: [productsId], references: [productId])
+  productsId   String
+  user         User?      @relation(fields: [userId], references: [userId])
+  userId       String
+  table        Table      @relation(fields: [tableId], references: [tableId])
+  tableId      String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [restaurantId])
+  restaurantId String
+}
+
+model Product {
+  productId    String       @id
+  name         String
+  price        Float
+  description  String
+  highlight    Boolean
+  image        String
+  createdAt    String
+  updatedAt    String
+  order        Order[]
+  ingredients  Ingredient[]
+  category     Category     @relation(fields: [categoryId], references: [categoryId])
+  categoryId   String
+  restaurant   Restaurant   @relation(fields: [restaurantId], references: [restaurantId])
+  restaurantId String
+}
+
+model Restaurant {
+  restaurantId String       @id
+  telephone    Int          @unique
+  email        String       @unique
+  name         String
+  adress       String       @unique
+  logo         String
+  colorScheme  Int
+  createdAt    String
+  updatedAt    String
+  category     Category[]
+  ingredient   Ingredient[]
+  order        Order[]
+  product      Product[]
+  review       Review[]
+  roles        Role[]
+  tables       Table[]
+}
+
+model Review {
+  reviewId     String     @id
+  stars        Int
+  comment      String
+  createdAt    String
+  updatedAt    String
+  user         User?      @relation(fields: [userId], references: [userId])
+  userId       String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [restaurantId])
+  restaurantId String
+}
+
+model Role {
+  roleId            String     @id
+  name              String
+  createRestaurants Boolean
+  createUsers       Boolean
+  createProducts    Boolean
+  createCategories  Boolean
+  createIngredients Boolean
+  createOrders      Boolean
+  createRoles       Boolean
+  createTables      Boolean
+  readRestaurants   Boolean
+  readUsers         Boolean
+  readProducts      Boolean
+  readCategories    Boolean
+  readIngredients   Boolean
+  readOrders        Boolean
+  readRoles         Boolean
+  readTables        Boolean
+  updateRestaurants Boolean
+  updateUsers       Boolean
+  updateProducts    Boolean
+  updateCategories  Boolean
+  updateIngredients Boolean
+  updateOrders      Boolean
+  updateRoles       Boolean
+  updateTables      Boolean
+  deleteRestaurants Boolean
+  deleteUsers       Boolean
+  deleteProducts    Boolean
+  deleteCategories  Boolean
+  deleteIngredients Boolean
+  deleteOrders      Boolean
+  deleteRoles       Boolean
+  deleteTables      Boolean
+  defineAccess      Boolean
+  createdAt         String
+  updatedAt         String
+  restaurant        Restaurant @relation(fields: [restaurantId], references: [restaurantId])
+  restaurantId      String
+  user              User[]
+}
+
+model Table {
+  tableId      String     @id
+  number       Int
+  createdAt    String
+  updatedAt    String
+  orders       Order[]
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [restaurantId])
+  restaurantId String
+}
+
+model User {
+  userId    String   @id
+  name      String
+  email     String   @unique
+  password  String
+  image     String?
+  cellphone Int?
+  createdAt String
+  updatedAt String
+  orders    Order[]
+  review    Review[]
+  role      Role     @relation(fields: [roleId], references: [roleId])
+  roleId    String
+}

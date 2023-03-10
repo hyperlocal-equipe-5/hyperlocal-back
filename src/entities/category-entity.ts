@@ -32,27 +32,27 @@ export class CategoryEntity extends Entity implements CategoryEntityInterface {
 
   public getBody(): CategoryType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      categoryId: this.idGeneratorAdapter.generateId(),
       name: this.categoryDto.name ?? '',
       highlight: this.categoryDto.highlight ?? false,
       image: this.categoryDto.image ?? '',
       products: [],
       restaurant: this.categoryDto.restaurant ?? '',
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
   public updateBody(mainCategory: Category): CategoryType {
     return {
-      id: mainCategory.id,
+      categoryId: mainCategory.categoryId,
       name: this.categoryDto.name ?? mainCategory.name,
       highlight: this.categoryDto.highlight ?? mainCategory.highlight,
       image: this.categoryDto.image ?? mainCategory.image,
-      products: mainCategory.products.map((item) => item.id),
+      products: mainCategory.products.map((item) => item.productId),
       restaurant: this.categoryDto.restaurant,
-      createdOn: mainCategory.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainCategory.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

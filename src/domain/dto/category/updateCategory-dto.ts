@@ -1,5 +1,5 @@
 export type UpdateCategoryDto = {
-  id: string;
+  categoryId: string;
   restaurant: string;
   name?: string;
   highlight?: boolean;

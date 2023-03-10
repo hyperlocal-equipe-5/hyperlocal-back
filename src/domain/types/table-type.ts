@@ -1,7 +1,7 @@
 export type TableType = {
-  id: string;
+  tableId: string;
   number: number;
   restaurant: string;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

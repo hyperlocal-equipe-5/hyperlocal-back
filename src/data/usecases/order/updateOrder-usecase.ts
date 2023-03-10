@@ -19,8 +19,8 @@ export class UpdateOrderUseCase implements UpdateOrderUseCaseInterface {
   public async execute(updateOrderDto: UpdateOrderDto): Promise<Order> {
     this.entity.setData(updateOrderDto);
 
-    const { id, restaurant } = updateOrderDto;
-    const foundCategory = await this.repository.getOne(id, restaurant);
+    const { orderId, restaurant } = updateOrderDto;
+    const foundCategory = await this.repository.getOne(orderId, restaurant);
     const body = this.entity.updateBody(foundCategory);
     const response = await this.repository.update(body);
 

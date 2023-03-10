@@ -47,7 +47,7 @@ export class UserEntity extends Entity implements UserEntityInterface {
 
   public getBody(): UserType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      userId: this.idGeneratorAdapter.generateId(),
       name: this.userDto.name ?? '',
       email: this.userDto.email ?? '',
       password: this.userDto.password
@@ -57,14 +57,14 @@ export class UserEntity extends Entity implements UserEntityInterface {
       cellphone: this.userDto.cellphone ?? 0,
       role: this.userDto.role ?? '',
       restaurant: this.userDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
   public updateBody(mainUser: User): UserType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      userId: this.idGeneratorAdapter.generateId(),
       name: this.userDto.name ?? mainUser.name,
       email: this.userDto.email ?? mainUser.email,
       password: this.userDto.password
@@ -72,10 +72,10 @@ export class UserEntity extends Entity implements UserEntityInterface {
         : mainUser.password,
       image: this.userDto.image ?? mainUser.image,
       cellphone: this.userDto.cellphone ?? mainUser.cellphone,
-      role: this.userDto.role ?? mainUser.role.id,
+      role: this.userDto.role ?? mainUser.role.roleId,
       restaurant: this.userDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 }

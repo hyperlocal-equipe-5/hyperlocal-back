@@ -32,7 +32,7 @@ export class ProductEntity extends Entity implements ProductEntityInterface {
 
   public getBody(): ProductType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      productId: this.idGeneratorAdapter.generateId(),
       name: this.productDto.name ?? '',
       price: this.productDto.price ?? 0,
       description: this.productDto.description ?? '',
@@ -41,14 +41,14 @@ export class ProductEntity extends Entity implements ProductEntityInterface {
       ingredients: this.productDto.ingredients ?? [],
       category: this.productDto.category ?? '',
       restaurant: this.productDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
   public updateBody(mainProduct: Product): ProductType {
     return {
-      id: mainProduct.id,
+      productId: mainProduct.productId,
       name: this.productDto.name ?? mainProduct.name,
       price: this.productDto.price ?? mainProduct.price,
       description: this.productDto.description ?? mainProduct.description,
@@ -56,11 +56,11 @@ export class ProductEntity extends Entity implements ProductEntityInterface {
       image: this.productDto.image ?? mainProduct.image,
       ingredients:
         this.productDto.ingredients ??
-        mainProduct.ingredients.map((ingredient) => ingredient.id),
-      category: this.productDto.category ?? mainProduct.category.id,
+        mainProduct.ingredients.map((ingredient) => ingredient.ingredientId),
+      category: this.productDto.category ?? mainProduct.category.categoryId,
       restaurant: this.productDto.restaurant,
-      createdOn: mainProduct.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainProduct.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

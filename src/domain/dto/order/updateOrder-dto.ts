@@ -1,5 +1,5 @@
 export type UpdateOrderDto = {
-  id: string;
+  orderId: string;
   restaurant: string;
   products?: string[];
   takeAway?: boolean;

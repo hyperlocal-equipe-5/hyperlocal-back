@@ -19,8 +19,8 @@ export class UpdateRoleUseCase implements UpdateRoleUseCaseInterface {
   public async execute(updateRoleDto: UpdateRoleDto): Promise<Role> {
     this.entity.setData(updateRoleDto);
 
-    const { id, restaurant } = updateRoleDto;
-    const foundCategory = await this.repository.getOne(id, restaurant);
+    const { roleId, restaurant } = updateRoleDto;
+    const foundCategory = await this.repository.getOne(roleId, restaurant);
     const body = this.entity.updateBody(foundCategory);
     const response = await this.repository.update(body);
 

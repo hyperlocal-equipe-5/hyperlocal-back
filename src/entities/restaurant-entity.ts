@@ -33,29 +33,29 @@ export class RestaurantEntity
 
   public getBody(): RestaurantType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      restaurantId: this.idGeneratorAdapter.generateId(),
       name: this.restaurantDto.name ?? '',
       telephone: this.restaurantDto.telephone ?? 0,
       email: this.restaurantDto.email ?? '',
       address: this.restaurantDto.address,
       logo: this.restaurantDto.logo,
       colorScheme: this.restaurantDto.colorScheme ?? 0,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
   public updateBody(mainRestaurant: Restaurant): RestaurantType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      restaurantId: this.idGeneratorAdapter.generateId(),
       name: this.restaurantDto.name ?? mainRestaurant.name,
       telephone: this.restaurantDto.telephone ?? mainRestaurant.telephone,
       email: this.restaurantDto.email ?? mainRestaurant.email,
       address: this.restaurantDto.address ?? mainRestaurant.address,
       logo: this.restaurantDto.logo ?? mainRestaurant.logo,
       colorScheme: this.restaurantDto.colorScheme ?? mainRestaurant.colorScheme,
-      createdOn: mainRestaurant.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainRestaurant.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

@@ -1,5 +1,5 @@
 export type UpdateRoleDto = {
-  id: string;
+  roleId: string;
   restaurant: string;
   name?: string;
   access?: {

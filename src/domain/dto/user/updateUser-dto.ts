@@ -1,5 +1,5 @@
 export type UpdateUserDto = {
-  id: string;
+  userId: string;
   restaurant: string;
   name?: string;
   email?: string;

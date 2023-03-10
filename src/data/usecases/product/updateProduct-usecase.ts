@@ -19,8 +19,8 @@ export class UpdateProductUseCase implements UpdateProductUseCaseInterface {
   public async execute(updateProductDto: UpdateProductDto): Promise<Product> {
     this.entity.setData(updateProductDto);
 
-    const { id, restaurant } = updateProductDto;
-    const foundCategory = await this.repository.getOne(id, restaurant);
+    const { productId, restaurant } = updateProductDto;
+    const foundCategory = await this.repository.getOne(productId, restaurant);
     const body = this.entity.updateBody(foundCategory);
     const response = await this.repository.update(body);
 

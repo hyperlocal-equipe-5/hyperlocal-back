@@ -1,10 +1,10 @@
 export type CategoryType = {
-  id: string;
+  categoryId: string;
   name: string;
   highlight: boolean;
   image: string;
   products: string[];
   restaurant: string;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

@@ -1,10 +1,10 @@
 export type IngredientType = {
-  id: string;
+  ingredientId: string;
   name: string;
   price: number;
   image: string;
   quantity: number;
   restaurant: string;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

@@ -1,5 +1,5 @@
 export type OrderType = {
-  id: string;
+  orderId: string;
   takeAway: boolean;
   orderNumber: number;
   customerName: string;
@@ -7,6 +7,6 @@ export type OrderType = {
   user: string;
   table: string;
   restaurant: string;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

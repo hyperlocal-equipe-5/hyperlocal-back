@@ -19,8 +19,8 @@ export class UpdateUserUseCase implements UpdateUserUseCaseInterface {
   public async execute(updateUserDto: UpdateUserDto): Promise<User> {
     this.entity.setData(updateUserDto);
 
-    const { id, restaurant } = updateUserDto;
-    const foundCategory = await this.repository.getOneById(id, restaurant);
+    const { userId, restaurant } = updateUserDto;
+    const foundCategory = await this.repository.getOneById(userId, restaurant);
     const body = this.entity.updateBody(foundCategory);
     const response = await this.repository.update(body);
 

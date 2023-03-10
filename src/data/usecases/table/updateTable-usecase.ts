@@ -19,8 +19,8 @@ export class UpdateTableUseCase implements UpdateTableUseCaseInterface {
   public async execute(updateTableDto: UpdateTableDto): Promise<Table> {
     this.entity.setData(updateTableDto);
 
-    const { id, restaurant } = updateTableDto;
-    const foundCategory = await this.repository.getOne(id, restaurant);
+    const { tableId, restaurant } = updateTableDto;
+    const foundCategory = await this.repository.getOne(tableId, restaurant);
     const body = this.entity.updateBody(foundCategory);
     const response = await this.repository.update(body);
 

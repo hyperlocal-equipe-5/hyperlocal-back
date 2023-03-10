@@ -1,5 +1,5 @@
 export type UserType = {
-  id: string;
+  userId: string;
   name: string;
   email: string;
   password: string;
@@ -7,6 +7,6 @@ export type UserType = {
   cellphone: number;
   role: string;
   restaurant: string;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

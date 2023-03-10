@@ -32,7 +32,7 @@ export class MakeLoginUseCase implements MakeLoginUseCaseInterface {
       );
 
       if (comparison) {
-        const token = this.tokenHandler.generateToken(foundUser.id, secret);
+        const token = this.tokenHandler.generateToken(foundUser.userId, secret);
 
         return {
           token,

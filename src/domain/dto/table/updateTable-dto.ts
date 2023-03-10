@@ -1,5 +1,5 @@
 export type UpdateTableDto = {
-  id: string;
+  tableId: string;
   restaurant: string;
   number?: number;
 };

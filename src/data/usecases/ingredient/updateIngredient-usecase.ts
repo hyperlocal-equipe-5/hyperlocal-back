@@ -23,8 +23,11 @@ export class UpdateIngredientUseCase
   ): Promise<Ingredient> {
     this.entity.setData(updateIngredientDto);
 
-    const { id, restaurant } = updateIngredientDto;
-    const foundCategory = await this.repository.getOne(id, restaurant);
+    const { ingredientId, restaurant } = updateIngredientDto;
+    const foundCategory = await this.repository.getOne(
+      ingredientId,
+      restaurant,
+    );
     const body = this.entity.updateBody(foundCategory);
     const response = await this.repository.update(body);
 

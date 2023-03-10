@@ -37,27 +37,27 @@ export class IngredientEntity
 
   public getBody(): IngredientType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      ingredientId: this.idGeneratorAdapter.generateId(),
       name: this.ingredientDto.name ?? '',
       price: this.ingredientDto.price ?? 0,
       image: this.ingredientDto.image ?? '',
       quantity: this.ingredientDto.quantity ?? 0,
       restaurant: this.ingredientDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
   public updateBody(mainIngredient: Ingredient): IngredientType {
     return {
-      id: mainIngredient.id,
+      ingredientId: mainIngredient.ingredientId,
       name: this.ingredientDto.name ?? mainIngredient.name,
       price: this.ingredientDto.price ?? mainIngredient.price,
       image: this.ingredientDto.image ?? mainIngredient.image,
       quantity: this.ingredientDto.quantity ?? mainIngredient.quantity,
       restaurant: this.ingredientDto.restaurant,
-      createdOn: mainIngredient.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainIngredient.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

@@ -32,21 +32,21 @@ export class TableEntity extends Entity implements TableEntityInterface {
 
   public getBody(): TableType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      tableId: this.idGeneratorAdapter.generateId(),
       number: this.tableDto.number ?? 0,
       restaurant: this.tableDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
   public updateBody(mainTable: Table): TableType {
     return {
-      id: mainTable.id,
+      tableId: mainTable.tableId,
       number: this.tableDto.number ?? mainTable.number,
       restaurant: this.tableDto.restaurant,
-      createdOn: mainTable.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainTable.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

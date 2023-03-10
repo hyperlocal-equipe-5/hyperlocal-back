@@ -1,5 +1,5 @@
 export type UpdateReviewDto = {
-  id: string;
+  reviewId: string;
   restaurant: string;
   stars?: number;
   comment?: string;

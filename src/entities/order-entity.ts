@@ -32,7 +32,7 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
 
   public getBody(): OrderType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      orderId: this.idGeneratorAdapter.generateId(),
       restaurant: this.orderDto.restaurant,
       products: this.orderDto.products ?? [],
       takeAway: this.orderDto.takeAway ?? false,
@@ -40,25 +40,25 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
       customerName: this.orderDto.customerName ?? '',
       user: this.orderDto.user ?? '',
       table: this.orderDto.table ?? '',
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
   public updateBody(mainOrder: Order): OrderType {
     return {
-      id: mainOrder.id,
+      orderId: mainOrder.orderId,
       products:
         this.orderDto.products ??
-        mainOrder.products.map((product) => product.id),
+        mainOrder.products.map((product) => product.productId),
       restaurant: this.orderDto.restaurant,
       takeAway: this.orderDto.takeAway ?? mainOrder.takeAway,
       orderNumber: this.orderDto.orderNumber ?? mainOrder.orderNumber,
       customerName: this.orderDto.customerName ?? mainOrder.customerName,
-      user: this.orderDto.user ?? mainOrder.user.id,
-      table: this.orderDto.table ?? mainOrder.table.id,
-      createdOn: mainOrder.createdOn,
-      updatedOn: this.getDate(),
+      user: this.orderDto.user ?? mainOrder.user.userId,
+      table: this.orderDto.table ?? mainOrder.table.tableId,
+      createdAt: mainOrder.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }
