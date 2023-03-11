@@ -1,7 +1,8 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
+import { Request, NextFunction, Response } from 'express';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { makeAuthMiddlewareFactory } from 'src/main/factories/auth-middleware/authMiddleware-factory';
+import { Response as HttpResponse } from 'src/utils/http/response';
 
 @Injectable()
 export class LoginMiddleware implements NestMiddleware {
@@ -17,7 +18,7 @@ export class LoginMiddleware implements NestMiddleware {
       req.body.user = user;
       next();
     } catch (error) {
-      res.status(401).send(error.message);
+      res.status(401).send(HttpResponse.unauthorized(error.message));
       return;
     }
   }
