@@ -18,6 +18,7 @@ export class CreateProductUseCase implements CreateProductUseCaseInterface {
 
   public async execute(createProductDto: CreateProductDto): Promise<Product> {
     this.entity.setData(createProductDto);
+    this.entity.validate();
 
     const body = this.entity.getBody();
     const response = await this.repository.create(body);

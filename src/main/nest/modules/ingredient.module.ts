@@ -1,15 +1,15 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { LoginMiddleware } from '../middlewares/login.middleware';
-import { makeCreateIngredientFactory } from 'src/main/factories/Ingredient/createIngredient-factory';
-import { makeDeleteIngredientFactory } from 'src/main/factories/Ingredient/deleteIngredient-factory';
-import { makeGetAllIngredientFactory } from 'src/main/factories/Ingredient/getAllIngredients-factory';
-import { makeGetOneIngredientFactory } from 'src/main/factories/Ingredient/getOneIngredient-factory';
-import { makeUpdateIngredientFactory } from 'src/main/factories/Ingredient/updateIngredient-factory';
-import { CreateIngredientController } from 'src/presentation/controllers/Ingredient/createIngredient-controller';
-import { DeleteIngredientController } from 'src/presentation/controllers/Ingredient/deleteIngredient-controller';
-import { GetAllIngredientsController } from 'src/presentation/controllers/Ingredient/getAllIngredients-controller';
-import { GetOneIngredientController } from 'src/presentation/controllers/Ingredient/getOneIngredient-controller';
-import { UpdateIngredientController } from 'src/presentation/controllers/Ingredient/updateIngredient-controller';
+import { makeCreateIngredientFactory } from 'src/main/factories/ingredient/createIngredient-factory';
+import { makeDeleteIngredientFactory } from 'src/main/factories/ingredient/deleteIngredient-factory';
+import { makeGetAllIngredientFactory } from 'src/main/factories/ingredient/getAllIngredients-factory';
+import { makeGetOneIngredientFactory } from 'src/main/factories/ingredient/getOneIngredient-factory';
+import { makeUpdateIngredientFactory } from 'src/main/factories/ingredient/updateIngredient-factory';
+import { CreateIngredientController } from 'src/presentation/controllers/ingredient/createIngredient-controller';
+import { DeleteIngredientController } from 'src/presentation/controllers/ingredient/deleteIngredient-controller';
+import { GetAllIngredientsController } from 'src/presentation/controllers/ingredient/getAllIngredients-controller';
+import { GetOneIngredientController } from 'src/presentation/controllers/ingredient/getOneIngredient-controller';
+import { UpdateIngredientController } from 'src/presentation/controllers/ingredient/updateIngredient-controller';
 import { IngredientControllerAdmin } from '../controllers/ingredient.controller.admin';
 
 @Module({
