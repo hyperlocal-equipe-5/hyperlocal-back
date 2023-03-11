@@ -8,31 +8,21 @@ import { IdGeneratorAdapterInterface } from '../../src/utils/adapters/abstract/i
 import { HasherAdapter } from '../../src/utils/adapters/hasher-adapter';
 import { IdGeneratorAdapter } from '../../src/utils/adapters/idGenerator-adapter';
 
-/**
- * Seed para geracao dos primeiros dados para o banco de dados
- */
-
-/**
- * Dados do usuario
- */
-const user = {
-  name: 'Admin',
-  email: 'admin@admin.com',
-  password: '1234567',
-  image: '',
-  cellphone: 0,
+type UserSeed = {
+  name: string;
+  email: string;
+  password: string;
+  image: string;
+  cellphone: number;
 };
 
-/**
- * Dados do restaurante
- */
-const restaurant = {
-  telephone: 0,
-  email: '',
-  name: 'Main Restaurant',
-  address: '',
-  logo: '',
-  colorScheme: 1,
+type RestaurantSeed = {
+  telephone: number;
+  email: string;
+  name: string;
+  address: string;
+  logo: string;
+  colorScheme: number;
 };
 
 class Seeder {
@@ -47,6 +37,8 @@ class Seeder {
     prismaDatabase: PrismaClient,
     hasherAdapter: HasherAdapterInterface,
     idGeneratorAdapter: IdGeneratorAdapterInterface,
+    restaurant: RestaurantSeed,
+    user: UserSeed,
   ) {
     this.prismaDatabase = prismaDatabase;
     this.hasher = hasherAdapter;
@@ -186,10 +178,19 @@ class Seeder {
   }
 }
 
-export function DatabaseSeed(): Seeder {
+export function DatabaseSeed(
+  restaurantSeed: RestaurantSeed,
+  userSeed: UserSeed,
+): Seeder {
   const prismaDatabase = new PrismaClient();
   const hasherAdapter = new HasherAdapter();
   const idGeneratorAdapter = new IdGeneratorAdapter();
 
-  return new Seeder(prismaDatabase, hasherAdapter, idGeneratorAdapter);
+  return new Seeder(
+    prismaDatabase,
+    hasherAdapter,
+    idGeneratorAdapter,
+    restaurantSeed,
+    userSeed,
+  );
 }
