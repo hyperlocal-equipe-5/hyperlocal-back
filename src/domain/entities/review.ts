@@ -7,6 +7,6 @@ export type Review = {
   comment: string;
   user?: User;
   restaurant: Restaurant;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

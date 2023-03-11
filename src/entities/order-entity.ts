@@ -40,8 +40,8 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
       customerName: this.orderDto.customerName ?? '',
       user: this.orderDto.user ?? '',
       table: this.orderDto.table ?? '',
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
@@ -57,8 +57,8 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
       customerName: this.orderDto.customerName ?? mainOrder.customerName,
       user: this.orderDto.user ?? mainOrder.user.id,
       table: this.orderDto.table ?? mainOrder.table.id,
-      createdOn: mainOrder.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainOrder.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

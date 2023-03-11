@@ -41,8 +41,8 @@ export class ProductEntity extends Entity implements ProductEntityInterface {
       ingredients: this.productDto.ingredients ?? [],
       category: this.productDto.category ?? '',
       restaurant: this.productDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
@@ -59,8 +59,8 @@ export class ProductEntity extends Entity implements ProductEntityInterface {
         mainProduct.ingredients.map((ingredient) => ingredient.id),
       category: this.productDto.category ?? mainProduct.category.id,
       restaurant: this.productDto.restaurant,
-      createdOn: mainProduct.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainProduct.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

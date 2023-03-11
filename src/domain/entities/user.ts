@@ -10,6 +10,6 @@ export type User = {
   cellphone?: number;
   role: Role;
   restaurant: Restaurant;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

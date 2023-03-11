@@ -3,6 +3,6 @@ export type RoleType = {
   name: string;
   restaurant: string;
   access: any;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

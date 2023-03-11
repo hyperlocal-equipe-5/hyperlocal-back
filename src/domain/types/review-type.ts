@@ -4,6 +4,6 @@ export type ReviewType = {
   comment: string;
   user: string;
   restaurant: string;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

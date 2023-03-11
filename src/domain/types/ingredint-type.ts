@@ -5,6 +5,6 @@ export type IngredientType = {
   image: string;
   quantity: number;
   restaurant: string;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

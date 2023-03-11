@@ -43,8 +43,8 @@ export class IngredientEntity
       image: this.ingredientDto.image ?? '',
       quantity: this.ingredientDto.quantity ?? 0,
       restaurant: this.ingredientDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
@@ -56,8 +56,8 @@ export class IngredientEntity
       image: this.ingredientDto.image ?? mainIngredient.image,
       quantity: this.ingredientDto.quantity ?? mainIngredient.quantity,
       restaurant: this.ingredientDto.restaurant,
-      createdOn: mainIngredient.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainIngredient.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

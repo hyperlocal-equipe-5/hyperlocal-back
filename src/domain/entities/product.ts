@@ -12,6 +12,6 @@ export type Product = {
   ingredients: Ingredient[];
   category: Category;
   restaurant: Restaurant;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

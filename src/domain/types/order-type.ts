@@ -7,6 +7,6 @@ export type OrderType = {
   user: string;
   table: string;
   restaurant: string;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

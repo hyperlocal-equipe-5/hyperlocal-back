@@ -57,8 +57,8 @@ export class UserEntity extends Entity implements UserEntityInterface {
       cellphone: this.userDto.cellphone ?? 0,
       role: this.userDto.role ?? '',
       restaurant: this.userDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
@@ -74,8 +74,8 @@ export class UserEntity extends Entity implements UserEntityInterface {
       cellphone: this.userDto.cellphone ?? mainUser.cellphone,
       role: this.userDto.role ?? mainUser.role.id,
       restaurant: this.userDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 }

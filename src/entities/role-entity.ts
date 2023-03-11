@@ -36,8 +36,8 @@ export class RoleEntity extends Entity implements RoleEntityInterface {
       name: this.roleDto.name ?? '',
       access: this.roleDto.access ?? {},
       restaurant: this.roleDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
@@ -47,8 +47,8 @@ export class RoleEntity extends Entity implements RoleEntityInterface {
       name: this.roleDto.name ?? mainRole.name,
       restaurant: this.roleDto.restaurant,
       access: this.roleDto.access ?? mainRole.access,
-      createdOn: mainRole.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainRole.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

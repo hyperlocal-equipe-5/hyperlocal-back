@@ -40,8 +40,8 @@ export class RestaurantEntity
       address: this.restaurantDto.address,
       logo: this.restaurantDto.logo,
       colorScheme: this.restaurantDto.colorScheme ?? 0,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
@@ -54,8 +54,8 @@ export class RestaurantEntity
       address: this.restaurantDto.address ?? mainRestaurant.address,
       logo: this.restaurantDto.logo ?? mainRestaurant.logo,
       colorScheme: this.restaurantDto.colorScheme ?? mainRestaurant.colorScheme,
-      createdOn: mainRestaurant.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainRestaurant.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

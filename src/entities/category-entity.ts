@@ -38,8 +38,8 @@ export class CategoryEntity extends Entity implements CategoryEntityInterface {
       image: this.categoryDto.image ?? '',
       products: [],
       restaurant: this.categoryDto.restaurant ?? '',
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
@@ -51,8 +51,8 @@ export class CategoryEntity extends Entity implements CategoryEntityInterface {
       image: this.categoryDto.image ?? mainCategory.image,
       products: mainCategory.products.map((item) => item.id),
       restaurant: this.categoryDto.restaurant,
-      createdOn: mainCategory.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainCategory.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

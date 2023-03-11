@@ -37,8 +37,8 @@ export class ReviewEntity extends Entity implements ReviewEntityInterface {
       comment: this.reviewDto.comment ?? '',
       user: this.reviewDto.user ?? '',
       restaurant: this.reviewDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
@@ -49,8 +49,8 @@ export class ReviewEntity extends Entity implements ReviewEntityInterface {
       comment: this.reviewDto.comment ?? mainReview.comment,
       user: this.reviewDto.user ?? mainReview.user.id,
       restaurant: this.reviewDto.restaurant,
-      createdOn: mainReview.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainReview.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }
