@@ -5,6 +5,7 @@ export type Role = {
   name: string;
   restaurant: Restaurant;
   access: {
+    id: string;
     createRestaurants: boolean;
     createUsers: boolean;
     createProducts: boolean;
