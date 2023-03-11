@@ -1,22 +1,48 @@
-import { Table } from "src/domain/entities/table";
-import { TableType } from "src/domain/types/table-type";
-import { TableRepositoryInterface } from "../abstract/repositories/tableRepository-interface";
+import { Table } from 'src/domain/entities/table';
+import { TableType } from 'src/domain/types/table-type';
+import { TableRepositoryInterface } from '../abstract/repositories/tableRepository-interface';
+import { prismaDatabase } from '../database/prisma-database';
 
-export class TableRepository implements TableRepositoryInterface{
-  public create(tableBody: TableType): Promise<Table> {
-    throw new Error("Method not implemented.");
-  }
-  public delete(tableId: string, restaurantId: string): Promise<Table> {
-    throw new Error("Method not implemented.");
-  }
-  public getOne(tableId: string, restaurantId: string): Promise<Table> {
-    throw new Error("Method not implemented.");
-  }
-  public getAll(tableId: string): Promise<Table[]> {
-    throw new Error("Method not implemented.");
-  }
-  public update(tableBody: TableType): Promise<Table> {
-    throw new Error("Method not implemented.");
+export class TableRepository implements TableRepositoryInterface {
+  public async create(tableBody: TableType): Promise<Table> {
+    return await prismaDatabase.table.create({
+      data: {
+        ...tableBody,
+        restaurant: { connect: { id: tableBody.restaurant } },
+      },
+      include: { restaurant: true },
+    });
   }
 
+  public async delete(tableId: string, restaurantId: string): Promise<Table> {
+    return await prismaDatabase.table.delete({
+      where: { id: tableId },
+      include: { restaurant: true },
+    });
+  }
+
+  public async getOne(tableId: string, restaurantId: string): Promise<Table> {
+    return await prismaDatabase.table.findUnique({
+      where: { id: tableId },
+      include: { restaurant: true },
+    });
+  }
+
+  public async getAll(restaurantId: string): Promise<Table[]> {
+    return await prismaDatabase.table.findMany({
+      where: { restaurantId: restaurantId },
+      include: { restaurant: true },
+    });
+  }
+
+  public async update(tableBody: TableType): Promise<Table> {
+    return await prismaDatabase.table.update({
+      where: { id: tableBody.id },
+      data: {
+        ...tableBody,
+        restaurant: { connect: { id: tableBody.restaurant } },
+      },
+      include: { restaurant: true },
+    });
+  }
 }
