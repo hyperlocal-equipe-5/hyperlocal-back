@@ -20,6 +20,7 @@ export class CreateCategoryUseCase implements CreateCategoryUseCaseInterface {
     createCategoryDto: CreateCategoryDto,
   ): Promise<Category> {
     this.entity.setData(createCategoryDto);
+    this.entity.validate();
 
     const body = this.entity.getBody();
     const response = await this.repository.create(body);

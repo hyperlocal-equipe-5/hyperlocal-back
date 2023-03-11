@@ -20,8 +20,8 @@ export class UpdateOrderUseCase implements UpdateOrderUseCaseInterface {
     this.entity.setData(updateOrderDto);
 
     const { id, restaurant } = updateOrderDto;
-    const foundCategory = await this.repository.getOne(id, restaurant);
-    const body = this.entity.updateBody(foundCategory);
+    const fountEntity = await this.repository.getOne(id, restaurant);
+    const body = this.entity.updateBody(fountEntity);
     const response = await this.repository.update(body);
 
     return response;

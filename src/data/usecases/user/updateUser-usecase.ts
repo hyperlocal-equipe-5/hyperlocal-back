@@ -20,8 +20,8 @@ export class UpdateUserUseCase implements UpdateUserUseCaseInterface {
     this.entity.setData(updateUserDto);
 
     const { id, restaurant } = updateUserDto;
-    const foundCategory = await this.repository.getOneById(id, restaurant);
-    const body = this.entity.updateBody(foundCategory);
+    const fountEntity = await this.repository.getOneById(id, restaurant);
+    const body = this.entity.updateBody(fountEntity);
     const response = await this.repository.update(body);
 
     return response;

@@ -18,6 +18,7 @@ export class CreateRoleUseCase implements CreateRoleUseCaseInterface {
 
   public async execute(createRoleDto: CreateRoleDto): Promise<Role> {
     this.entity.setData(createRoleDto);
+    this.entity.validate();
 
     const body = this.entity.getBody();
     const response = await this.repository.create(body);

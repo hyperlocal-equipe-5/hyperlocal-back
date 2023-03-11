@@ -22,6 +22,7 @@ export class CreateIngredientUseCase
     createIngredientDto: CreateIngredientDto,
   ): Promise<Ingredient> {
     this.entity.setData(createIngredientDto);
+    this.entity.validate();
 
     const body = this.entity.getBody();
     const response = await this.repository.create(body);

@@ -18,6 +18,7 @@ export class CreateTableUseCase implements CreateTableUseCaseInterface {
 
   public async execute(createTableDto: CreateTableDto): Promise<Table> {
     this.entity.setData(createTableDto);
+    this.entity.validate();
 
     const body = this.entity.getBody();
     const response = await this.repository.create(body);
