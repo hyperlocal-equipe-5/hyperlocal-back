@@ -22,6 +22,7 @@ export class CreateRestaurantUseCase
     createRestaurantDto: CreateRestaurantDto,
   ): Promise<Restaurant> {
     this.entity.setData(createRestaurantDto);
+    this.entity.validate();
 
     const body = this.entity.getBody();
     const response = await this.repository.create(body);

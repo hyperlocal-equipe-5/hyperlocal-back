@@ -24,8 +24,8 @@ export class UpdateIngredientUseCase
     this.entity.setData(updateIngredientDto);
 
     const { id, restaurant } = updateIngredientDto;
-    const foundCategory = await this.repository.getOne(id, restaurant);
-    const body = this.entity.updateBody(foundCategory);
+    const fountEntity = await this.repository.getOne(id, restaurant);
+    const body = this.entity.updateBody(fountEntity);
     const response = await this.repository.update(body);
 
     return response;

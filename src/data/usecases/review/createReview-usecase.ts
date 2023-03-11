@@ -18,6 +18,7 @@ export class CreateReviewUseCase implements CreateReviewUseCaseInterface {
 
   public async execute(createReviewDto: CreateReviewDto): Promise<Review> {
     this.entity.setData(createReviewDto);
+    this.entity.validate();
 
     const body = this.entity.getBody();
     const response = await this.repository.create(body);

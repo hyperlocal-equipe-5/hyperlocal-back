@@ -18,6 +18,7 @@ export class CreateOrderUseCase implements CreateOrderUseCaseInterface {
 
   public async execute(createOrderDto: CreateOrderDto): Promise<Order> {
     this.entity.setData(createOrderDto);
+    this.entity.validate();
 
     const body = this.entity.getBody();
     const response = await this.repository.create(body);

@@ -1,25 +1,75 @@
-import { User } from "src/domain/entities/user";
-import { UserType } from "src/domain/types/user-type";
-import { UserRepositoryInterface } from "../abstract/repositories/userRepository-interface";
+import { User } from 'src/domain/entities/user';
+import { UserType } from 'src/domain/types/user-type';
+import { UserRepositoryInterface } from '../abstract/repositories/userRepository-interface';
+import { prismaDatabase } from '../database/prisma-database';
 
-export class UserRepository implements UserRepositoryInterface{
-  public create(userBody: UserType): Promise<User> {
-    throw new Error("Method not implemented.");
-  }
-  public delete(userId: string, restaurantId: string): Promise<User> {
-    throw new Error("Method not implemented.");
-  }
-  public getOneById(userId: string, restaurantId: string): Promise<User> {
-    throw new Error("Method not implemented.");
-  }
-  public getOneByEmail(userEmail: string): Promise<User> {
-    throw new Error("Method not implemented.");
-  }
-  public getAll(userId: string): Promise<User[]> {
-    throw new Error("Method not implemented.");
-  }
-  public update(userBody: UserType): Promise<User> {
-    throw new Error("Method not implemented.");
+export class UserRepository implements UserRepositoryInterface {
+  public async create(userBody: UserType): Promise<User> {
+    return await prismaDatabase.user.create({
+      data: {
+        ...userBody,
+        restaurant: { connect: { id: userBody.restaurant } },
+        role: { connect: { id: userBody.role } },
+      },
+      include: {
+        role: { include: { restaurant: true, access: true } },
+        restaurant: true,
+      },
+    });
   }
 
+  public async delete(userId: string, restaurantId: string): Promise<User> {
+    return await prismaDatabase.user.delete({
+      where: { id: userId },
+      include: {
+        role: { include: { restaurant: true, access: true } },
+        restaurant: true,
+      },
+    });
+  }
+
+  public async getOneById(userId: string, restaurantId: string): Promise<User> {
+    return await prismaDatabase.user.findUnique({
+      where: { id: userId },
+      include: {
+        role: { include: { restaurant: true, access: true } },
+        restaurant: true,
+      },
+    });
+  }
+
+  public async getOneByEmail(userEmail: string): Promise<User> {
+    return await prismaDatabase.user.findUnique({
+      where: { email: userEmail },
+      include: {
+        role: { include: { restaurant: true, access: true } },
+        restaurant: true,
+      },
+    });
+  }
+
+  public async getAll(restaurantId: string): Promise<User[]> {
+    return await prismaDatabase.user.findMany({
+      where: { restaurantId: restaurantId },
+      include: {
+        role: { include: { restaurant: true, access: true } },
+        restaurant: true,
+      },
+    });
+  }
+
+  public async update(userBody: UserType): Promise<User> {
+    return await prismaDatabase.user.update({
+      where: { id: userBody.id },
+      data: {
+        ...userBody,
+        restaurant: { connect: { id: userBody.restaurant } },
+        role: { connect: { id: userBody.role } },
+      },
+      include: {
+        role: { include: { restaurant: true, access: true } },
+        restaurant: true,
+      },
+    });
+  }
 }

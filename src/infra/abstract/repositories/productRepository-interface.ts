@@ -5,6 +5,6 @@ export interface ProductRepositoryInterface {
   create(productBody: ProductType): Promise<Product>;
   delete(productId: string, restaurantId: string): Promise<Product>;
   getOne(productId: string, restaurantId: string): Promise<Product>;
-  getAll(productId: string): Promise<Product[]>;
+  getAll(restaurantId: string): Promise<Product[]>;
   update(productBody: ProductType): Promise<Product>;
 }
