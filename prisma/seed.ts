@@ -1,11 +1,17 @@
 import { DatabaseSeed } from './seed/database-seed';
 
 /**
- * Seed para geracao dos primeiros dados para o banco de dados
+ * Seed for the first database data creation
+ *
+ * Data to be created:
+ * - First restaurant,
+ * - First admin role,
+ * - First customer role,
+ * - First admin user,
  */
 
 /**
- * Dados do usuario
+ * First admin user data
  */
 const user = {
   name: 'Admin',
@@ -16,7 +22,7 @@ const user = {
 };
 
 /**
- * Dados do restaurante
+ * First restaurant data
  */
 const restaurant = {
   telephone: 0,

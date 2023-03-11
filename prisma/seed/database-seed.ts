@@ -31,6 +31,7 @@ class Seeder {
   private idGenerator: IdGeneratorAdapterInterface;
   private adminRestaurant: RestaurantType;
   private adminRole: RoleType;
+  private customerRole: RoleType;
   private adminUser: UserType;
 
   public constructor(
@@ -45,6 +46,7 @@ class Seeder {
     this.idGenerator = idGeneratorAdapter;
 
     const generatedId = this.idGenerator.generateId();
+    const customerRoleId = this.idGenerator.generateId();
 
     this.adminRestaurant = {
       id: generatedId,
@@ -102,6 +104,50 @@ class Seeder {
       updatedAt: this.getDate(),
     };
 
+    this.customerRole = {
+      id: customerRoleId,
+      name: 'CUSTOMER',
+      restaurant: generatedId,
+      access: {
+        id: customerRoleId,
+        createRestaurants: false,
+        createUsers: false,
+        createProducts: false,
+        createCategories: false,
+        createIngredients: false,
+        createOrders: false,
+        createRoles: false,
+        createTables: false,
+        readRestaurants: true,
+        readUsers: false,
+        readProducts: true,
+        readCategories: true,
+        readIngredients: true,
+        readOrders: false,
+        readRoles: false,
+        readTables: true,
+        updateRestaurants: false,
+        updateUsers: false,
+        updateProducts: false,
+        updateCategories: false,
+        updateIngredients: false,
+        updateOrders: false,
+        updateRoles: false,
+        updateTables: false,
+        deleteRestaurants: false,
+        deleteUsers: false,
+        deleteProducts: false,
+        deleteCategories: false,
+        deleteIngredients: false,
+        deleteOrders: false,
+        deleteRoles: false,
+        deleteTables: false,
+        defineAccess: false,
+      },
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
+    };
+
     this.adminUser = {
       id: generatedId,
       name: user.name,
@@ -120,8 +166,10 @@ class Seeder {
     try {
       const execution = await this.createAdminRestaurant().then(() => {
         this.createAdminRole().then(() => {
-          this.createAdminUser().then(() => {
-            this.disconnect();
+          this.createcustomerRole().then(() => {
+            this.createAdminUser().then(() => {
+              this.disconnect();
+            });
           });
         });
       });
@@ -147,6 +195,21 @@ class Seeder {
       data: {
         ...this.adminRole,
         restaurant: { connect: { id: this.adminRole.id } },
+        access: { connect: { id: createdAccess.id } },
+      },
+      include: { restaurant: true, access: true },
+    });
+  }
+
+  private async createcustomerRole(): Promise<Role> {
+    const createdAccess = await this.prismaDatabase.access.create({
+      data: this.customerRole.access,
+    });
+
+    return await this.prismaDatabase.role.create({
+      data: {
+        ...this.customerRole,
+        restaurant: { connect: { id: this.customerRole.id } },
         access: { connect: { id: createdAccess.id } },
       },
       include: { restaurant: true, access: true },
