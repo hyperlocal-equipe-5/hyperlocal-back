@@ -11,6 +11,8 @@ import { ReviewModule } from './review.module';
 import { RoleModule } from './role.module';
 import { TableModule } from './table.module';
 import { UserModule } from './user.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { ResponseInterceptor } from '../interceptors/response-interceptor';
 
 @Module({
   imports: [
@@ -26,6 +28,12 @@ import { UserModule } from './user.module';
     UserModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ResponseInterceptor,
+    },
+  ],
 })
 export class AppModule {}
