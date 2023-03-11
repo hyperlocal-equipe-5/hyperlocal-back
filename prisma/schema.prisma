@@ -10,11 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-generator seed {
-  provider = "script"
-  output   = "./seed/seed.ts"
-}
-
 model Category {
   id           String     @id
   name         String

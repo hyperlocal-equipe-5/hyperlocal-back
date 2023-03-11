@@ -24,12 +24,8 @@ export class TokenHandlerAdapter implements TokenHandlerAdapterInterface {
         }
 
         const userId = decoded.id;
-        const restaurantId = decoded.restaurant.id;
 
-        const user = await this.getOneUserUseCaseInterface.execute(
-          userId,
-          restaurantId,
-        );
+        const user = await this.getOneUserUseCaseInterface.execute(userId, '');
 
         if (!user || !user.id) {
           throw new InvalidParamError('token');
