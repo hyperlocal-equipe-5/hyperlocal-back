@@ -6,6 +6,6 @@ export interface UserRepositoryInterface {
   delete(userId: string, restaurantId: string): Promise<User>;
   getOneById(userId: string, restaurantId: string): Promise<User>;
   getOneByEmail(userEmail: string): Promise<User>;
-  getAll(userId: string): Promise<User[]>;
+  getAll(restaurantId: string): Promise<User[]>;
   update(userBody: UserType): Promise<User>;
 }

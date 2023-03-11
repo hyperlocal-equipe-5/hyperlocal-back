@@ -5,6 +5,6 @@ export interface TableRepositoryInterface {
   create(tableBody: TableType): Promise<Table>;
   delete(tableId: string, restaurantId: string): Promise<Table>;
   getOne(tableId: string, restaurantId: string): Promise<Table>;
-  getAll(tableId: string): Promise<Table[]>;
+  getAll(restaurantId: string): Promise<Table[]>;
   update(tableBody: TableType): Promise<Table>;
 }
