@@ -50,7 +50,7 @@ export class CategoryEntity extends Entity implements CategoryEntityInterface {
       highlight: this.categoryDto.highlight ?? mainCategory.highlight,
       image: this.categoryDto.image ?? mainCategory.image,
       products: mainCategory.products.map((item) => item.id),
-      restaurant: this.categoryDto.restaurant,
+      restaurant: mainCategory.restaurant.id,
       createdAt: mainCategory.createdAt,
       updatedAt: this.getDate(),
     };

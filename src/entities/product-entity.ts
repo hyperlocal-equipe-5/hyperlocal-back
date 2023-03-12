@@ -58,7 +58,7 @@ export class ProductEntity extends Entity implements ProductEntityInterface {
         this.productDto.ingredients ??
         mainProduct.ingredients.map((ingredient) => ingredient.id),
       category: this.productDto.category ?? mainProduct.category.id,
-      restaurant: this.productDto.restaurant,
+      restaurant: mainProduct.restaurant.id,
       createdAt: mainProduct.createdAt,
       updatedAt: this.getDate(),
     };

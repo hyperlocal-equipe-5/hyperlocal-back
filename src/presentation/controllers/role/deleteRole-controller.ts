@@ -7,6 +7,7 @@ import { Response } from 'src/utils/http/response';
 
 export class DeleteRoleController implements DeleteRoleInterface {
   private readonly deleteRoleUseCase: DeleteRoleUseCaseInterface;
+
   public constructor(deleteRoleUseCase: DeleteRoleUseCaseInterface) {
     this.deleteRoleUseCase = deleteRoleUseCase;
   }

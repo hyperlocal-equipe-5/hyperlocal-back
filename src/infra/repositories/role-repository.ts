@@ -5,6 +5,7 @@ import { prismaDatabase } from '../database/prisma-database';
 
 export class RoleRepository implements RoleRepositoryInterface {
   public async create(roleBody: RoleType): Promise<Role> {
+    console.log(roleBody);
     const createdAccess = await prismaDatabase.access.create({
       data: roleBody.access,
     });
@@ -13,7 +14,7 @@ export class RoleRepository implements RoleRepositoryInterface {
       .create({
         data: {
           ...roleBody,
-          restaurant: { connect: { id: roleBody.id } },
+          restaurant: { connect: { id: roleBody.restaurant } },
           access: { connect: { id: createdAccess.id } },
         },
         include: { restaurant: true, access: true },
@@ -75,7 +76,7 @@ export class RoleRepository implements RoleRepositoryInterface {
         where: { id: roleBody.id },
         data: {
           ...roleBody,
-          restaurant: { connect: { id: roleBody.id } },
+          restaurant: { connect: { id: roleBody.restaurant } },
           access: { connect: { id: updatedAccess.id } },
         },
         include: { restaurant: true, access: true },

@@ -42,18 +42,4 @@ export class ProductControllerAdmin {
     const httpRequest: HttpRequest = { body };
     return await this.UpdateProductController.execute(httpRequest);
   }
-
-  @Get('/get-one-product')
-  async getOneAdmin(@Query() query) {
-    const { id, restaurant } = query;
-    const httpRequest: HttpRequest = { id, restaurant };
-    return await this.getOneProductController.execute(httpRequest);
-  }
-
-  @Get('/get-all-products')
-  async getAllAdmin(@Query() query) {
-    const { restaurant } = query;
-    const httpRequest: HttpRequest = { restaurant };
-    return await this.getAllProductsController.execute(httpRequest);
-  }
 }

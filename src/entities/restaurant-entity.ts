@@ -47,7 +47,7 @@ export class RestaurantEntity
 
   public updateBody(mainRestaurant: Restaurant): RestaurantType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      id: mainRestaurant.id,
       name: this.restaurantDto.name ?? mainRestaurant.name,
       telephone: this.restaurantDto.telephone ?? mainRestaurant.telephone,
       email: this.restaurantDto.email ?? mainRestaurant.email,

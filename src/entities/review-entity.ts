@@ -47,8 +47,8 @@ export class ReviewEntity extends Entity implements ReviewEntityInterface {
       id: mainReview.id,
       stars: this.reviewDto.stars ?? mainReview.stars,
       comment: this.reviewDto.comment ?? mainReview.comment,
-      user: this.reviewDto.user ?? mainReview.user.id,
-      restaurant: this.reviewDto.restaurant,
+      user: this.reviewDto.user ?? mainReview.user ? mainReview.user.id : '',
+      restaurant: mainReview.restaurant.id,
       createdAt: mainReview.createdAt,
       updatedAt: this.getDate(),
     };

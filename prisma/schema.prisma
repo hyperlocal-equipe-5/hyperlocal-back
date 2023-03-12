@@ -170,12 +170,12 @@ model User {
   password     String
   image        String?
   cellphone    Int?
-  role         Role       @relation(fields: [roleId], references: [id])
+  role         Role?      @relation(fields: [roleId], references: [id])
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
   createdAt    String
   updatedAt    String
   Order        Order[]
   Review       Review[]
-  roleId       String
+  roleId       String?
   restaurantId String
 }

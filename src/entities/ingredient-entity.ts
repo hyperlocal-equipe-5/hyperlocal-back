@@ -55,7 +55,7 @@ export class IngredientEntity
       price: this.ingredientDto.price ?? mainIngredient.price,
       image: this.ingredientDto.image ?? mainIngredient.image,
       quantity: this.ingredientDto.quantity ?? mainIngredient.quantity,
-      restaurant: this.ingredientDto.restaurant,
+      restaurant: mainIngredient.restaurant.id,
       createdAt: mainIngredient.createdAt,
       updatedAt: this.getDate(),
     };

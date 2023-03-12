@@ -7,6 +7,7 @@ import { Response } from 'src/utils/http/response';
 
 export class DeleteCategoryController implements DeleteCategoryInterface {
   private readonly deleteCategoryUseCase: DeleteCategoryUseCaseInterface;
+
   public constructor(deleteCategoryUseCase: DeleteCategoryUseCaseInterface) {
     this.deleteCategoryUseCase = deleteCategoryUseCase;
   }

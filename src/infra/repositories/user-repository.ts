@@ -5,13 +5,20 @@ import { prismaDatabase } from '../database/prisma-database';
 
 export class UserRepository implements UserRepositoryInterface {
   public async create(userBody: UserType): Promise<User> {
+    const data: any = {
+      ...userBody,
+      restaurant: { connect: { id: userBody.restaurant } },
+    };
+
+    if (userBody.role && userBody.role !== '') {
+      data.role = { connect: { id: userBody.role } };
+    } else {
+      delete data.role;
+    }
+
     return await prismaDatabase.user
       .create({
-        data: {
-          ...userBody,
-          restaurant: { connect: { id: userBody.restaurant } },
-          role: { connect: { id: userBody.role } },
-        },
+        data,
         include: {
           role: { include: { restaurant: true, access: true } },
           restaurant: true,
@@ -84,14 +91,21 @@ export class UserRepository implements UserRepositoryInterface {
   }
 
   public async update(userBody: UserType): Promise<User> {
+    const data: any = {
+      ...userBody,
+      restaurant: { connect: { id: userBody.restaurant } },
+    };
+
+    if (userBody.role && userBody.role !== '') {
+      data.role = { connect: { id: userBody.role } };
+    } else {
+      delete data.role;
+    }
+
     return await prismaDatabase.user
       .update({
         where: { id: userBody.id },
-        data: {
-          ...userBody,
-          restaurant: { connect: { id: userBody.restaurant } },
-          role: { connect: { id: userBody.role } },
-        },
+        data,
         include: {
           role: { include: { restaurant: true, access: true } },
           restaurant: true,

@@ -5,19 +5,31 @@ import { prismaDatabase } from '../database/prisma-database';
 
 export class OrderRepository implements OrderRepositoryInterface {
   public async create(orderBody: OrderType): Promise<Order | any> {
+    const data: any = {
+      ...orderBody,
+      restaurant: { connect: { id: orderBody.restaurant } },
+      products: {
+        connect: orderBody.products.map((id) => {
+          return { id: id };
+        }),
+      },
+    };
+
+    if (orderBody.user && orderBody.user !== '') {
+      data.user = { connect: { id: orderBody.user } };
+    } else {
+      delete data.user;
+    }
+
+    if (orderBody.table && orderBody.table !== '') {
+      data.table = { connect: { id: orderBody.table } };
+    } else {
+      delete data.table;
+    }
+
     return await prismaDatabase.order
       .create({
-        data: {
-          ...orderBody,
-          table: { connect: { id: orderBody.table } },
-          user: { connect: { id: orderBody.user } },
-          restaurant: { connect: { id: orderBody.restaurant } },
-          products: {
-            connect: orderBody.products.map((id) => {
-              return { id: id };
-            }),
-          },
-        },
+        data,
         include: {
           products: { include: { category: true, ingredients: true } },
           restaurant: true,
@@ -81,20 +93,32 @@ export class OrderRepository implements OrderRepositoryInterface {
   }
 
   public async update(orderBody: OrderType): Promise<Order | any> {
+    const data: any = {
+      ...orderBody,
+      restaurant: { connect: { id: orderBody.restaurant } },
+      products: {
+        connect: orderBody.products.map((id) => {
+          return { id: id };
+        }),
+      },
+    };
+
+    if (orderBody.user && orderBody.user !== '') {
+      data.user = { connect: { id: orderBody.user } };
+    } else {
+      delete data.user;
+    }
+
+    if (orderBody.table && orderBody.table !== '') {
+      data.table = { connect: { id: orderBody.table } };
+    } else {
+      delete data.table;
+    }
+
     return await prismaDatabase.order
       .update({
-        where: { id: orderBody.id },
-        data: {
-          ...orderBody,
-          table: { connect: { id: orderBody.table } },
-          user: { connect: { id: orderBody.user } },
-          restaurant: { connect: { id: orderBody.restaurant } },
-          products: {
-            connect: orderBody.products.map((id) => {
-              return { id: id };
-            }),
-          },
-        },
+        where: { id: data.id },
+        data,
         include: {
           products: { include: { category: true, ingredients: true } },
           restaurant: true,

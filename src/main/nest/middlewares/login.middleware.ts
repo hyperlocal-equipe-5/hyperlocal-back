@@ -15,7 +15,7 @@ export class LoginMiddleware implements NestMiddleware {
 
       const user = await authMiddleware.auth(httpRequest);
 
-      req.body.user = user;
+      req.body.loggedUser = user;
       next();
     } catch (error) {
       res.status(401).send(HttpResponse.unauthorized(error.message));

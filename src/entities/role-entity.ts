@@ -49,7 +49,7 @@ export class RoleEntity extends Entity implements RoleEntityInterface {
     return {
       id: id,
       name: this.roleDto.name ?? mainRole.name,
-      restaurant: this.roleDto.restaurant,
+      restaurant: mainRole.restaurant.id,
       access: this.roleDto.access ? this.getAccess(id) : mainRole.access,
       createdAt: mainRole.createdAt,
       updatedAt: this.getDate(),

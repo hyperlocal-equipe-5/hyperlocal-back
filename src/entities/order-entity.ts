@@ -51,12 +51,20 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
       products:
         this.orderDto.products ??
         mainOrder.products.map((product) => product.id),
-      restaurant: this.orderDto.restaurant,
+      restaurant: mainOrder.restaurant.id,
       takeAway: this.orderDto.takeAway ?? mainOrder.takeAway,
       orderNumber: this.orderDto.orderNumber ?? mainOrder.orderNumber,
       customerName: this.orderDto.customerName ?? mainOrder.customerName,
-      user: this.orderDto.user ?? mainOrder.user.id,
-      table: this.orderDto.table ?? mainOrder.table.id,
+      user: this.orderDto.user
+        ? this.orderDto.user
+        : mainOrder.user
+        ? mainOrder.user.id
+        : '',
+      table: this.orderDto.table
+        ? this.orderDto.table
+        : mainOrder.table
+        ? mainOrder.table.id
+        : '',
       createdAt: mainOrder.createdAt,
       updatedAt: this.getDate(),
     };

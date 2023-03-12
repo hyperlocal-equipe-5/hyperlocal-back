@@ -7,9 +7,11 @@ import { Response } from 'src/utils/http/response';
 
 export class CreateTableController implements CreateTableInterface {
   private readonly createTableUseCase: CreateTableUseCaseInterface;
+
   public constructor(createTableUseCase: CreateTableUseCaseInterface) {
     this.createTableUseCase = createTableUseCase;
   }
+
   public async execute(httpRequest: HttpRequest): Promise<HttpResponse<Table>> {
     try {
       const createTableDto = httpRequest.body;

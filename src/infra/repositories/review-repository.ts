@@ -5,13 +5,20 @@ import { prismaDatabase } from '../database/prisma-database';
 
 export class ReviewRepository implements ReviewRepositoryInterface {
   public async create(reviewBody: ReviewType): Promise<Review> {
+    const data: any = {
+      ...reviewBody,
+      restaurant: { connect: { id: reviewBody.restaurant } },
+    };
+
+    if (reviewBody.user && reviewBody.user !== '') {
+      data.user = { connect: { id: reviewBody.user } };
+    } else {
+      delete data.user;
+    }
+
     return await prismaDatabase.review
       .create({
-        data: {
-          ...reviewBody,
-          restaurant: { connect: { id: reviewBody.restaurant } },
-          user: { connect: { id: reviewBody.user } },
-        },
+        data,
         include: {
           restaurant: true,
           user: {
@@ -89,14 +96,21 @@ export class ReviewRepository implements ReviewRepositoryInterface {
   }
 
   public async update(reviewBody: ReviewType): Promise<Review> {
+    const data: any = {
+      ...reviewBody,
+      restaurant: { connect: { id: reviewBody.restaurant } },
+    };
+
+    if (reviewBody.user && reviewBody.user !== '') {
+      data.user = { connect: { id: reviewBody.user } };
+    } else {
+      delete data.user;
+    }
+
     return await prismaDatabase.review
       .update({
         where: { id: reviewBody.id },
-        data: {
-          ...reviewBody,
-          restaurant: { connect: { id: reviewBody.restaurant } },
-          user: { connect: { id: reviewBody.user } },
-        },
+        data,
         include: {
           restaurant: true,
           user: {

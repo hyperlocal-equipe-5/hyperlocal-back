@@ -73,6 +73,7 @@ export class CategoryRepository implements CategoryRepositoryInterface {
         },
       })
       .then((data) => {
+        console.log(data);
         prismaDatabase.$disconnect();
         return data;
       });

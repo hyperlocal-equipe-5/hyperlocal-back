@@ -11,9 +11,10 @@ import { GetAllRestaurantsController } from 'src/presentation/controllers/restau
 import { GetOneRestaurantController } from 'src/presentation/controllers/restaurant/getOneRestaurant-controller';
 import { UpdateRestaurantController } from 'src/presentation/controllers/restaurant/updateRestaurant-controller';
 import { RestaurantControllerAdmin } from '../controllers/restaurant.controller.admin';
+import { RestaurantController } from '../controllers/restaurant.controller';
 
 @Module({
-  controllers: [RestaurantControllerAdmin],
+  controllers: [RestaurantControllerAdmin, RestaurantController],
   providers: [
     {
       provide: CreateRestaurantController,

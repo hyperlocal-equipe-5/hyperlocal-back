@@ -44,7 +44,7 @@ export class TableEntity extends Entity implements TableEntityInterface {
     return {
       id: mainTable.id,
       number: this.tableDto.number ?? mainTable.number,
-      restaurant: this.tableDto.restaurant,
+      restaurant: mainTable.restaurant.id,
       createdAt: mainTable.createdAt,
       updatedAt: this.getDate(),
     };
