@@ -42,6 +42,7 @@ model Order {
   orderNumber  Int?
   customerName String?
   products     Product[]
+  quantities   Int[]
   user         User?      @relation(fields: [userId], references: [id])
   table        Table?     @relation(fields: [tableId], references: [id])
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])

@@ -9,6 +9,7 @@ export type Order = {
   orderNumber?: number;
   customerName?: string;
   products: Product[];
+  quantities: number[];
   user?: User;
   table?: Table;
   restaurant: Restaurant;

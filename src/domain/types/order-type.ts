@@ -4,6 +4,7 @@ export type OrderType = {
   orderNumber: number;
   customerName: string;
   products: string[];
+  quantities: number[];
   user: string;
   table: string;
   restaurant: string;
