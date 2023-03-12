@@ -5,7 +5,8 @@ export type Role = {
   name: string;
   restaurant: Restaurant;
   access: {
-    createResteurants: boolean;
+    id: string;
+    createRestaurants: boolean;
     createUsers: boolean;
     createProducts: boolean;
     createCategories: boolean;
@@ -13,7 +14,7 @@ export type Role = {
     createOrders: boolean;
     createRoles: boolean;
     createTables: boolean;
-    readResteurants: boolean;
+    readRestaurants: boolean;
     readUsers: boolean;
     readProducts: boolean;
     readCategories: boolean;
@@ -21,7 +22,7 @@ export type Role = {
     readOrders: boolean;
     readRoles: boolean;
     readTables: boolean;
-    updateResteurants: boolean;
+    updateRestaurants: boolean;
     updateUsers: boolean;
     updateProducts: boolean;
     updateCategories: boolean;
@@ -29,7 +30,7 @@ export type Role = {
     updateOrders: boolean;
     updateRoles: boolean;
     updateTables: boolean;
-    deleteResteurants: boolean;
+    deleteRestaurants: boolean;
     deleteUsers: boolean;
     deleteProducts: boolean;
     deleteCategories: boolean;
@@ -39,6 +40,6 @@ export type Role = {
     deleteTables: boolean;
     defineAccess: boolean;
   };
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

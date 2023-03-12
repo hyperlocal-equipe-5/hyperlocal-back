@@ -8,6 +8,6 @@ export type Category = {
   image: string;
   products: Product[];
   restaurant: Restaurant;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

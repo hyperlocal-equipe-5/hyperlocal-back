@@ -8,6 +8,6 @@ export type ProductType = {
   ingredients: string[];
   category: string;
   restaurant: string;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

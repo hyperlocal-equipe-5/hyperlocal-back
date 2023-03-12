@@ -10,14 +10,14 @@ export class ProductController {
     private readonly getOneProductController: GetOneProductController,
   ) {}
 
-  @Get('/get-one')
+  @Get('/get-one-product')
   async getOne(@Query() query) {
     const { id, restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.getOneProductController.execute(httpRequest);
   }
 
-  @Get('/get-all')
+  @Get('/get-all-products')
   async getAll(@Query() query) {
     const { restaurant } = query;
     const httpRequest: HttpRequest = { restaurant };

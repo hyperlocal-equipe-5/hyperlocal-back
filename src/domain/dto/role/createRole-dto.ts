@@ -2,7 +2,7 @@ export type CreateRoleDto = {
   name: string;
   restaurant: string;
   access?: {
-    createResteurants?: boolean;
+    createRestaurants?: boolean;
     createUsers?: boolean;
     createProducts?: boolean;
     createCategories?: boolean;
@@ -10,7 +10,7 @@ export type CreateRoleDto = {
     createOrders?: boolean;
     createRoles?: boolean;
     createTables?: boolean;
-    readResteurants?: boolean;
+    readRestaurants?: boolean;
     readUsers?: boolean;
     readProducts?: boolean;
     readCategories?: boolean;
@@ -18,7 +18,7 @@ export type CreateRoleDto = {
     readOrders?: boolean;
     readRoles?: boolean;
     readTables?: boolean;
-    updateResteurants?: boolean;
+    updateRestaurants?: boolean;
     updateUsers?: boolean;
     updateProducts?: boolean;
     updateCategories?: boolean;
@@ -26,7 +26,7 @@ export type CreateRoleDto = {
     updateOrders?: boolean;
     updateRoles?: boolean;
     updateTables?: boolean;
-    deleteResteurants?: boolean;
+    deleteRestaurants?: boolean;
     deleteUsers?: boolean;
     deleteProducts?: boolean;
     deleteCategories?: boolean;

@@ -11,9 +11,10 @@ import { GetAllTablesController } from 'src/presentation/controllers/table/getAl
 import { GetOneTableController } from 'src/presentation/controllers/table/getOneTable-controller';
 import { UpdateTableController } from 'src/presentation/controllers/table/updateTable-controller';
 import { TableControllerAdmin } from '../controllers/table.controller.admin';
+import { TableController } from '../controllers/table.controller';
 
 @Module({
-  controllers: [TableControllerAdmin],
+  controllers: [TableControllerAdmin, TableController],
   providers: [
     {
       provide: CreateTableController,

@@ -17,8 +17,8 @@ model Category {
   image        String
   products     Product[]
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  createdOn    String
-  updatedOn    String
+  createdAt    String
+  updatedAt    String
   restaurantId String
 }
 
@@ -29,8 +29,8 @@ model Ingredient {
   image        String
   quantity     Int?
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  createdOn    String
-  updatedOn    String
+  createdAt    String
+  updatedAt    String
   restaurantId String
   Product      Product?   @relation(fields: [productId], references: [id])
   productId    String?
@@ -42,11 +42,12 @@ model Order {
   orderNumber  Int?
   customerName String?
   products     Product[]
+  quantities   Int[]
   user         User?      @relation(fields: [userId], references: [id])
   table        Table?     @relation(fields: [tableId], references: [id])
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  createdOn    String
-  updatedOn    String
+  createdAt    String
+  updatedAt    String
   userId       String?
   tableId      String?
   restaurantId String
@@ -62,8 +63,8 @@ model Product {
   ingredients  Ingredient[]
   category     Category     @relation(fields: [categoryId], references: [id])
   restaurant   Restaurant   @relation(fields: [restaurantId], references: [id])
-  createdOn    String
-  updatedOn    String
+  createdAt    String
+  updatedAt    String
   Order        Order?       @relation(fields: [orderId], references: [id])
   orderId      String?
   categoryId   String
@@ -78,8 +79,8 @@ model Restaurant {
   address     String
   logo        String
   colorScheme Int
-  createdOn   String
-  updatedOn   String
+  createdAt   String
+  updatedAt   String
   Category    Category[]
   Ingredient  Ingredient[]
   Order       Order[]
@@ -96,8 +97,8 @@ model Review {
   comment      String
   user         User?      @relation(fields: [userId], references: [id])
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  createdOn    String
-  updatedOn    String
+  createdAt    String
+  updatedAt    String
   userId       String?
   restaurantId String
 }
@@ -108,8 +109,8 @@ model Role {
   restaurant Restaurant @relation(fields: [restaurantId], references: [id])
   access     Access     @relation(fields: [accessId], references: [id])
 
-  createdOn    String
-  updatedOn    String
+  createdAt    String
+  updatedAt    String
   restaurantId String
   accessId     String
   User         User[]
@@ -117,7 +118,7 @@ model Role {
 
 model Access {
   id                String  @id
-  createResteurants Boolean
+  createRestaurants Boolean
   createUsers       Boolean
   createProducts    Boolean
   createCategories  Boolean
@@ -125,7 +126,7 @@ model Access {
   createOrders      Boolean
   createRoles       Boolean
   createTables      Boolean
-  readResteurants   Boolean
+  readRestaurants   Boolean
   readUsers         Boolean
   readProducts      Boolean
   readCategories    Boolean
@@ -133,7 +134,7 @@ model Access {
   readOrders        Boolean
   readRoles         Boolean
   readTables        Boolean
-  updateResteurants Boolean
+  updateRestaurants Boolean
   updateUsers       Boolean
   updateProducts    Boolean
   updateCategories  Boolean
@@ -141,7 +142,7 @@ model Access {
   updateOrders      Boolean
   updateRoles       Boolean
   updateTables      Boolean
-  deleteResteurants Boolean
+  deleteRestaurants Boolean
   deleteUsers       Boolean
   deleteProducts    Boolean
   deleteCategories  Boolean
@@ -157,8 +158,8 @@ model Table {
   id           String     @id
   number       Int
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  createdOn    String
-  updatedOn    String
+  createdAt    String
+  updatedAt    String
   Order        Order[]
   restaurantId String
 }
@@ -170,12 +171,12 @@ model User {
   password     String
   image        String?
   cellphone    Int?
-  role         Role       @relation(fields: [roleId], references: [id])
+  role         Role?      @relation(fields: [roleId], references: [id])
   restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  createdOn    String
-  updatedOn    String
+  createdAt    String
+  updatedAt    String
   Order        Order[]
   Review       Review[]
-  roleId       String
+  roleId       String?
   restaurantId String
 }

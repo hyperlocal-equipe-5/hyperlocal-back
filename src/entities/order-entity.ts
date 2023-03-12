@@ -6,6 +6,7 @@ import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { OrderEntityInterface } from './abstract/interfaces/orderEntity-interface';
 import { OrderType } from '../domain/types/order-type';
 import { Entity } from './entity';
+import { InvalidParamError } from 'src/utils/errors/invalidParam-error';
 
 export class OrderEntity extends Entity implements OrderEntityInterface {
   private orderDto: CreateOrderDto | UpdateOrderDto;
@@ -25,6 +26,14 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
       throw new MissingParamError('products');
     }
 
+    if (!this.orderDto.quantities) {
+      throw new MissingParamError('quantities');
+    }
+
+    if (this.orderDto.products.length !== this.orderDto.products.length) {
+      throw new InvalidParamError('products / quantities');
+    }
+
     if (!this.orderDto.restaurant) {
       throw new MissingParamError('restaurant');
     }
@@ -35,13 +44,14 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
       id: this.idGeneratorAdapter.generateId(),
       restaurant: this.orderDto.restaurant,
       products: this.orderDto.products ?? [],
+      quantities: this.orderDto.quantities ?? [],
       takeAway: this.orderDto.takeAway ?? false,
       orderNumber: this.orderDto.orderNumber ?? 0,
       customerName: this.orderDto.customerName ?? '',
       user: this.orderDto.user ?? '',
       table: this.orderDto.table ?? '',
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
@@ -51,14 +61,23 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
       products:
         this.orderDto.products ??
         mainOrder.products.map((product) => product.id),
-      restaurant: this.orderDto.restaurant,
+      quantities: this.orderDto.quantities ?? mainOrder.quantities,
+      restaurant: mainOrder.restaurant.id,
       takeAway: this.orderDto.takeAway ?? mainOrder.takeAway,
       orderNumber: this.orderDto.orderNumber ?? mainOrder.orderNumber,
       customerName: this.orderDto.customerName ?? mainOrder.customerName,
-      user: this.orderDto.user ?? mainOrder.user.id,
-      table: this.orderDto.table ?? mainOrder.table.id,
-      createdOn: mainOrder.createdOn,
-      updatedOn: this.getDate(),
+      user: this.orderDto.user
+        ? this.orderDto.user
+        : mainOrder.user
+        ? mainOrder.user.id
+        : '',
+      table: this.orderDto.table
+        ? this.orderDto.table
+        : mainOrder.table
+        ? mainOrder.table.id
+        : '',
+      createdAt: mainOrder.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

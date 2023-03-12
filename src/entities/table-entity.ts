@@ -35,8 +35,8 @@ export class TableEntity extends Entity implements TableEntityInterface {
       id: this.idGeneratorAdapter.generateId(),
       number: this.tableDto.number ?? 0,
       restaurant: this.tableDto.restaurant,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
@@ -44,9 +44,9 @@ export class TableEntity extends Entity implements TableEntityInterface {
     return {
       id: mainTable.id,
       number: this.tableDto.number ?? mainTable.number,
-      restaurant: this.tableDto.restaurant,
-      createdOn: mainTable.createdOn,
-      updatedOn: this.getDate(),
+      restaurant: mainTable.restaurant.id,
+      createdAt: mainTable.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

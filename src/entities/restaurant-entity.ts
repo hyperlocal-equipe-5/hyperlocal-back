@@ -40,22 +40,22 @@ export class RestaurantEntity
       address: this.restaurantDto.address,
       logo: this.restaurantDto.logo,
       colorScheme: this.restaurantDto.colorScheme ?? 0,
-      createdOn: this.getDate(),
-      updatedOn: this.getDate(),
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
     };
   }
 
   public updateBody(mainRestaurant: Restaurant): RestaurantType {
     return {
-      id: this.idGeneratorAdapter.generateId(),
+      id: mainRestaurant.id,
       name: this.restaurantDto.name ?? mainRestaurant.name,
       telephone: this.restaurantDto.telephone ?? mainRestaurant.telephone,
       email: this.restaurantDto.email ?? mainRestaurant.email,
       address: this.restaurantDto.address ?? mainRestaurant.address,
       logo: this.restaurantDto.logo ?? mainRestaurant.logo,
       colorScheme: this.restaurantDto.colorScheme ?? mainRestaurant.colorScheme,
-      createdOn: mainRestaurant.createdOn,
-      updatedOn: this.getDate(),
+      createdAt: mainRestaurant.createdAt,
+      updatedAt: this.getDate(),
     };
   }
 }

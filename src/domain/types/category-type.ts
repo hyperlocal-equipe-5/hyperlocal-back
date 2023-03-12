@@ -5,6 +5,6 @@ export type CategoryType = {
   image: string;
   products: string[];
   restaurant: string;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

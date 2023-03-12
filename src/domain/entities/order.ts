@@ -9,9 +9,10 @@ export type Order = {
   orderNumber?: number;
   customerName?: string;
   products: Product[];
+  quantities: number[];
   user?: User;
   table?: Table;
   restaurant: Restaurant;
-  createdOn: string;
-  updatedOn: string;
+  createdAt: string;
+  updatedAt: string;
 };

@@ -11,9 +11,10 @@ import { GetAllIngredientsController } from 'src/presentation/controllers/ingred
 import { GetOneIngredientController } from 'src/presentation/controllers/ingredient/getOneIngredient-controller';
 import { UpdateIngredientController } from 'src/presentation/controllers/ingredient/updateIngredient-controller';
 import { IngredientControllerAdmin } from '../controllers/ingredient.controller.admin';
+import { IngredientController } from '../controllers/ingredient.controller';
 
 @Module({
-  controllers: [IngredientControllerAdmin],
+  controllers: [IngredientControllerAdmin, IngredientController],
   providers: [
     {
       provide: CreateIngredientController,
