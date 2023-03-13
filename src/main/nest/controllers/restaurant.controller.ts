@@ -1,8 +1,10 @@
 import { Controller, Query, Get } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { GetAllRestaurantsController } from 'src/presentation/controllers/restaurant/getAllRestaurants-controller';
 import { GetOneRestaurantController } from 'src/presentation/controllers/restaurant/getOneRestaurant-controller';
 
+@ApiTags('/restaurant')
 @Controller('/restaurant')
 export class RestaurantController {
   constructor(
@@ -10,6 +12,9 @@ export class RestaurantController {
     private readonly getOneRestaurantController: GetOneRestaurantController,
   ) {}
 
+  @ApiOperation({
+    summary: ''
+  })
   @Get('/get-one-restaurant')
   async getOne(@Query() query) {
     const { id } = query;
@@ -17,6 +22,9 @@ export class RestaurantController {
     return await this.getOneRestaurantController.execute(httpRequest);
   }
 
+  @ApiOperation({
+    summary: ''
+  })
   @Get('/get-all-restaurants')
   async getAll() {
     const httpRequest: HttpRequest = {};
