@@ -7,6 +7,7 @@ import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { UserEntityInterface } from './abstract/interfaces/userEntity-interface';
 import { UserType } from '../domain/types/user-type';
 import { Entity } from './entity';
+import { InvalidParamError } from 'src/utils/errors/invalidParam-error';
 
 export class UserEntity extends Entity implements UserEntityInterface {
   private userDto: CreateUserDto | UpdateUserDto;
@@ -36,8 +37,20 @@ export class UserEntity extends Entity implements UserEntityInterface {
       throw new MissingParamError('email');
     }
 
+    if (!this.emailValidator(this.userDto.email).result) {
+      throw new InvalidParamError(
+        this.emailValidator(this.userDto.email).message,
+      );
+    }
+
     if (!this.userDto.password) {
       throw new MissingParamError('password');
+    }
+
+    if (!this.passwordValidator(this.userDto.password).result) {
+      throw new InvalidParamError(
+        this.passwordValidator(this.userDto.password).message,
+      );
     }
 
     if (!this.userDto.restaurant) {
@@ -81,5 +94,48 @@ export class UserEntity extends Entity implements UserEntityInterface {
       createdAt: this.getDate(),
       updatedAt: this.getDate(),
     };
+  }
+
+  private emailValidator(email: string): { result: boolean; message: string } {
+    const response = { result: true, message: '' };
+
+    if (email.match(/\@|\./g) === null || email.match(/\@|\./g).length >= 2) {
+      response.result = false;
+      response.message = 'Invalid emil format.';
+    }
+
+    return response;
+  }
+
+  private passwordValidator(password: string): {
+    result: boolean;
+    message: string;
+  } {
+    const response = { result: true, message: '' };
+
+    if (!password || password.length < 6) {
+      response.result = false;
+      response.message =
+        'Your password should be, at least, 6 characters long.';
+    }
+
+    if (password.match(/[0-9]/gi) === null) {
+      response.result = false;
+      response.message = 'Your password should have, at least, 1 number.';
+    }
+
+    if (password.match(/[A-Z]/g) === null) {
+      response.result = false;
+      response.message =
+        'Your password should have, at least, 1 uppercase letter.';
+    }
+
+    if (password.match(/[a-z]/g) === null) {
+      response.result = false;
+      response.message =
+        'Your password should have, at least, 1 lowercase letter.';
+    }
+
+    return response;
   }
 }
