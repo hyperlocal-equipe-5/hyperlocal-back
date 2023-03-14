@@ -3,6 +3,8 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { GetAllCategoriesController } from 'src/presentation/controllers/category/getAllCategories-controller';
 import { GetOneCategoryController } from 'src/presentation/controllers/category/getOneCategory-controller';
+import { GetAllCategories } from '../dtos/category/getAllCategories-dto';
+import { GetOneCategory } from '../dtos/category/getOneCategory-dto';
 
 @ApiTags('/category')
 @Controller('/category')
@@ -16,7 +18,7 @@ export class CategoryController {
     summary: ''
   })
   @Get('/get-one-category')
-  async getOne(@Query() query) {
+  async getOne(@Query() query: GetOneCategory) {
     const { id, restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.getOneCategoryController.execute(httpRequest);
@@ -26,7 +28,7 @@ export class CategoryController {
     summary: ''
   })
   @Get('/get-all-categories')
-  async getAll(@Query() query) {
+  async getAll(@Query() query: GetAllCategories) {
     const { restaurant } = query;
     const httpRequest: HttpRequest = { restaurant };
     return await this.getAllCategoriesController.execute(httpRequest);

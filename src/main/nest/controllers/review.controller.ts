@@ -2,6 +2,7 @@ import { Controller, Post, Body } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { CreateReviewController } from 'src/presentation/controllers/review/createReview-controller';
+import { CreateReview } from '../dtos/Review/createReview-dto';
 
 @ApiTags('/reviews')
 @Controller('/reviews')
@@ -14,7 +15,7 @@ export class ReviewController {
     summary: ''
   })
   @Post('/review')
-  async create(@Body() body) {
+  async create(@Body() body: CreateReview) {
     const httpRequest: HttpRequest = { body };
     return await this.createReviewController.execute(httpRequest);
   }

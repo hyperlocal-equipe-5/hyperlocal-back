@@ -7,13 +7,16 @@ import {
   Patch,
   Get,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { CreateProductController } from 'src/presentation/controllers/product/createProduct-controller';
 import { DeleteProductController } from 'src/presentation/controllers/product/deleteProduct-controller';
 import { GetAllProductsController } from 'src/presentation/controllers/product/getAllProducts-controller';
 import { GetOneProductController } from 'src/presentation/controllers/product/getOneProduct-controller';
 import { UpdateProductController } from 'src/presentation/controllers/product/updateProduct-controller';
+import { CreateProduct } from '../dtos/product/createProduct-dto';
+import { GetOneProduct } from '../dtos/product/getOneProduct-dto';
+import { UpdateProduct } from '../dtos/product/updateProduct-dto';
 
 @ApiTags('/admin/product')
 @Controller('/admin/product')
@@ -29,8 +32,9 @@ export class ProductControllerAdmin {
   @ApiOperation({
     summary: ''
   })
+  @ApiBearerAuth()
   @Post('/create-product')
-  async create(@Body() body) {
+  async create(@Body() body: CreateProduct) {
     const httpRequest: HttpRequest = { body };
     return await this.createProductController.execute(httpRequest);
   }
@@ -38,8 +42,9 @@ export class ProductControllerAdmin {
   @ApiOperation({
     summary: ''
   })
+  @ApiBearerAuth()
   @Delete('/delete-product')
-  async delete(@Query() query) {
+  async delete(@Query() query: GetOneProduct) {
     const { id, restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.deleteProductController.execute(httpRequest);
@@ -48,8 +53,9 @@ export class ProductControllerAdmin {
   @ApiOperation({
     summary: ''
   })
+  @ApiBearerAuth()
   @Patch('/update-product')
-  async update(@Body() body) {
+  async update(@Body() body: UpdateProduct) {
     const httpRequest: HttpRequest = { body };
     return await this.UpdateProductController.execute(httpRequest);
   }

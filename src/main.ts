@@ -31,11 +31,12 @@ async function bootstrap() {
     .addTag('/order')
     .addTag('/admin/review')
     .addTag('/reviews')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
 
-  await app.listen(process.env.PORT || 3333);
+  await app.listen(process.env.PORT || 7777);
 }
 bootstrap();

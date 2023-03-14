@@ -3,6 +3,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { GetAllRestaurantsController } from 'src/presentation/controllers/restaurant/getAllRestaurants-controller';
 import { GetOneRestaurantController } from 'src/presentation/controllers/restaurant/getOneRestaurant-controller';
+import { GetOneRestaurant } from '../dtos/restaurant/getOneRestaurant-dto';
 
 @ApiTags('/restaurant')
 @Controller('/restaurant')
@@ -13,17 +14,17 @@ export class RestaurantController {
   ) {}
 
   @ApiOperation({
-    summary: ''
+    summary: '',
   })
   @Get('/get-one-restaurant')
-  async getOne(@Query() query) {
+  async getOne(@Query() query: GetOneRestaurant) {
     const { id } = query;
     const httpRequest: HttpRequest = { id };
     return await this.getOneRestaurantController.execute(httpRequest);
   }
 
   @ApiOperation({
-    summary: ''
+    summary: '',
   })
   @Get('/get-all-restaurants')
   async getAll() {
