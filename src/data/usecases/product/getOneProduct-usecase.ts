@@ -9,8 +9,11 @@ export class GetOneProductUseCase implements GetOneProductUseCaseInterface {
     this.repository = repository;
   }
 
-  public execute(productId: string, restaurantId: string): Promise<Product> {
-    const data = this.repository.getOne(productId, restaurantId);
+  public async execute(
+    productId: string,
+    restaurantId: string,
+  ): Promise<Product> {
+    const data = await this.repository.getOne(productId, restaurantId);
 
     return data;
   }

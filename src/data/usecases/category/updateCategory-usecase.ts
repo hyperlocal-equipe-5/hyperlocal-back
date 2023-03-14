@@ -3,6 +3,7 @@ import { UpdateCategoryDto } from 'src/domain/dto/category/updateCategory-dto';
 import { Category } from 'src/domain/entities/category';
 import { CategoryEntityInterface } from 'src/entities/abstract/interfaces/categoryEntity-interface';
 import { CategoryRepositoryInterface } from 'src/infra/abstract/repositories/categoryRepositor-interface';
+import { InvalidParamError } from 'src/utils/errors/invalidParam-error';
 
 export class UpdateCategoryUseCase implements UpdateCategoryUseCaseInterface {
   private readonly repository: CategoryRepositoryInterface;
@@ -23,6 +24,11 @@ export class UpdateCategoryUseCase implements UpdateCategoryUseCaseInterface {
 
     const { id, restaurant } = updateCategoryDto;
     const fountEntity = await this.repository.getOne(id, restaurant);
+
+    if (fountEntity === null) {
+      throw new InvalidParamError('Id');
+    }
+
     const body = this.entity.updateBody(fountEntity);
     const response = await this.repository.update(body);
 

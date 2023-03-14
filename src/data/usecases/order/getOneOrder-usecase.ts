@@ -9,8 +9,8 @@ export class GetOneOrderUseCase implements GetOneOrderUseCaseInterface {
     this.repository = repository;
   }
 
-  public execute(orderId: string, restaurantId: string): Promise<Order> {
-    const data = this.repository.getOne(orderId, restaurantId);
+  public async execute(orderId: string, restaurantId: string): Promise<Order> {
+    const data = await this.repository.getOne(orderId, restaurantId);
 
     return data;
   }

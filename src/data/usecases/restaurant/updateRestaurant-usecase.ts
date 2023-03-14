@@ -3,6 +3,7 @@ import { UpdateRestaurantDto } from 'src/domain/dto/restaurant/updateRestaurant-
 import { Restaurant } from 'src/domain/entities/restaurant';
 import { RestaurantEntityInterface } from 'src/entities/abstract/interfaces/restaurantEntity-interface';
 import { RestaurantRepositoryInterface } from 'src/infra/abstract/repositories/restaurantRepository-interface';
+import { InvalidParamError } from 'src/utils/errors/invalidParam-error';
 
 export class UpdateRestaurantUseCase
   implements UpdateRestaurantUseCaseInterface
@@ -25,6 +26,11 @@ export class UpdateRestaurantUseCase
 
     const { id } = updateRestaurantDto;
     const fountEntity = await this.repository.getOne(id);
+
+    if (fountEntity === null) {
+      throw new InvalidParamError('Id');
+    }
+
     const body = this.entity.updateBody(fountEntity);
     const response = await this.repository.update(body);
 

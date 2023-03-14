@@ -17,13 +17,6 @@ export class GetAllUsersController implements GetAllUsersControllerInterface {
     httpRequest: HttpRequest,
   ): Promise<HttpResponse<User[]>> {
     try {
-      const loggedUser: User = httpRequest.body.loggedUser;
-      if (UserPermissionValidator.validate(loggedUser, 'readUsers')) {
-        return Response.unauthorized(
-          'This user has no permition to perform this action.',
-        );
-      }
-
       const restaurantId = httpRequest.restaurant;
 
       if (!restaurantId) {

@@ -9,8 +9,8 @@ export class GetOneTableUseCase implements GetOneTableUseCaseInterface {
     this.repository = repository;
   }
 
-  public execute(tableId: string, restaurantId: string): Promise<Table> {
-    const data = this.repository.getOne(tableId, restaurantId);
+  public async execute(tableId: string, restaurantId: string): Promise<Table> {
+    const data = await this.repository.getOne(tableId, restaurantId);
 
     return data;
   }
