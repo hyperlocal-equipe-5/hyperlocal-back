@@ -11,7 +11,7 @@ export class LoginController {
   constructor(private readonly makeLoginController: MakeLoginController) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route to perform the login'
   })
   @Post()
   async login(@Body() body: LoginDto) {

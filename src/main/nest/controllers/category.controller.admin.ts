@@ -20,7 +20,7 @@ export class CategoryControllerAdmin {
 
   @ApiBearerAuth()
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can create a new category from a restaurant.'
   })
   @Post('/create-category')
   async create(@Body() body: CreateCategory) {
@@ -29,7 +29,7 @@ export class CategoryControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can delete a category from a restaurant.'
   })
   @ApiBearerAuth()
   @Delete('/delete-category')
@@ -40,7 +40,7 @@ export class CategoryControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can upgrade a category from a restaurant.'
   })
   @ApiBearerAuth()
   @Patch('/update-category')

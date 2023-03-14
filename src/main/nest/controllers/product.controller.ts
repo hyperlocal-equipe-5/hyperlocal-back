@@ -15,7 +15,7 @@ export class ProductController {
   ) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route to get one product from a restaurant.'
   })
   @Get('/get-one-product')
   async getOne(@Query() query: GetOneProduct) {
@@ -25,7 +25,7 @@ export class ProductController {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route to get all products from a restaurants.'
   })
   @Get('/get-all-products')
   async getAll(@Query() query: GetAllProducts) {

@@ -15,7 +15,7 @@ export class IngredientController {
   ) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route to get one ingredent from a restaurant.'
   })
   @Get('/get-one-ingredient')
   async getOne(@Query() query: GetOneIngredient) {
@@ -25,7 +25,7 @@ export class IngredientController {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route to get all ingrendients from a restaurant.'
   })
   @Get('/get-all-ingredients')
   async getAll(@Query() query: GetAllCategories) {

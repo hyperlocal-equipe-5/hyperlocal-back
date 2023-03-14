@@ -18,7 +18,7 @@ export class IngredientControllerAdmin {
   ) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can create a new ingredient from a restaurant.'
   })
   @ApiBearerAuth()
   @Post('/create-ingredient')
@@ -28,7 +28,7 @@ export class IngredientControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can delete an ingredient from a restaurant.'
   })
   @ApiBearerAuth()
   @Delete('/delete-ingredient')
@@ -39,7 +39,7 @@ export class IngredientControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can update an ingredient from a restaurant.'
   })
   @ApiBearerAuth()
   @Patch('/update-ingredient')

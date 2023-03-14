@@ -31,7 +31,7 @@ export class OrderControllerAdmin {
   ) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can create a new order for a restaurant.'
   })
   @ApiBearerAuth()
   @Post('/create-order')
@@ -41,7 +41,7 @@ export class OrderControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can delete an order from a restaurant'
   })
   @ApiBearerAuth()
   @Delete('/delete-order')
@@ -52,7 +52,7 @@ export class OrderControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can update an order from a restaurant.'
   })
   @ApiBearerAuth()
   @Patch('/update-order')
@@ -62,7 +62,7 @@ export class OrderControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can get one order from a restaurant.'
   })
   @ApiBearerAuth()
   @Get('/get-one-order')
@@ -73,7 +73,7 @@ export class OrderControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can get all orders from a restaurant.'
   })
   @ApiBearerAuth()
   @Get('/get-all-orders')

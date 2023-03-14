@@ -18,7 +18,7 @@ export class RestaurantControllerAdmin {
   ) {}
 
   @ApiOperation({
-    summary: '',
+    summary: 'Route that an authorized account can create a new restaurant.',
   })
   @ApiBearerAuth()
   @Post('/create-restaurant')
@@ -28,7 +28,7 @@ export class RestaurantControllerAdmin {
   }
 
   @ApiOperation({
-    summary: '',
+    summary: 'Route that an authorized account can delete a restaurant.',
   })
   @ApiBearerAuth()
   @Delete('/delete-restaurant')
@@ -39,7 +39,7 @@ export class RestaurantControllerAdmin {
   }
 
   @ApiOperation({
-    summary: '',
+    summary: 'Route that an authorized account can update a restaurant.',
   })
   @ApiBearerAuth()
   @Patch('/update-restaurant')

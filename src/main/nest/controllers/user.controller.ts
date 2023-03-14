@@ -28,7 +28,7 @@ export class UserController {
   ) {}
 
   @ApiOperation({
-    summary: '',
+    summary: 'Route that an authorized account can create a new user.',
   })
   @ApiBearerAuth()
   @Post('/create-user')
@@ -38,7 +38,7 @@ export class UserController {
   }
 
   @ApiOperation({
-    summary: '',
+    summary: 'Route that an authorized account can delete an user from a restaurant',
   })
   @ApiBearerAuth()
   @Delete('/delete-user')
@@ -49,7 +49,7 @@ export class UserController {
   }
 
   @ApiOperation({
-    summary: '',
+    summary: 'Route that an authorized account can  update an user from a restaurant',
   })
   @ApiBearerAuth()
   @Patch('/update-user')
@@ -59,7 +59,7 @@ export class UserController {
   }
 
   @ApiOperation({
-    summary: '',
+    summary: 'Route that an authorized account can get an user from a restaurant',
   })
   @ApiBearerAuth()
   @Get('/get-one-user')

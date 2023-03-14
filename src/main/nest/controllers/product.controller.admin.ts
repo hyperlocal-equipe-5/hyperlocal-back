@@ -30,7 +30,7 @@ export class ProductControllerAdmin {
   ) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can create a new product for a restaurant.'
   })
   @ApiBearerAuth()
   @Post('/create-product')
@@ -40,7 +40,7 @@ export class ProductControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can delete a product from a restaurant.'
   })
   @ApiBearerAuth()
   @Delete('/delete-product')
@@ -51,7 +51,7 @@ export class ProductControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can update a product from a restaurant.'
   })
   @ApiBearerAuth()
   @Patch('/update-product')

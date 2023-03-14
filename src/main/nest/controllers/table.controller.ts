@@ -15,7 +15,7 @@ export class TableController {
   ) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route to get one table from a restaurant.'
   })
   @Get('/get-one-table')
   async getOne(@Query() query: GetOneTable) {
@@ -25,7 +25,7 @@ export class TableController {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route to get all tables from a restaurant.'
   })
   @Get('/get-all-tables')
   async getAll(@Query() query: GetAllTables) {

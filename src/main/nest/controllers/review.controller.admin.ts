@@ -17,7 +17,7 @@ export class ReviewControllerAdmin {
   ) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can get one review from a restaurant.'
   })
   @ApiBearerAuth()
   @Get('/get-one-review')
@@ -28,7 +28,7 @@ export class ReviewControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can get all reviews from a restaurants.'
   })
   @ApiBearerAuth()
   @Get('/get-all-reviews')
@@ -39,7 +39,7 @@ export class ReviewControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can delete a review from a restaurant.'
   })
   @ApiBearerAuth()
   @Delete('/delete-review')

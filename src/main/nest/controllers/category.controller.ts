@@ -15,7 +15,7 @@ export class CategoryController {
   ) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route to get one category from a restaurant.'
   })
   @Get('/get-one-category')
   async getOne(@Query() query: GetOneCategory) {
@@ -25,7 +25,7 @@ export class CategoryController {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'route to get all categories from a restaurant.'
   })
   @Get('/get-all-categories')
   async getAll(@Query() query: GetAllCategories) {

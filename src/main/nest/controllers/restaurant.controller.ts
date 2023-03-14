@@ -14,7 +14,7 @@ export class RestaurantController {
   ) {}
 
   @ApiOperation({
-    summary: '',
+    summary: 'Route that an authorized account can get one restaurant.',
   })
   @Get('/get-one-restaurant')
   async getOne(@Query() query: GetOneRestaurant) {
@@ -24,7 +24,7 @@ export class RestaurantController {
   }
 
   @ApiOperation({
-    summary: '',
+    summary: 'Route that an authorized account can get all restaurants.',
   })
   @Get('/get-all-restaurants')
   async getAll() {

@@ -10,7 +10,7 @@ export class OrderController {
   constructor(private readonly createOrderController: CreateOrderController) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route to create a new order for a restaurant.'
   })
   @Post('/orders/order')
   async create(@Body() body: CreateOrder) {

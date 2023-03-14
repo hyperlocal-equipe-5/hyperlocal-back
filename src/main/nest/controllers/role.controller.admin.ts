@@ -30,7 +30,7 @@ export class RoleControllerAdmin {
   ) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can create a new role for a restaurant.'
   })
   @ApiBearerAuth()
   @Post('/create-role')
@@ -40,7 +40,7 @@ export class RoleControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can delete a role from a restaurant.'
   })
   @ApiBearerAuth()
   @Delete('/delete-role')
@@ -51,7 +51,7 @@ export class RoleControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can update a role from a restaurant.'
   })
   @ApiBearerAuth()
   @Patch('/update-role')
@@ -61,7 +61,7 @@ export class RoleControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can get one role from a restaurant.'
   })
   @ApiBearerAuth()
   @Get('/get-one-role')
@@ -72,7 +72,7 @@ export class RoleControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can get all roles from a restaurant.'
   })
   @ApiBearerAuth()
   @Get('/get-all-roles')

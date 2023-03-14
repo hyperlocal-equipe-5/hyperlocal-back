@@ -12,7 +12,7 @@ export class ReviewController {
   ) {}
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route to create a new review.'
   })
   @Post('/review')
   async create(@Body() body: CreateReview) {

@@ -20,7 +20,7 @@ export class TableControllerAdmin {
 
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can create a new table for a restaurant.'
   })
   @ApiBearerAuth()
   @Post('/create-table')
@@ -30,7 +30,7 @@ export class TableControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can delete table from a restaurant.'
   })
   @ApiBearerAuth()
   @Delete('/delete-table')
@@ -41,7 +41,7 @@ export class TableControllerAdmin {
   }
 
   @ApiOperation({
-    summary: ''
+    summary: 'Route that an authorized account can update a table from a restaurant.'
   })
   @ApiBearerAuth()
   @Patch('/update-table')
