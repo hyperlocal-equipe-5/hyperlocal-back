@@ -19,6 +19,11 @@ export class GetOneRestaurantController implements GetOneRestaurantInterface {
   ): Promise<HttpResponse<Restaurant>> {
     try {
       const restaurantId = httpRequest.id;
+
+      if (!restaurantId) {
+        return Response.badRequest('Missing restaurant id.');
+      }
+
       const restaurant = await this.getOneRestaurantUseCase.execute(
         restaurantId,
       );

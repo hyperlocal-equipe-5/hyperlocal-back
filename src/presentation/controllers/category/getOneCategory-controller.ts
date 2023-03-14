@@ -18,6 +18,11 @@ export class GetOneCategoryController implements GetOneCategoryInterface {
     try {
       const categoryId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!categoryId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const oneCategory = await this.getOneCategoryUseCase.execute(
         categoryId,
         restaurantId,

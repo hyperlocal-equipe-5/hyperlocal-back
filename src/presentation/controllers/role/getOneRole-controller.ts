@@ -25,6 +25,11 @@ export class GetOneRoleController implements GetOneRoleInterface {
 
       const roleId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!roleId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const oneRole = await this.getOneRoleUseCase.execute(
         roleId,
         restaurantId,

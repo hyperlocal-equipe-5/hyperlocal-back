@@ -27,6 +27,11 @@ export class DeleteCategoryController implements DeleteCategoryInterface {
 
       const categoryId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!categoryId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const deletedCategory = await this.deleteCategoryUseCase.execute(
         categoryId,
         restaurantId,

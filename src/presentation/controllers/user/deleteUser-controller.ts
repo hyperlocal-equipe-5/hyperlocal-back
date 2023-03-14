@@ -17,6 +17,11 @@ export class DeleteUserController implements DeleteUserControllerInterface {
     try {
       const userId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!userId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const deletedUser = await this.deleteUserUseCase.execute(
         userId,
         restaurantId,

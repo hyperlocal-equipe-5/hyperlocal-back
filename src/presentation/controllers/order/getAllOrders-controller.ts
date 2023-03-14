@@ -26,6 +26,11 @@ export class GetAllOrdersController implements GetAllOrdersInterface {
       }
 
       const restaurantId = httpRequest.restaurant;
+
+      if (!restaurantId) {
+        return Response.badRequest('Missing restaurant id.');
+      }
+
       const allOrders = await this.createdOrderUserCase.execute(restaurantId);
       return Response.ok(allOrders);
     } catch (error) {

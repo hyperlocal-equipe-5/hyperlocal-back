@@ -19,6 +19,11 @@ export class GetAllCategoriesController implements GetAllCategoriesInterface {
   ): Promise<HttpResponse<Category[]>> {
     try {
       const restaurantId = httpRequest.restaurant;
+
+      if (!restaurantId) {
+        return Response.badRequest('Missing restaurant id.');
+      }
+
       const allCategories = await this.getAllcategoriesUseCase.execute(
         restaurantId,
       );

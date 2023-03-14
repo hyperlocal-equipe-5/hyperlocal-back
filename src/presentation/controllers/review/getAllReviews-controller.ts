@@ -17,6 +17,11 @@ export class GetAllReviewsController implements GetAllReviewsInterface {
   ): Promise<HttpResponse<Review[]>> {
     try {
       const restaurantId = httpRequest.restaurant;
+
+      if (!restaurantId) {
+        return Response.badRequest('Missing restaurant id.');
+      }
+
       const allReviews = await this.getAllReviewsUseCase.execute(restaurantId);
 
       return Response.ok(allReviews);

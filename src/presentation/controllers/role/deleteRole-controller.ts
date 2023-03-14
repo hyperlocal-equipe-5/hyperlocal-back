@@ -25,6 +25,11 @@ export class DeleteRoleController implements DeleteRoleInterface {
 
       const roleId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!roleId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const deletedRole = await this.deleteRoleUseCase.execute(
         roleId,
         restaurantId,

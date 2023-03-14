@@ -25,6 +25,11 @@ export class DeleteOrderController implements DeleteOrderInterface {
 
       const orderId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!orderId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const deletedOrder = await this.deleteOrderUseCase.execute(
         orderId,
         restaurantId,

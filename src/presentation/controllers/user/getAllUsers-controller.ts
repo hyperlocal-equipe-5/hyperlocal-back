@@ -24,8 +24,13 @@ export class GetAllUsersController implements GetAllUsersControllerInterface {
         );
       }
 
-      const getAllUsers = httpRequest.restaurant;
-      const getAllUser = await this.getAllUsersUserCase.execute(getAllUsers);
+      const restaurantId = httpRequest.restaurant;
+
+      if (!restaurantId) {
+        return Response.badRequest('Missing restaurant id.');
+      }
+
+      const getAllUser = await this.getAllUsersUserCase.execute(restaurantId);
       return Response.ok(getAllUser);
     } catch (error) {
       return Response.notFound(error.message);

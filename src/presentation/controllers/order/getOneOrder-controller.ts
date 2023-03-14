@@ -16,6 +16,11 @@ export class GetOneOrderController implements GetOneOrderInterface {
     try {
       const orderId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!orderId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const oneOrder = await this.getOneOrderUseCase.execute(
         orderId,
         restaurantId,

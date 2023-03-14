@@ -24,6 +24,11 @@ export class DeleteTableController implements DeleteTableInterface {
 
       const tableId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!tableId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const deletedTable = await this.deleteTableUseCase.execute(
         tableId,
         restaurantId,

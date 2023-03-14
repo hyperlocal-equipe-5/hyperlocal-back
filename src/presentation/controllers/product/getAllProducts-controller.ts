@@ -17,6 +17,11 @@ export class GetAllProductsController implements GetAllProductsInterface {
   ): Promise<HttpResponse<Product[]>> {
     try {
       const restaurantId = httpRequest.restaurant;
+
+      if (!restaurantId) {
+        return Response.badRequest('Missing restaurant id.');
+      }
+
       const allProducts = await this.getAllProductsUseCase.execute(
         restaurantId,
       );

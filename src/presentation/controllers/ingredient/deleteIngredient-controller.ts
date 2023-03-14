@@ -29,6 +29,11 @@ export class DeleteIngredientController implements DeleteIngredientInterface {
 
       const ingredientId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!ingredientId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const deletedIngredient = await this.deleteIngredientUseCase.execute(
         ingredientId,
         restaurantId,

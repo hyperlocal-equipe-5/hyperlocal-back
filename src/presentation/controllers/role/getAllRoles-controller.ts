@@ -26,6 +26,11 @@ export class GetAllRolesController implements GetAllRolesInterface {
       }
 
       const restaurantId = httpRequest.restaurant;
+
+      if (!restaurantId) {
+        return Response.badRequest('Missing restaurant id.');
+      }
+
       const allRoles = await this.getAllRolesUseCase.execute(restaurantId);
       return Response.ok(allRoles);
     } catch (error) {

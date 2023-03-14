@@ -28,6 +28,11 @@ export class DeleteRestaurantController implements DeleteRestaurantInterface {
       }
 
       const restaurantId = httpRequest.id;
+
+      if (!restaurantId) {
+        return Response.badRequest('Missing restaurant id.');
+      }
+
       const deletedRestaurant = await this.deleteRestaurantUseCase.execute(
         restaurantId,
       );
