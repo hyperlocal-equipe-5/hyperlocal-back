@@ -101,7 +101,7 @@ export class UserEntity extends Entity implements UserEntityInterface {
 
     if (email.match(/\@|\./g) === null || email.match(/\@|\./g).length >= 2) {
       response.result = false;
-      response.message = 'Invalid emil format.';
+      response.message = 'Invalid email format.';
     }
 
     return response;
