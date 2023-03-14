@@ -17,6 +17,11 @@ export class GetAllTablesController implements GetAllTablesInterface {
   ): Promise<HttpResponse<Table[]>> {
     try {
       const restaurantId = httpRequest.restaurant;
+
+      if (!restaurantId) {
+        return Response.badRequest('Missing restaurant id.');
+      }
+
       const allTables = await this.getAllTablesUseCase.execute(restaurantId);
 
       return Response.ok(allTables);

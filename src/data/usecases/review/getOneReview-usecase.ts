@@ -9,8 +9,11 @@ export class GetOneReviewUseCase implements GetOneReviewUseCaseInterface {
     this.repository = repository;
   }
 
-  public execute(reviewId: string, restaurantId: string): Promise<Review> {
-    const data = this.repository.getOne(reviewId, restaurantId);
+  public async execute(
+    reviewId: string,
+    restaurantId: string,
+  ): Promise<Review> {
+    const data = await this.repository.getOne(reviewId, restaurantId);
 
     return data;
   }

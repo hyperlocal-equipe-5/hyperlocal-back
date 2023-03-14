@@ -3,6 +3,7 @@ import { UpdateRoleDto } from 'src/domain/dto/role/updateRole-dto';
 import { Role } from 'src/domain/entities/role';
 import { RoleEntityInterface } from 'src/entities/abstract/interfaces/roleEntity-interface';
 import { RoleRepositoryInterface } from 'src/infra/abstract/repositories/roleRepository-interface';
+import { InvalidParamError } from 'src/utils/errors/invalidParam-error';
 
 export class UpdateRoleUseCase implements UpdateRoleUseCaseInterface {
   private readonly entity: RoleEntityInterface;
@@ -21,6 +22,11 @@ export class UpdateRoleUseCase implements UpdateRoleUseCaseInterface {
 
     const { id, restaurant } = updateRoleDto;
     const fountEntity = await this.repository.getOne(id, restaurant);
+
+    if (fountEntity === null) {
+      throw new InvalidParamError('Id');
+    }
+
     const body = this.entity.updateBody(fountEntity);
     const response = await this.repository.update(body);
 

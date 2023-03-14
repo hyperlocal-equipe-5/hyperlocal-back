@@ -20,6 +20,11 @@ export class GetOneIngredientController implements GetOneIngredientInterface {
     try {
       const ingredientId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!ingredientId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const oneIngredient = await this.getOneIngredientUseCase.execute(
         ingredientId,
         restaurantId,

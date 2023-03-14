@@ -9,8 +9,8 @@ export class GetOneRoleUseCase implements GetOneRoleUseCaseInterface {
     this.repository = repository;
   }
 
-  public execute(roleId: string, restaurantId: string): Promise<Role> {
-    const data = this.repository.getOne(roleId, restaurantId);
+  public async execute(roleId: string, restaurantId: string): Promise<Role> {
+    const data = await this.repository.getOne(roleId, restaurantId);
 
     return data;
   }

@@ -1,9 +1,11 @@
 import { DeleteIngredientUseCaseInterface } from 'src/data/abstract/usecases/ingredient/deleteIngredientUseCase-interface';
 import { Ingredient } from 'src/domain/entities/ingredient';
+import { User } from 'src/domain/entities/user';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { HttpResponse } from 'src/domain/http/httpResponse';
 import { DeleteIngredientInterface } from 'src/presentation/abstract/controllers/ingredient/deleteIngredientController-interface';
 import { Response } from 'src/utils/http/response';
+import { UserPermissionValidator } from 'src/utils/validators/userPermission-validator';
 
 export class DeleteIngredientController implements DeleteIngredientInterface {
   private readonly deleteIngredientUseCase: DeleteIngredientUseCaseInterface;
@@ -18,8 +20,20 @@ export class DeleteIngredientController implements DeleteIngredientInterface {
     httpRequest: HttpRequest,
   ): Promise<HttpResponse<Ingredient>> {
     try {
+      const loggedUser: User = httpRequest.body.loggedUser;
+      if (!UserPermissionValidator.validate(loggedUser, 'deleteIngredients')) {
+        return Response.unauthorized(
+          'This user has no permition to perform this action.',
+        );
+      }
+
       const ingredientId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!ingredientId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const deletedIngredient = await this.deleteIngredientUseCase.execute(
         ingredientId,
         restaurantId,

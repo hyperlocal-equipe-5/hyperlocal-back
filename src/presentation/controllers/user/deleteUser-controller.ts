@@ -4,6 +4,7 @@ import { HttpRequest } from 'src/domain/http/httpRequest';
 import { HttpResponse } from 'src/domain/http/httpResponse';
 import { DeleteUserControllerInterface } from 'src/presentation/abstract/controllers/user/deleteUserController-interface';
 import { Response } from 'src/utils/http/response';
+import { UserPermissionValidator } from 'src/utils/validators/userPermission-validator';
 
 export class DeleteUserController implements DeleteUserControllerInterface {
   private readonly deleteUserUseCase: DeleteUserUseCaseInterface;
@@ -16,6 +17,11 @@ export class DeleteUserController implements DeleteUserControllerInterface {
     try {
       const userId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!userId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const deletedUser = await this.deleteUserUseCase.execute(
         userId,
         restaurantId,

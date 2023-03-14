@@ -11,11 +11,11 @@ export class GetOneIngredientUseCase
     this.repository = repository;
   }
 
-  public execute(
+  public async execute(
     ingredientId: string,
     restaurantId: string,
   ): Promise<Ingredient> {
-    const data = this.repository.getOne(ingredientId, restaurantId);
+    const data = await this.repository.getOne(ingredientId, restaurantId);
 
     return data;
   }

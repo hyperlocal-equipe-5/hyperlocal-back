@@ -18,6 +18,11 @@ export class GetOneReviewController implements GetOneReviewInterface {
     try {
       const reviewId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!reviewId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const oneReview = await this.getOneReviewUseCase.execute(
         reviewId,
         restaurantId,
