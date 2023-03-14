@@ -14,9 +14,14 @@ export class GetOneUserController implements GetOneUserControllerInterface {
 
   public async execute(httpRequest: HttpRequest): Promise<HttpResponse<User>> {
     try {
-      const userID = httpRequest.id;
+      const userId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
-      const user = await this.getOneUserUseCase.execute(userID, restaurantId);
+
+      if (!userId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
+      const user = await this.getOneUserUseCase.execute(userId, restaurantId);
 
       return Response.ok(user);
     } catch (error) {

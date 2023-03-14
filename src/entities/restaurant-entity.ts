@@ -6,6 +6,7 @@ import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { RestaurantEntityInterface } from './abstract/interfaces/restaurantEntity-interface';
 import { RestaurantType } from '../domain/types/restaurant-type';
 import { Entity } from './entity';
+import { InvalidParamError } from 'src/utils/errors/invalidParam-error';
 
 export class RestaurantEntity
   extends Entity
@@ -28,6 +29,15 @@ export class RestaurantEntity
   public validate(): void {
     if (!this.restaurantDto.name) {
       throw new MissingParamError('name');
+    }
+
+    if (
+      this.restaurantDto.email &&
+      !this.emailValidator(this.restaurantDto.email).result
+    ) {
+      throw new InvalidParamError(
+        this.emailValidator(this.restaurantDto.email).message,
+      );
     }
   }
 

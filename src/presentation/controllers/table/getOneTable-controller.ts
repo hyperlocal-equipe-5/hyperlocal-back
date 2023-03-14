@@ -16,6 +16,11 @@ export class GetOneTableController implements GetOneTableInterface {
     try {
       const tableId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!tableId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const oneTable = await this.getOneTableUseCase.execute(
         tableId,
         restaurantId,

@@ -18,6 +18,11 @@ export class GetOneProductController implements GetOneProductInterface {
     try {
       const productId = httpRequest.id;
       const restaurant = httpRequest.restaurant;
+
+      if (!productId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const oneProduct = await this.getOneProductUseCase.execute(
         productId,
         restaurant,

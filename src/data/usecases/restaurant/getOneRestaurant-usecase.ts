@@ -11,8 +11,8 @@ export class GetOneRestaurantUseCase
     this.repository = repository;
   }
 
-  public execute(restaurantId: string): Promise<Restaurant> {
-    const data = this.repository.getOne(restaurantId);
+  public async execute(restaurantId: string): Promise<Restaurant> {
+    const data = await this.repository.getOne(restaurantId);
 
     return data;
   }

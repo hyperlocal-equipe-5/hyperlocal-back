@@ -9,8 +9,8 @@ export class GetOneUserUseCase implements GetOneUserUseCaseInterface {
     this.repository = repository;
   }
 
-  public execute(userId: string, restaurantId: string): Promise<User> {
-    const data = this.repository.getOneById(userId, restaurantId);
+  public async execute(userId: string, restaurantId: string): Promise<User> {
+    const data = await this.repository.getOneById(userId, restaurantId);
 
     return data;
   }

@@ -18,6 +18,11 @@ export class DeleteReviewController implements DeleteReviewInterface {
     try {
       const reviewId = httpRequest.id;
       const restaurantId = httpRequest.restaurant;
+
+      if (!reviewId) {
+        return Response.badRequest('Missing entity id.');
+      }
+
       const deletedReview = await this.deleteReviewUseCase.execute(
         reviewId,
         restaurantId,

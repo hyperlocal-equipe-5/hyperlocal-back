@@ -17,6 +17,11 @@ export class MakeLoginController implements MakeLoginControllerInterface {
   ): Promise<HttpResponse<LoggedType>> {
     try {
       const loginDto = httpRequest.body;
+
+      if (!loginDto || !loginDto.email || !loginDto.password) {
+        return Response.badRequest('Invalid email and/or password.');
+      }
+
       const makeLogin = await this.makeLoginUsecase.execute(loginDto);
 
       return Response.ok(makeLogin);
