@@ -1,9 +1,10 @@
-import { Controller, Query, Get } from '@nestjs/common';
+import { Controller, Query, Get, Param } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { GetAllIngredientsController } from 'src/presentation/controllers/ingredient/getAllIngredients-controller';
 import { GetOneIngredientController } from 'src/presentation/controllers/ingredient/getOneIngredient-controller';
 import { GetAllCategories } from '../dtos/category/getAllCategories-dto';
+import { GetOneRestaurant } from '../dtos/getOneRestaurant-dto';
 import { GetOneIngredient } from '../dtos/ingredient/getOneIngredient-dto';
 
 @ApiTags('/ingredient')
@@ -17,9 +18,9 @@ export class IngredientController {
   @ApiOperation({
     summary: 'Route to get one ingredent from a restaurant.'
   })
-  @Get('/get-one-ingredient')
-  async getOne(@Query() query: GetOneIngredient) {
-    const { id, restaurant } = query;
+  @Get(':id')
+  async getOne(@Param('id') id: string, @Query() query: GetOneRestaurant) {
+    const { restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.getOneIngredientController.execute(httpRequest);
   }
@@ -27,7 +28,7 @@ export class IngredientController {
   @ApiOperation({
     summary: 'Route to get all ingrendients from a restaurant.'
   })
-  @Get('/get-all-ingredients')
+  @Get()
   async getAll(@Query() query: GetAllCategories) {
     const { restaurant } = query;
     const httpRequest: HttpRequest = { restaurant };

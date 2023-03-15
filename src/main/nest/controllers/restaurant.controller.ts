@@ -1,4 +1,4 @@
-import { Controller, Query, Get } from '@nestjs/common';
+import { Controller, Query, Get, Param } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { GetAllRestaurantsController } from 'src/presentation/controllers/restaurant/getAllRestaurants-controller';
@@ -16,9 +16,8 @@ export class RestaurantController {
   @ApiOperation({
     summary: 'Route that an authorized account can get one restaurant.',
   })
-  @Get('/get-one-restaurant')
-  async getOne(@Query() query: GetOneRestaurant) {
-    const { id } = query;
+  @Get(':id')
+  async getOne(@Param('id') id: string) {
     const httpRequest: HttpRequest = { id };
     return await this.getOneRestaurantController.execute(httpRequest);
   }
@@ -26,7 +25,7 @@ export class RestaurantController {
   @ApiOperation({
     summary: 'Route that an authorized account can get all restaurants.',
   })
-  @Get('/get-all-restaurants')
+  @Get()
   async getAll() {
     const httpRequest: HttpRequest = {};
     return await this.getAllRestaurantsController.execute(httpRequest);

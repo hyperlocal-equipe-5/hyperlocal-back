@@ -14,7 +14,7 @@ export class ReviewController {
   @ApiOperation({
     summary: 'Route to create a new review.'
   })
-  @Post('/review')
+  @Post()
   async create(@Body() body: CreateReview) {
     const httpRequest: HttpRequest = { body };
     return await this.createReviewController.execute(httpRequest);

@@ -1,9 +1,10 @@
-import { Controller, Query, Get, Delete } from '@nestjs/common';
+import { Controller, Query, Get, Delete, Param } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { DeleteReviewController } from 'src/presentation/controllers/review/deleteReview-controller';
 import { GetAllReviewsController } from 'src/presentation/controllers/review/getAllReviews-controller';
 import { GetOneReviewController } from 'src/presentation/controllers/review/getOneReview-controller';
+import { GetOneRestaurant } from '../dtos/getOneRestaurant-dto';
 import { GetAllReviews } from '../dtos/Review/getAllReviews-dto';
 import { GetOneReview } from '../dtos/Review/getOneReview-dto';
 
@@ -20,9 +21,9 @@ export class ReviewControllerAdmin {
     summary: 'Route that an authorized account can get one review from a restaurant.'
   })
   @ApiBearerAuth()
-  @Get('/get-one-review')
-  async getOne(@Query() query: GetOneReview) {
-    const { id, restaurant } = query;
+  @Get(':id')
+  async getOne(@Param('id') id: string, @Query() query: GetOneReview) {
+    const { restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.getOneReviewController.execute(httpRequest);
   }
@@ -31,7 +32,7 @@ export class ReviewControllerAdmin {
     summary: 'Route that an authorized account can get all reviews from a restaurants.'
   })
   @ApiBearerAuth()
-  @Get('/get-all-reviews')
+  @Get()
   async getAll(@Query() query: GetAllReviews) {
     const { restaurant } = query;
     const httpRequest: HttpRequest = { restaurant };
@@ -42,10 +43,10 @@ export class ReviewControllerAdmin {
     summary: 'Route that an authorized account can delete a review from a restaurant.'
   })
   @ApiBearerAuth()
-  @Delete('/delete-review')
-  async delete(@Query() query: GetOneReview) {
-    const { id, restaurant } = query;
-    const httpRequest: HttpRequest = { id, restaurant };
+  @Delete(':id')
+  async delete(@Param('id')@Query() query: GetOneRestaurant) {
+    const { restaurant } = query;
+    const httpRequest: HttpRequest = { restaurant };
     return await this.deleteReviewController.execute(httpRequest);
   }
 }

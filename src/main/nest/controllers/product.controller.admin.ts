@@ -6,6 +6,7 @@ import {
   Query,
   Patch,
   Get,
+  Param,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
@@ -14,6 +15,7 @@ import { DeleteProductController } from 'src/presentation/controllers/product/de
 import { GetAllProductsController } from 'src/presentation/controllers/product/getAllProducts-controller';
 import { GetOneProductController } from 'src/presentation/controllers/product/getOneProduct-controller';
 import { UpdateProductController } from 'src/presentation/controllers/product/updateProduct-controller';
+import { GetOneRestaurant } from '../dtos/getOneRestaurant-dto';
 import { CreateProduct } from '../dtos/product/createProduct-dto';
 import { GetOneProduct } from '../dtos/product/getOneProduct-dto';
 import { UpdateProduct } from '../dtos/product/updateProduct-dto';
@@ -33,7 +35,7 @@ export class ProductControllerAdmin {
     summary: 'Route that an authorized account can create a new product for a restaurant.'
   })
   @ApiBearerAuth()
-  @Post('/create-product')
+  @Post()
   async create(@Body() body: CreateProduct) {
     const httpRequest: HttpRequest = { body };
     return await this.createProductController.execute(httpRequest);
@@ -43,9 +45,9 @@ export class ProductControllerAdmin {
     summary: 'Route that an authorized account can delete a product from a restaurant.'
   })
   @ApiBearerAuth()
-  @Delete('/delete-product')
-  async delete(@Query() query: GetOneProduct) {
-    const { id, restaurant } = query;
+  @Delete(':id')
+  async delete(@Param('id') id: string, @Query() query: GetOneRestaurant) {
+    const { restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.deleteProductController.execute(httpRequest);
   }
@@ -54,9 +56,9 @@ export class ProductControllerAdmin {
     summary: 'Route that an authorized account can update a product from a restaurant.'
   })
   @ApiBearerAuth()
-  @Patch('/update-product')
-  async update(@Body() body: UpdateProduct) {
-    const httpRequest: HttpRequest = { body };
+  @Patch(':id')
+  async update(@Param('id') id: string, @Body() body: UpdateProduct) {
+    const httpRequest: HttpRequest = { body: {...body, id} };
     return await this.UpdateProductController.execute(httpRequest);
   }
 }

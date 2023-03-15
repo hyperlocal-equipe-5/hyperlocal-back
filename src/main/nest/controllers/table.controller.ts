@@ -1,4 +1,5 @@
 import { Controller, Query, Get } from '@nestjs/common';
+import { Param } from '@nestjs/common/decorators';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { GetAllTablesController } from 'src/presentation/controllers/table/getAllTables-controller';
@@ -17,9 +18,9 @@ export class TableController {
   @ApiOperation({
     summary: 'Route to get one table from a restaurant.'
   })
-  @Get('/get-one-table')
-  async getOne(@Query() query: GetOneTable) {
-    const { id, restaurant } = query;
+  @Get(':id')
+  async getOne(@Param('id') id: string, @Query() query: GetOneTable) {
+    const { restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.getOneTableController.execute(httpRequest);
   }
@@ -27,7 +28,7 @@ export class TableController {
   @ApiOperation({
     summary: 'Route to get all tables from a restaurant.'
   })
-  @Get('/get-all-tables')
+  @Get()
   async getAll(@Query() query: GetAllTables) {
     const { restaurant } = query;
     const httpRequest: HttpRequest = { restaurant };

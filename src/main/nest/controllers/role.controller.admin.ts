@@ -6,6 +6,7 @@ import {
   Query,
   Patch,
   Get,
+  Param,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
@@ -14,6 +15,7 @@ import { DeleteRoleController } from 'src/presentation/controllers/role/deleteRo
 import { GetAllRolesController } from 'src/presentation/controllers/role/getAllRoles-controller';
 import { GetOneRoleController } from 'src/presentation/controllers/role/getOneRole-controller';
 import { UpdateRoleController } from 'src/presentation/controllers/role/updateRole-controller';
+import { GetOneRestaurant } from '../dtos/getOneRestaurant-dto';
 import { CreateRole } from '../dtos/role/createRole-dto';
 import { GetOneRole } from '../dtos/role/getOneRole-dto';
 import { UpdateRole } from '../dtos/role/updateRole-dto';
@@ -33,7 +35,7 @@ export class RoleControllerAdmin {
     summary: 'Route that an authorized account can create a new role for a restaurant.'
   })
   @ApiBearerAuth()
-  @Post('/create-role')
+  @Post()
   async create(@Body() body:CreateRole) {
     const httpRequest: HttpRequest = { body };
     return await this.createRoleController.execute(httpRequest);
@@ -43,9 +45,9 @@ export class RoleControllerAdmin {
     summary: 'Route that an authorized account can delete a role from a restaurant.'
   })
   @ApiBearerAuth()
-  @Delete('/delete-role')
-  async delete(@Query() query: GetOneRole) {
-    const { id, restaurant } = query;
+  @Delete(':id')
+  async delete(@Param('id') id: string, @Query() query: GetOneRestaurant) {
+    const { restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.deleteRoleController.execute(httpRequest);
   }
@@ -54,9 +56,9 @@ export class RoleControllerAdmin {
     summary: 'Route that an authorized account can update a role from a restaurant.'
   })
   @ApiBearerAuth()
-  @Patch('/update-role')
-  async update(@Body() body: UpdateRole) {
-    const httpRequest: HttpRequest = { body };
+  @Patch(':id')
+  async update(@Param('id') id:string, @Body() body: UpdateRole) {
+    const httpRequest: HttpRequest = { body:{ ...body, id} };
     return await this.UpdateRoleController.execute(httpRequest);
   }
 
@@ -64,9 +66,9 @@ export class RoleControllerAdmin {
     summary: 'Route that an authorized account can get one role from a restaurant.'
   })
   @ApiBearerAuth()
-  @Get('/get-one-role')
-  async getOne(@Query() query: GetOneRole) {
-    const { id, restaurant } = query;
+  @Get(':id')
+  async getOne(@Param('id') id: string, @Query() query: GetOneRestaurant) {
+    const { restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.getOneRoleController.execute(httpRequest);
   }
@@ -75,8 +77,8 @@ export class RoleControllerAdmin {
     summary: 'Route that an authorized account can get all roles from a restaurant.'
   })
   @ApiBearerAuth()
-  @Get('/get-all-roles')
-  async getAll(@Query() query) {
+  @Get()
+  async getAll(@Query() query: GetOneRestaurant) {
     const { restaurant } = query;
     const httpRequest: HttpRequest = { restaurant };
     return await this.getAllRolesController.execute(httpRequest);

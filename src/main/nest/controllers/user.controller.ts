@@ -7,6 +7,7 @@ import {
   Patch,
   Get,
 } from '@nestjs/common';
+import { Param } from '@nestjs/common/decorators';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { CreateUserController } from 'src/presentation/controllers/user/createUser-controller';
@@ -31,7 +32,7 @@ export class UserController {
     summary: 'Route that an authorized account can create a new user.',
   })
   @ApiBearerAuth()
-  @Post('/create-user')
+  @Post()
   async create(@Body() body: CreateUserDto) {
     const httpRequest: HttpRequest = { body };
     return await this.createUserController.execute(httpRequest);
@@ -41,9 +42,9 @@ export class UserController {
     summary: 'Route that an authorized account can delete an user from a restaurant',
   })
   @ApiBearerAuth()
-  @Delete('/delete-user')
-  async delete(@Query() query: GetOneUser) {
-    const { id, restaurant } = query;
+  @Delete(':id')
+  async delete(@Param('id') id: string, @Query() query: GetOneUser) {
+    const { restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.deleteUserController.execute(httpRequest);
   }
@@ -52,8 +53,8 @@ export class UserController {
     summary: 'Route that an authorized account can  update an user from a restaurant',
   })
   @ApiBearerAuth()
-  @Patch('/update-user')
-  async update(@Body() body: UpdateUser) {
+  @Patch(':id')
+  async update(@Param('id') id: string, @Body() body: UpdateUser) {
     const httpRequest: HttpRequest = { body };
     return await this.UpdateUserController.execute(httpRequest);
   }
@@ -62,9 +63,9 @@ export class UserController {
     summary: 'Route that an authorized account can get an user from a restaurant',
   })
   @ApiBearerAuth()
-  @Get('/get-one-user')
-  async getOne(@Query() query: GetOneUser) {
-    const { id, restaurant } = query;
+  @Get(':id')
+  async getOne(@Param('id') id: string, @Query() query: GetOneUser) {
+    const { restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.getOneUserController.execute(httpRequest);
   }

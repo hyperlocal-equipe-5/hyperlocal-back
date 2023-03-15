@@ -2,9 +2,6 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class UpdateIngredient {
   @ApiProperty()
-  id: string;
-
-  @ApiProperty()
   restaurant: string;
 
   @ApiProperty()

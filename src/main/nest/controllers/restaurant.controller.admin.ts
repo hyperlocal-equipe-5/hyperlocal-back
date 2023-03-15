@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Delete, Query, Patch } from '@nestjs/common';
+import { Controller, Post, Body, Delete, Query, Patch, Param } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { CreateRestaurantController } from 'src/presentation/controllers/restaurant/createRestaurant-controller';
@@ -21,7 +21,7 @@ export class RestaurantControllerAdmin {
     summary: 'Route that an authorized account can create a new restaurant.',
   })
   @ApiBearerAuth()
-  @Post('/create-restaurant')
+  @Post()
   async create(@Body() body: CreateRestaurant) {
     const httpRequest: HttpRequest = { body };
     return await this.createRestaurantController.execute(httpRequest);
@@ -31,9 +31,8 @@ export class RestaurantControllerAdmin {
     summary: 'Route that an authorized account can delete a restaurant.',
   })
   @ApiBearerAuth()
-  @Delete('/delete-restaurant')
-  async delete(@Query() query: GetOneRestaurant) {
-    const { id } = query;
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
     const httpRequest: HttpRequest = { id };
     return await this.deleteRestaurantController.execute(httpRequest);
   }
@@ -42,9 +41,9 @@ export class RestaurantControllerAdmin {
     summary: 'Route that an authorized account can update a restaurant.',
   })
   @ApiBearerAuth()
-  @Patch('/update-restaurant')
-  async update(@Body() body: UpdateRestaurant) {
-    const httpRequest: HttpRequest = { body };
+  @Patch(':id')
+  async update(@Param('id') id: string, @Body() body: UpdateRestaurant) {
+    const httpRequest: HttpRequest = { body: { ...body, id} };
     return await this.UpdateRestaurantController.execute(httpRequest);
   }
 }

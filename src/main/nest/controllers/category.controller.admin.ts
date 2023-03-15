@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Delete, Query, Patch } from '@nestjs/common';
+import { Controller, Post, Body, Delete, Query, Patch, Param } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { CreateCategoryController } from 'src/presentation/controllers/category/createCategory-controller';
@@ -7,6 +7,7 @@ import { UpdateCategoryController } from 'src/presentation/controllers/category/
 import { CreateCategory } from '../dtos/category/createCategory-dto';
 import { GetOneCategory } from '../dtos/category/getOneCategory-dto';
 import { UpdateCategory } from '../dtos/category/updateCategory-dto';
+import { GetOneRestaurant } from '../dtos/getOneRestaurant-dto';
 
 @ApiTags('/admin/category')
 @Controller('/admin/category')
@@ -22,7 +23,7 @@ export class CategoryControllerAdmin {
   @ApiOperation({
     summary: 'Route that an authorized account can create a new category from a restaurant.'
   })
-  @Post('/create-category')
+  @Post()
   async create(@Body() body: CreateCategory) {
     const httpRequest: HttpRequest = { body };
     return await this.createCategoryController.execute(httpRequest);
@@ -32,9 +33,9 @@ export class CategoryControllerAdmin {
     summary: 'Route that an authorized account can delete a category from a restaurant.'
   })
   @ApiBearerAuth()
-  @Delete('/delete-category')
-  async delete(@Query() query: GetOneCategory) {
-    const { id, restaurant } = query;
+  @Delete(':id')
+  async delete(@Param('id') id: string, @Query() query: GetOneRestaurant) {
+    const { restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.deleteCategoryController.execute(httpRequest);
   }
@@ -43,9 +44,9 @@ export class CategoryControllerAdmin {
     summary: 'Route that an authorized account can upgrade a category from a restaurant.'
   })
   @ApiBearerAuth()
-  @Patch('/update-category')
-  async update(@Body() body: UpdateCategory) {
-    const httpRequest: HttpRequest = { body };
+  @Patch(':id')
+  async update(@Param('id') id: string, @Body() body: UpdateCategory) {
+    const httpRequest: HttpRequest = { body: {...body, id} };
     return await this.UpdateCategoryController.execute(httpRequest);
   }
 }
