@@ -11,9 +11,6 @@ export class CreateOrder {
   takeAway?: boolean;
 
   @ApiProperty()
-  orderNumber?: number;
-
-  @ApiProperty()
   customerName?: string;
 
   @ApiProperty()
