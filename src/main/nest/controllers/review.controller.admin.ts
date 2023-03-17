@@ -22,7 +22,7 @@ export class ReviewControllerAdmin {
   })
   @ApiBearerAuth()
   @Get(':id')
-  async getOne(@Param('id') id: string, @Query() query: GetOneReview) {
+  async getOne(@Param('id') id: string, @Query() query:GetOneRestaurant) {
     const { restaurant } = query;
     const httpRequest: HttpRequest = { id, restaurant };
     return await this.getOneReviewController.execute(httpRequest);
@@ -44,9 +44,9 @@ export class ReviewControllerAdmin {
   })
   @ApiBearerAuth()
   @Delete(':id')
-  async delete(@Param('id')@Query() query: GetOneRestaurant) {
+  async delete(@Param('id') id: string, @Query() query: GetOneRestaurant) {
     const { restaurant } = query;
-    const httpRequest: HttpRequest = { restaurant };
+    const httpRequest: HttpRequest = { id,  restaurant };
     return await this.deleteReviewController.execute(httpRequest);
   }
 }

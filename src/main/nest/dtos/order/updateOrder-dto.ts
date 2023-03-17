@@ -14,9 +14,6 @@ export class UpdateOrder {
   takeAway?: boolean;
 
   @ApiProperty()
-  orderNumber?: number;
-
-  @ApiProperty()
   customerName?: string;
 
   @ApiProperty()

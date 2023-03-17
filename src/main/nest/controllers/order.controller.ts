@@ -12,7 +12,7 @@ export class OrderController {
   @ApiOperation({
     summary: 'Route to create a new order for a restaurant.'
   })
-  @Post('/orders/order')
+  @Post('')
   async create(@Body() body: CreateOrder) {
     const httpRequest: HttpRequest = { body };
     return await this.createOrderController.execute(httpRequest);

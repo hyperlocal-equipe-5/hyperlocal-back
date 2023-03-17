@@ -46,7 +46,7 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
       products: this.orderDto.products ?? [],
       quantities: this.orderDto.quantities ?? [],
       takeAway: this.orderDto.takeAway ?? false,
-      orderNumber: this.orderDto.orderNumber ?? 0,
+      orderNumber: this.orderNumberGenerator(),
       customerName: this.orderDto.customerName ?? '',
       user: this.orderDto.user ?? '',
       table: this.orderDto.table ?? '',
@@ -64,7 +64,7 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
       quantities: this.orderDto.quantities ?? mainOrder.quantities,
       restaurant: mainOrder.restaurant.id,
       takeAway: this.orderDto.takeAway ?? mainOrder.takeAway,
-      orderNumber: this.orderDto.orderNumber ?? mainOrder.orderNumber,
+      orderNumber: mainOrder.orderNumber,
       customerName: this.orderDto.customerName ?? mainOrder.customerName,
       user: this.orderDto.user
         ? this.orderDto.user
@@ -79,5 +79,16 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
       createdAt: mainOrder.createdAt,
       updatedAt: this.getDate(),
     };
+  }
+
+  private orderNumberGenerator (): number {
+      const orderTime = new Date();
+
+      const startOfTheDay = new Date(orderTime.getFullYear(), orderTime.getMonth(), orderTime.getDate());
+
+      const orderNumber = (orderTime.getTime() - startOfTheDay.getTime()) / 1000;
+
+      return orderNumber;
+
   }
 }
