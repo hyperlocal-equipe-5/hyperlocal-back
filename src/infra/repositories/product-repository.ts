@@ -70,7 +70,7 @@ export class ProductRepository implements ProductRepositoryInterface {
   public async getAll(restaurantId: string): Promise<Product[] | any[]> {
     return prismaDatabase.product
       .findMany({
-        where: { id: restaurantId },
+        where: { restaurantId: restaurantId },
         include: {
           category: true,
           ingredients: true,
