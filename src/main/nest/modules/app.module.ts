@@ -13,6 +13,7 @@ import { TableModule } from './table.module';
 import { UserModule } from './user.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ResponseInterceptor } from '../interceptors/response-interceptor';
+import { PasswordRecoveryModule } from './passwordRecovery.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { ResponseInterceptor } from '../interceptors/response-interceptor';
     RoleModule,
     TableModule,
     UserModule,
+    PasswordRecoveryModule,
   ],
   controllers: [AppController],
   providers: [
