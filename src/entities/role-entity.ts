@@ -1,7 +1,7 @@
 import { CreateRoleDto } from 'src/domain/dto/role/createRole-dto';
 import { UpdateRoleDto } from 'src/domain/dto/role/updateRole-dto';
 import { Role } from 'src/domain/entities/role';
-import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { IdGeneratorAdapterInterface } from 'src/utils/abstract/adapters/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { RoleEntityInterface } from './abstract/interfaces/roleEntity-interface';
 import { RoleType } from '../domain/types/role-type';

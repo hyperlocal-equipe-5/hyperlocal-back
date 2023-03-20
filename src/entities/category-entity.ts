@@ -1,7 +1,7 @@
 import { CreateCategoryDto } from 'src/domain/dto/category/createCategory-dto';
 import { UpdateCategoryDto } from 'src/domain/dto/category/updateCategory-dto';
 import { Category } from 'src/domain/entities/category';
-import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { IdGeneratorAdapterInterface } from 'src/utils/abstract/adapters/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { CategoryEntityInterface } from './abstract/interfaces/categoryEntity-interface';
 import { CategoryType } from '../domain/types/category-type';

@@ -3,8 +3,8 @@ import { Role } from '../../src/domain/entities/role';
 import { RestaurantType } from '../../src/domain/types/restaurant-type';
 import { RoleType } from '../../src/domain/types/role-type';
 import { UserType } from '../../src/domain/types/user-type';
-import { HasherAdapterInterface } from '../../src/utils/adapters/abstract/hasherAdapter-interface';
-import { IdGeneratorAdapterInterface } from '../../src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { HasherAdapterInterface } from '../../src/utils/abstract/adapters/hasherAdapter-interface';
+import { IdGeneratorAdapterInterface } from '../../src/utils/abstract/adapters/idGeneratorAdapter-interface';
 import { HasherAdapter } from '../../src/utils/adapters/hasher-adapter';
 import { IdGeneratorAdapter } from '../../src/utils/adapters/idGenerator-adapter';
 

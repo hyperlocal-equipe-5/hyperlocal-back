@@ -1,7 +1,7 @@
 import { CreateTableDto } from 'src/domain/dto/table/createTable-dto';
 import { UpdateTableDto } from 'src/domain/dto/table/updateTable-dto';
 import { Table } from 'src/domain/entities/table';
-import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { IdGeneratorAdapterInterface } from 'src/utils/abstract/adapters/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { TableEntityInterface } from './abstract/interfaces/tableEntity-interface';
 import { TableType } from '../domain/types/table-type';

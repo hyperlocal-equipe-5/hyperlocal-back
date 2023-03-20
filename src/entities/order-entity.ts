@@ -1,7 +1,7 @@
 import { CreateOrderDto } from 'src/domain/dto/order/createOrder-dto';
 import { UpdateOrderDto } from 'src/domain/dto/order/updateOrder-dto';
 import { Order } from 'src/domain/entities/order';
-import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { IdGeneratorAdapterInterface } from 'src/utils/abstract/adapters/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { OrderEntityInterface } from './abstract/interfaces/orderEntity-interface';
 import { OrderType } from '../domain/types/order-type';
@@ -81,14 +81,17 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
     };
   }
 
-  private orderNumberGenerator (): number {
-      const orderTime = new Date();
+  private orderNumberGenerator(): number {
+    const orderTime = new Date();
 
-      const startOfTheDay = new Date(orderTime.getFullYear(), orderTime.getMonth(), orderTime.getDate());
+    const startOfTheDay = new Date(
+      orderTime.getFullYear(),
+      orderTime.getMonth(),
+      orderTime.getDate(),
+    );
 
-      const orderNumber = (orderTime.getTime() - startOfTheDay.getTime()) / 1000;
+    const orderNumber = (orderTime.getTime() - startOfTheDay.getTime()) / 1000;
 
-      return orderNumber;
-
+    return orderNumber;
   }
 }

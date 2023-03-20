@@ -1,6 +1,6 @@
 import { User } from 'src/domain/entities/user';
 import { HttpRequest } from 'src/domain/http/httpRequest';
-import { TokenHandlerAdapterInterface } from 'src/utils/adapters/abstract/tokenHandlerAdapter-interface';
+import { TokenHandlerAdapterInterface } from 'src/utils/abstract/adapters/tokenHandlerAdapter-interface';
 import { UnauthorizedError } from 'src/utils/errors/unauthorized-error';
 import { AuthMiddlewareInterface } from '../abstract/middlewares/authMiddleware-interface';
 

@@ -1,7 +1,7 @@
 import { CreateReviewDto } from 'src/domain/dto/review/createReview-dto';
 import { UpdateReviewDto } from 'src/domain/dto/review/updateReview-dto';
 import { Review } from 'src/domain/entities/review';
-import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { IdGeneratorAdapterInterface } from 'src/utils/abstract/adapters/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { ReviewEntityInterface } from './abstract/interfaces/reviewEntity-interface';
 import { ReviewType } from '../domain/types/review-type';

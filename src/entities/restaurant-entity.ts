@@ -1,7 +1,7 @@
 import { CreateRestaurantDto } from 'src/domain/dto/restaurant/createRestaurant-dto';
 import { UpdateRestaurantDto } from 'src/domain/dto/restaurant/updateRestaurant-dto';
 import { Restaurant } from 'src/domain/entities/restaurant';
-import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { IdGeneratorAdapterInterface } from 'src/utils/abstract/adapters/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { RestaurantEntityInterface } from './abstract/interfaces/restaurantEntity-interface';
 import { RestaurantType } from '../domain/types/restaurant-type';

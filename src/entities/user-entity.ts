@@ -1,8 +1,8 @@
 import { CreateUserDto } from 'src/domain/dto/user/createUser-dto';
 import { UpdateUserDto } from 'src/domain/dto/user/updateUser-dto';
 import { User } from 'src/domain/entities/user';
-import { HasherAdapterInterface } from 'src/utils/adapters/abstract/hasherAdapter-interface';
-import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { HasherAdapterInterface } from 'src/utils/abstract/adapters/hasherAdapter-interface';
+import { IdGeneratorAdapterInterface } from 'src/utils/abstract/adapters/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { UserEntityInterface } from './abstract/interfaces/userEntity-interface';
 import { UserType } from '../domain/types/user-type';

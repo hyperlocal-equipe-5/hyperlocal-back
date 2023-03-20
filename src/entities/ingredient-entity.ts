@@ -1,7 +1,7 @@
 import { CreateIngredientDto } from 'src/domain/dto/ingredient/createIngredient-dto';
 import { UpdateIngredientDto } from 'src/domain/dto/ingredient/updateIngredient-dto';
 import { Ingredient } from 'src/domain/entities/ingredient';
-import { IdGeneratorAdapterInterface } from 'src/utils/adapters/abstract/idGeneratorAdapter-interface';
+import { IdGeneratorAdapterInterface } from 'src/utils/abstract/adapters/idGeneratorAdapter-interface';
 import { MissingParamError } from 'src/utils/errors/missingParam-error';
 import { IngredientEntityInterface } from './abstract/interfaces/ingredientEntity-interface';
 import { IngredientType } from '../domain/types/ingredint-type';

@@ -2,7 +2,7 @@ import * as jwt from 'jsonwebtoken';
 import { GetOneUserUseCaseInterface } from 'src/data/abstract/usecases/user/getOneUserUseCase-interface';
 import { User } from 'src/domain/entities/user';
 import { InvalidParamError } from '../errors/invalidParam-error';
-import { TokenHandlerAdapterInterface } from './abstract/tokenHandlerAdapter-interface';
+import { TokenHandlerAdapterInterface } from '../abstract/adapters/tokenHandlerAdapter-interface';
 
 export class TokenHandlerAdapter implements TokenHandlerAdapterInterface {
   public constructor(

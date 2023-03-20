@@ -2,8 +2,8 @@ import { MakeLoginUseCaseInterface } from 'src/data/abstract/usecases/login/make
 import { LoginDto } from 'src/domain/dto/login/login-dto';
 import { LoggedType } from 'src/domain/types/logged-type';
 import { UserRepositoryInterface } from 'src/infra/abstract/repositories/userRepository-interface';
-import { HasherAdapterInterface } from 'src/utils/adapters/abstract/hasherAdapter-interface';
-import { TokenHandlerAdapterInterface } from 'src/utils/adapters/abstract/tokenHandlerAdapter-interface';
+import { HasherAdapterInterface } from 'src/utils/abstract/adapters/hasherAdapter-interface';
+import { TokenHandlerAdapterInterface } from 'src/utils/abstract/adapters/tokenHandlerAdapter-interface';
 import { InvalidParamError } from 'src/utils/errors/invalidParam-error';
 
 export class MakeLoginUseCase implements MakeLoginUseCaseInterface {
