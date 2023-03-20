@@ -1,0 +1,97 @@
+import { CreateOrderDto } from 'src/domain/dto/order/createOrder-dto';
+import { UpdateOrderDto } from 'src/domain/dto/order/updateOrder-dto';
+import { Order } from 'src/domain/entities/order';
+import { IdGeneratorAdapterInterface } from 'src/utils/abstract/adapters/idGeneratorAdapter-interface';
+import { MissingParamError } from 'src/utils/errors/missingParam-error';
+import { OrderEntityInterface } from './abstract/interfaces/orderEntity-interface';
+import { OrderType } from '../domain/types/order-type';
+import { Entity } from './entity';
+import { InvalidParamError } from 'src/utils/errors/invalidParam-error';
+
+export class OrderEntity extends Entity implements OrderEntityInterface {
+  private orderDto: CreateOrderDto | UpdateOrderDto;
+  private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
+
+  public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
+    super();
+    this.idGeneratorAdapter = idGeneratorAdapter;
+  }
+
+  public setData(orderDto: CreateOrderDto | UpdateOrderDto): void {
+    this.orderDto = orderDto;
+  }
+
+  public validate(): void {
+    if (!this.orderDto.products) {
+      throw new MissingParamError('products');
+    }
+
+    if (!this.orderDto.quantities) {
+      throw new MissingParamError('quantities');
+    }
+
+    if (this.orderDto.products.length !== this.orderDto.products.length) {
+      throw new InvalidParamError('products / quantities');
+    }
+
+    if (!this.orderDto.restaurant) {
+      throw new MissingParamError('restaurant');
+    }
+  }
+
+  public getBody(): OrderType {
+    return {
+      id: this.idGeneratorAdapter.generateId(),
+      restaurant: this.orderDto.restaurant,
+      products: this.orderDto.products ?? [],
+      quantities: this.orderDto.quantities ?? [],
+      takeAway: this.orderDto.takeAway ?? false,
+      orderNumber: this.orderNumberGenerator(),
+      customerName: this.orderDto.customerName ?? '',
+      user: this.orderDto.user ?? '',
+      table: this.orderDto.table ?? '',
+      createdAt: this.getDate(),
+      updatedAt: this.getDate(),
+    };
+  }
+
+  public updateBody(mainOrder: Order): OrderType {
+    return {
+      id: mainOrder.id,
+      products:
+        this.orderDto.products ??
+        mainOrder.products.map((product) => product.id),
+      quantities: this.orderDto.quantities ?? mainOrder.quantities,
+      restaurant: mainOrder.restaurant.id,
+      takeAway: this.orderDto.takeAway ?? mainOrder.takeAway,
+      orderNumber: mainOrder.orderNumber,
+      customerName: this.orderDto.customerName ?? mainOrder.customerName,
+      user: this.orderDto.user
+        ? this.orderDto.user
+        : mainOrder.user
+        ? mainOrder.user.id
+        : '',
+      table: this.orderDto.table
+        ? this.orderDto.table
+        : mainOrder.table
+        ? mainOrder.table.id
+        : '',
+      createdAt: mainOrder.createdAt,
+      updatedAt: this.getDate(),
+    };
+  }
+
+  private orderNumberGenerator(): number {
+    const orderTime = new Date();
+
+    const startOfTheDay = new Date(
+      orderTime.getFullYear(),
+      orderTime.getMonth(),
+      orderTime.getDate(),
+    );
+
+    const orderNumber = (orderTime.getTime() - startOfTheDay.getTime()) / 1000;
+
+    return orderNumber;
+  }
+}

@@ -1,8 +1,11 @@
-type Restaurant = {
+export type Restaurant = {
   id: string;
+  telephone: number;
+  email: string;
   name: string;
   address: string;
   logo: string;
   colorScheme: number;
-  restaurant: Restaurant;
+  createdAt: string;
+  updatedAt: string;
 };
