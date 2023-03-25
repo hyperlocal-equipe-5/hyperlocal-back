@@ -1,7 +1,10 @@
 export type ReviewType = {
   id: string;
-  stars: number;
-  comment: string;
+  responses: {
+    question: string;
+    answer: string;
+    stars: number;
+  }[];
   user: string;
   restaurant: string;
   createdAt: string;

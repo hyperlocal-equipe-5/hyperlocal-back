@@ -1,6 +1,6 @@
 export type CreateOrderDto = {
-  products: string[];
-  quantities: number[];
+  finished: boolean;
+  products: { product: string; ingredients: string[] }[];
   takeAway?: boolean;
   customerName?: string;
   user?: string;
