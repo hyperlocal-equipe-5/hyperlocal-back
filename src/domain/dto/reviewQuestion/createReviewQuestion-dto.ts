@@ -1,3 +1,3 @@
-export type CreateReviewQuestion = {
+export type CreateReviewQuestionDto = {
   question: string;
 };
