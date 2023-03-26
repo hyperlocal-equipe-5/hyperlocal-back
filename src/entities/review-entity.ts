@@ -21,8 +21,8 @@ export class ReviewEntity extends Entity implements ReviewEntityInterface {
   }
 
   public validate(): void {
-    if (!this.reviewDto.stars) {
-      throw new MissingParamError('starts');
+    if (!this.reviewDto.responses) {
+      throw new MissingParamError('responses');
     }
 
     if (!this.reviewDto.restaurant) {
@@ -33,8 +33,7 @@ export class ReviewEntity extends Entity implements ReviewEntityInterface {
   public getBody(): ReviewType {
     return {
       id: this.idGeneratorAdapter.generateId(),
-      stars: this.reviewDto.stars ?? 0,
-      comment: this.reviewDto.comment ?? '',
+      responses: this.reviewDto.responses,
       user: this.reviewDto.user ?? '',
       restaurant: this.reviewDto.restaurant,
       createdAt: this.getDate(),
@@ -45,8 +44,13 @@ export class ReviewEntity extends Entity implements ReviewEntityInterface {
   public updateBody(mainReview: Review): ReviewType {
     return {
       id: mainReview.id,
-      stars: this.reviewDto.stars ?? mainReview.stars,
-      comment: this.reviewDto.comment ?? mainReview.comment,
+      responses:
+        this.reviewDto.responses ??
+        mainReview.responses.map((response) => ({
+          question: response.question.id,
+          answer: response.answer,
+          stars: response.stars,
+        })),
       user: this.reviewDto.user ?? mainReview.user ? mainReview.user.id : '',
       restaurant: mainReview.restaurant.id,
       createdAt: mainReview.createdAt,
