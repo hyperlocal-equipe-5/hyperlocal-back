@@ -7,6 +7,7 @@ import { RestaurantEntityInterface } from './abstract/interfaces/restaurantEntit
 import { RestaurantType } from '../domain/types/restaurant-type';
 import { Entity } from './entity';
 import { InvalidParamError } from 'src/utils/errors/invalidParam-error';
+import { GetRestaurantReferenceNumberUseCaseInterface } from 'src/data/abstract/usecases/restaurant/getRestaurantReferenceNumberUseCase-interface';
 
 export class RestaurantEntity
   extends Entity
@@ -14,6 +15,7 @@ export class RestaurantEntity
 {
   private restaurantDto: CreateRestaurantDto | UpdateRestaurantDto;
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
+  private readonly getRestaurantReferenceNumber: GetRestaurantReferenceNumberUseCaseInterface;
 
   public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
     super();
@@ -41,9 +43,12 @@ export class RestaurantEntity
     }
   }
 
-  public getBody(): RestaurantType {
+  public async getBody(): Promise<RestaurantType> {
+    const referenceNumber = await this.getRestaurantReferenceNumber.execute();
+
     return {
       id: this.idGeneratorAdapter.generateId(),
+      reference: referenceNumber,
       name: this.restaurantDto.name ?? '',
       telephone: this.restaurantDto.telephone ?? 0,
       email: this.restaurantDto.email ?? '',
@@ -58,6 +63,7 @@ export class RestaurantEntity
   public updateBody(mainRestaurant: Restaurant): RestaurantType {
     return {
       id: mainRestaurant.id,
+      reference: mainRestaurant.reference,
       name: this.restaurantDto.name ?? mainRestaurant.name,
       telephone: this.restaurantDto.telephone ?? mainRestaurant.telephone,
       email: this.restaurantDto.email ?? mainRestaurant.email,
