@@ -4,11 +4,11 @@ export type UpdateOrderDto = {
   finished?: boolean;
   products?: {
     product: string;
-    ingredientsAdded?: {
+    ingredientsAdded: {
       ingredient: string;
       quantity: number;
     }[];
-    ingredientsRemoved?: {
+    ingredientsRemoved: {
       ingredient: string;
       quantity: number;
     }[];
