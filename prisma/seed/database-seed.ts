@@ -45,10 +45,10 @@ class Seeder {
     this.idGenerator = idGeneratorAdapter;
 
     const generatedId = this.idGenerator.generateId();
-    const customerRoleId = this.idGenerator.generateId();
 
     this.adminRestaurant = {
       id: generatedId,
+      reference: 1,
       telephone: restaurant.telephone,
       email: restaurant.email,
       name: restaurant.name,
