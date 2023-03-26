@@ -6,6 +6,6 @@ import { OrderType } from '../../../domain/types/order-type';
 export interface OrderEntityInterface {
   setData(orderDto: CreateOrderDto | UpdateOrderDto): void;
   validate(): void;
-  getBody(): OrderType;
-  updateBody(mainOrder: Order): OrderType;
+  getBody(): Promise<OrderType>;
+  updateBody(mainOrder: Order): Promise<OrderType>;
 }

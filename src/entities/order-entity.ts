@@ -7,14 +7,20 @@ import { OrderEntityInterface } from './abstract/interfaces/orderEntity-interfac
 import { OrderType } from '../domain/types/order-type';
 import { Entity } from './entity';
 import { InvalidParamError } from 'src/utils/errors/invalidParam-error';
+import { OrderPriceCalculatorUseCaseInterface } from 'src/data/abstract/usecases/order/orderPriceCalculatorUseCase-interface';
 
 export class OrderEntity extends Entity implements OrderEntityInterface {
   private orderDto: CreateOrderDto | UpdateOrderDto;
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
+  private readonly orderPriceCalculator: OrderPriceCalculatorUseCaseInterface;
 
-  public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
+  public constructor(
+    idGeneratorAdapter: IdGeneratorAdapterInterface,
+    orderPriceCalculator: OrderPriceCalculatorUseCaseInterface,
+  ) {
     super();
     this.idGeneratorAdapter = idGeneratorAdapter;
+    this.orderPriceCalculator = orderPriceCalculator;
   }
 
   public setData(orderDto: CreateOrderDto | UpdateOrderDto): void {
@@ -26,10 +32,6 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
       throw new MissingParamError('products');
     }
 
-    if (!this.orderDto.quantities) {
-      throw new MissingParamError('quantities');
-    }
-
     if (this.orderDto.products.length !== this.orderDto.products.length) {
       throw new InvalidParamError('products / quantities');
     }
@@ -39,12 +41,15 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
     }
   }
 
-  public getBody(): OrderType {
+  public async getBody(): Promise<OrderType> {
+    const price = await this.orderPriceCalculator.execute(this.orderDto);
+
     return {
       id: this.idGeneratorAdapter.generateId(),
       restaurant: this.orderDto.restaurant,
       products: this.orderDto.products ?? [],
-      quantities: this.orderDto.quantities ?? [],
+      finished: this.orderDto.finished,
+      price,
       takeAway: this.orderDto.takeAway ?? false,
       orderNumber: this.orderNumberGenerator(),
       customerName: this.orderDto.customerName ?? '',
@@ -55,13 +60,28 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
     };
   }
 
-  public updateBody(mainOrder: Order): OrderType {
+  public async updateBody(mainOrder: Order): Promise<OrderType> {
+    const price = this.orderDto.products
+      ? await this.orderPriceCalculator.execute(this.orderDto)
+      : mainOrder.price;
+
     return {
       id: mainOrder.id,
       products:
         this.orderDto.products ??
-        mainOrder.products.map((product) => product.id),
-      quantities: this.orderDto.quantities ?? mainOrder.quantities,
+        mainOrder.products.map((item) => ({
+          product: item.product.id,
+          ingredientsAdded: item.ingredientsAdded.map((ingredient) => ({
+            ingredient: ingredient.ingredient.id,
+            quantity: ingredient.quantity,
+          })),
+          ingredientsRemoved: item.ingredientsRemoved.map((ingredient) => ({
+            ingredient: ingredient.ingredient.id,
+            quantity: ingredient.quantity,
+          })),
+        })),
+      finished: this.orderDto.finished,
+      price,
       restaurant: mainOrder.restaurant.id,
       takeAway: this.orderDto.takeAway ?? mainOrder.takeAway,
       orderNumber: mainOrder.orderNumber,
