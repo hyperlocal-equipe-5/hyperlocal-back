@@ -6,7 +6,14 @@ export type OrderType = {
   finished: boolean;
   products: {
     product: string;
-    ingredients: string[];
+    ingredientsAdded: {
+      ingredient: string;
+      quantity: number;
+    }[];
+    ingredientsRemoved: {
+      ingredient: string;
+      quantity: number;
+    }[];
   }[];
   price: number;
   user: string;

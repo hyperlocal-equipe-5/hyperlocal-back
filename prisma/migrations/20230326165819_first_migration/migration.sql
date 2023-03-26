@@ -22,7 +22,6 @@ CREATE TABLE "Ingredient" (
     "updatedAt" TEXT NOT NULL,
     "restaurantId" TEXT NOT NULL,
     "productId" TEXT,
-    "orderProductsId" TEXT,
 
     CONSTRAINT "Ingredient_pkey" PRIMARY KEY ("id")
 );
@@ -51,6 +50,26 @@ CREATE TABLE "OrderProducts" (
     "orderId" TEXT,
 
     CONSTRAINT "OrderProducts_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "OrderIngredientsAdded" (
+    "id" TEXT NOT NULL,
+    "quantity" INTEGER NOT NULL,
+    "orderProductsId" TEXT,
+    "ingredientId" TEXT NOT NULL,
+
+    CONSTRAINT "OrderIngredientsAdded_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "OrderIngredientsRemoved" (
+    "id" TEXT NOT NULL,
+    "quantity" INTEGER NOT NULL,
+    "orderProductsId" TEXT,
+    "ingredientId" TEXT NOT NULL,
+
+    CONSTRAINT "OrderIngredientsRemoved_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -219,9 +238,6 @@ ALTER TABLE "Ingredient" ADD CONSTRAINT "Ingredient_restaurantId_fkey" FOREIGN K
 ALTER TABLE "Ingredient" ADD CONSTRAINT "Ingredient_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Product"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Ingredient" ADD CONSTRAINT "Ingredient_orderProductsId_fkey" FOREIGN KEY ("orderProductsId") REFERENCES "OrderProducts"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "Order" ADD CONSTRAINT "Order_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -235,6 +251,18 @@ ALTER TABLE "OrderProducts" ADD CONSTRAINT "OrderProducts_productId_fkey" FOREIG
 
 -- AddForeignKey
 ALTER TABLE "OrderProducts" ADD CONSTRAINT "OrderProducts_orderId_fkey" FOREIGN KEY ("orderId") REFERENCES "Order"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "OrderIngredientsAdded" ADD CONSTRAINT "OrderIngredientsAdded_ingredientId_fkey" FOREIGN KEY ("ingredientId") REFERENCES "Ingredient"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "OrderIngredientsAdded" ADD CONSTRAINT "OrderIngredientsAdded_orderProductsId_fkey" FOREIGN KEY ("orderProductsId") REFERENCES "OrderProducts"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "OrderIngredientsRemoved" ADD CONSTRAINT "OrderIngredientsRemoved_ingredientId_fkey" FOREIGN KEY ("ingredientId") REFERENCES "Ingredient"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "OrderIngredientsRemoved" ADD CONSTRAINT "OrderIngredientsRemoved_orderProductsId_fkey" FOREIGN KEY ("orderProductsId") REFERENCES "OrderProducts"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Product" ADD CONSTRAINT "Product_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

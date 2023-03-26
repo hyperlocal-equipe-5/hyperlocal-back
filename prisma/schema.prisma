@@ -23,19 +23,19 @@ model Category {
 }
 
 model Ingredient {
-  id              String         @id
-  name            String
-  price           Float
-  image           String
-  quantity        Int?
-  restaurant      Restaurant     @relation(fields: [restaurantId], references: [id])
-  createdAt       String
-  updatedAt       String
-  restaurantId    String
-  Product         Product?       @relation(fields: [productId], references: [id])
-  productId       String?
-  OrderProducts   OrderProducts? @relation(fields: [orderProductsId], references: [id])
-  orderProductsId String?
+  id                      String                    @id
+  name                    String
+  price                   Float
+  image                   String
+  quantity                Int?
+  restaurant              Restaurant                @relation(fields: [restaurantId], references: [id])
+  createdAt               String
+  updatedAt               String
+  restaurantId            String
+  Product                 Product?                  @relation(fields: [productId], references: [id])
+  productId               String?
+  OrderIngredientsAdded   OrderIngredientsAdded[]
+  OrderIngredientsRemoved OrderIngredientsRemoved[]
 }
 
 model Order {
@@ -57,12 +57,31 @@ model Order {
 }
 
 model OrderProducts {
-  id          String       @id
-  product     Product      @relation(fields: [productId], references: [id])
-  productId   String
-  ingredients Ingredient[]
-  Order       Order?       @relation(fields: [orderId], references: [id])
-  orderId     String?
+  id                 String                    @id
+  product            Product                   @relation(fields: [productId], references: [id])
+  productId          String
+  ingredientsAdded   OrderIngredientsAdded[]
+  ingredientsRemoved OrderIngredientsRemoved[]
+  Order              Order?                    @relation(fields: [orderId], references: [id])
+  orderId            String?
+}
+
+model OrderIngredientsAdded {
+  id              String         @id
+  ingredient      Ingredient     @relation(fields: [ingredientId], references: [id])
+  quantity        Int
+  OrderProducts   OrderProducts? @relation(fields: [orderProductsId], references: [id])
+  orderProductsId String?
+  ingredientId    String
+}
+
+model OrderIngredientsRemoved {
+  id              String         @id
+  ingredient      Ingredient     @relation(fields: [ingredientId], references: [id])
+  quantity        Int
+  OrderProducts   OrderProducts? @relation(fields: [orderProductsId], references: [id])
+  orderProductsId String?
+  ingredientId    String
 }
 
 model Product {

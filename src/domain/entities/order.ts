@@ -12,7 +12,14 @@ export type Order = {
   finished: boolean;
   products: {
     product: Product;
-    ingredients: Ingredient[];
+    ingredientsAdded?: {
+      ingredient: Ingredient;
+      quantity: number;
+    }[];
+    ingredientsRemoved?: {
+      ingredient: Ingredient;
+      quantity: number;
+    }[];
   }[];
   price: number;
   user?: User;
