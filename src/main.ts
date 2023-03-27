@@ -32,6 +32,8 @@ async function bootstrap() {
     .addTag('/order')
     .addTag('/admin/review')
     .addTag('/reviews')
+    .addTag('/review-question')
+    .addTag('/admin/review-question')
     .addTag('/password-recovery')
     .addBearerAuth()
     .build();
