@@ -17,9 +17,13 @@ export class RestaurantEntity
   private readonly idGeneratorAdapter: IdGeneratorAdapterInterface;
   private readonly getRestaurantReferenceNumber: GetRestaurantReferenceNumberUseCaseInterface;
 
-  public constructor(idGeneratorAdapter: IdGeneratorAdapterInterface) {
+  public constructor(
+    idGeneratorAdapter: IdGeneratorAdapterInterface,
+    getRestaurantReferenceNumber: GetRestaurantReferenceNumberUseCaseInterface,
+  ) {
     super();
     this.idGeneratorAdapter = idGeneratorAdapter;
+    this.getRestaurantReferenceNumber = getRestaurantReferenceNumber;
   }
 
   public setData(
