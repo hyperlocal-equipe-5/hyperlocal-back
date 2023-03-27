@@ -1,4 +1,3 @@
-import { connect } from 'http2';
 import { Order } from 'src/domain/entities/order';
 import { OrderType } from 'src/domain/types/order-type';
 import { OrderRepositoryInterface } from '../abstract/repositories/orderRepository-interface';
@@ -45,12 +44,6 @@ export class OrderRepository implements OrderRepositoryInterface {
           ),
         ).then((dado) => dado.map((item) => item.id));
 
-        orderData.ingredientsAdded = {
-          connect: orderIngredientsAddedCreated.map((ingredientId) => {
-            return { id: ingredientId };
-          }),
-        };
-
         const orderIngredientsRemovedCreated = await Promise.all(
           await product.ingredientsRemoved.map(
             async (ingredient) =>
@@ -64,14 +57,21 @@ export class OrderRepository implements OrderRepositoryInterface {
           ),
         ).then((dado) => dado.map((item) => item.id));
 
-        orderData.ingredientsRemoved = {
-          connect: orderIngredientsRemovedCreated.map((ingredientId) => {
-            return { id: ingredientId };
-          }),
-        };
-
         return await prismaDatabase.orderProducts.create({
-          data: orderData,
+          data: {
+            id: orderBody.id,
+            product: { connect: { id: product.product } },
+            ingredientsAdded: {
+              connect: orderIngredientsAddedCreated.map((ingredientId) => {
+                return { id: ingredientId };
+              }),
+            },
+            ingredientsRemoved: {
+              connect: orderIngredientsRemovedCreated.map((ingredientId) => {
+                return { id: ingredientId };
+              }),
+            },
+          },
         });
       }),
     );
@@ -213,12 +213,6 @@ export class OrderRepository implements OrderRepositoryInterface {
           ),
         ).then((dado) => dado.map((item) => item.id));
 
-        orderData.ingredientsAdded = {
-          connect: orderIngredientsAddedCreated.map((ingredientId) => {
-            return { id: ingredientId };
-          }),
-        };
-
         const orderIngredientsRemovedCreated = await Promise.all(
           await product.ingredientsRemoved.map(
             async (ingredient) =>
@@ -233,15 +227,22 @@ export class OrderRepository implements OrderRepositoryInterface {
           ),
         ).then((dado) => dado.map((item) => item.id));
 
-        orderData.ingredientsRemoved = {
-          connect: orderIngredientsRemovedCreated.map((ingredientId) => {
-            return { id: ingredientId };
-          }),
-        };
-
         return await prismaDatabase.orderProducts.update({
           where: { id: product.id },
-          data: orderData,
+          data: {
+            id: orderBody.id,
+            product: { connect: { id: product.product } },
+            ingredientsAdded: {
+              connect: orderIngredientsAddedCreated.map((ingredientId) => {
+                return { id: ingredientId };
+              }),
+            },
+            ingredientsRemoved: {
+              connect: orderIngredientsRemovedCreated.map((ingredientId) => {
+                return { id: ingredientId };
+              }),
+            },
+          },
         });
       }),
     );
