@@ -30,11 +30,10 @@ export class ReviewQuestionRepository
   }
 
   public async update(
-    reviewQuestionId: string,
     reviewQuestionBody: ReviewQuestion,
   ): Promise<ReviewQuestion> {
     return await prismaDatabase.reviewQuestion.update({
-      where: { id: reviewQuestionId },
+      where: { id: reviewQuestionBody.id },
       data: reviewQuestionBody,
     });
   }
