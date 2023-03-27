@@ -10,10 +10,11 @@ import { GetAllReviewQuestionsController } from 'src/presentation/controllers/re
 import { GetOneReviewQuestionController } from 'src/presentation/controllers/reviewQuestion/getOneReviewQuestion-controller';
 import { UpdateReviewQuestionController } from 'src/presentation/controllers/reviewQuestion/updateReviewQuestion-controller';
 import { ReviewQuestionController } from '../controllers/reviewQuestion/reviewQuestion.controller';
+import { ReviewQuestionControllerAdmin } from '../controllers/reviewQuestion/reviewQuestion.controller.admin';
 import { LoginMiddleware } from '../middlewares/login.middleware';
 
 @Module({
-  controllers: [ReviewQuestionController],
+  controllers: [ReviewQuestionController, ReviewQuestionControllerAdmin],
   providers: [
     {
       provide: CreateReviewQuestionController,

@@ -14,6 +14,7 @@ import { UserModule } from './user.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ResponseInterceptor } from '../interceptors/response-interceptor';
 import { PasswordRecoveryModule } from './passwordRecovery.module';
+import { ReviewQuestionModule } from './reviewQuestion.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { PasswordRecoveryModule } from './passwordRecovery.module';
     ProductModule,
     RestaurantModule,
     ReviewModule,
+    ReviewQuestionModule,
     RoleModule,
     TableModule,
     UserModule,
