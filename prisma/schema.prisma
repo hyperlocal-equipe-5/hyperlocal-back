@@ -138,6 +138,8 @@ model ReviewQuestion {
   id           String         @id
   question     String
   ReviewAnswer ReviewAnswer[]
+  createdAt    String
+  updatedAt    String
 }
 
 model ReviewAnswer {
@@ -164,41 +166,45 @@ model Role {
 }
 
 model Access {
-  id                String  @id
-  createRestaurants Boolean
-  createUsers       Boolean
-  createProducts    Boolean
-  createCategories  Boolean
-  createIngredients Boolean
-  createOrders      Boolean
-  createRoles       Boolean
-  createTables      Boolean
-  readRestaurants   Boolean
-  readUsers         Boolean
-  readProducts      Boolean
-  readCategories    Boolean
-  readIngredients   Boolean
-  readOrders        Boolean
-  readRoles         Boolean
-  readTables        Boolean
-  updateRestaurants Boolean
-  updateUsers       Boolean
-  updateProducts    Boolean
-  updateCategories  Boolean
-  updateIngredients Boolean
-  updateOrders      Boolean
-  updateRoles       Boolean
-  updateTables      Boolean
-  deleteRestaurants Boolean
-  deleteUsers       Boolean
-  deleteProducts    Boolean
-  deleteCategories  Boolean
-  deleteIngredients Boolean
-  deleteOrders      Boolean
-  deleteRoles       Boolean
-  deleteTables      Boolean
-  defineAccess      Boolean
-  Role              Role[]
+  id                    String  @id
+  createRestaurants     Boolean
+  createUsers           Boolean
+  createProducts        Boolean
+  createCategories      Boolean
+  createIngredients     Boolean
+  createOrders          Boolean
+  createRoles           Boolean
+  createTables          Boolean
+  createReviewQuestions Boolean
+  readRestaurants       Boolean
+  readUsers             Boolean
+  readProducts          Boolean
+  readCategories        Boolean
+  readIngredients       Boolean
+  readOrders            Boolean
+  readRoles             Boolean
+  readTables            Boolean
+  readReviewQuestions   Boolean
+  updateRestaurants     Boolean
+  updateUsers           Boolean
+  updateProducts        Boolean
+  updateCategories      Boolean
+  updateIngredients     Boolean
+  updateOrders          Boolean
+  updateRoles           Boolean
+  updateTables          Boolean
+  updateReviewQuestions Boolean
+  deleteRestaurants     Boolean
+  deleteUsers           Boolean
+  deleteProducts        Boolean
+  deleteCategories      Boolean
+  deleteIngredients     Boolean
+  deleteOrders          Boolean
+  deleteRoles           Boolean
+  deleteTables          Boolean
+  deleteReviewQuestions Boolean
+  defineAccess          Boolean
+  Role                  Role[]
 }
 
 model Table {
