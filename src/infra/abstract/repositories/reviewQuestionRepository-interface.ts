@@ -5,8 +5,5 @@ export interface ReviewQuestionRepositoryInterface {
   delete(reviewQuestionId: string): Promise<ReviewQuestion>;
   getOne(reviewQuestionId: string): Promise<ReviewQuestion>;
   getAll(): Promise<ReviewQuestion[]>;
-  update(
-    reviewQuestionId: string,
-    reviewQuestionBody: ReviewQuestion,
-  ): Promise<ReviewQuestion>;
+  update(reviewQuestionBody: ReviewQuestion): Promise<ReviewQuestion>;
 }
