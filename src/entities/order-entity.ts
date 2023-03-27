@@ -138,6 +138,6 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
 
     const orderNumber = (orderTime.getTime() - startOfTheDay.getTime()) / 1000;
 
-    return orderNumber;
+    return parseInt(orderNumber.toString().replace('.', ''));
   }
 }
