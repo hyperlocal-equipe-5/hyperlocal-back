@@ -1,11 +1,31 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateOrder {
-  @ApiProperty()
-  products: string[];
+  @ApiProperty({
+    type: [Object],
+    description: 'Array of products added to the order',
+    example: [
+      {
+        product: '2612e1te73tdg273',
+        ingredientsAdded: [{ ingredient: '434f3f34fq4f', quantity: 2 }],
+        ingredientsRemoved: [],
+      },
+    ],
+  })
+  products: {
+    product: string;
+    ingredientsAdded: {
+      ingredient: string;
+      quantity: number;
+    }[];
+    ingredientsRemoved: {
+      ingredient: string;
+      quantity: number;
+    }[];
+  }[];
 
   @ApiProperty()
-  quantities: number[];
+  finished: boolean;
 
   @ApiProperty()
   takeAway?: boolean;
@@ -21,4 +41,4 @@ export class CreateOrder {
 
   @ApiProperty()
   restaurant: string;
-};
+}
