@@ -47,7 +47,19 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
     return {
       id: this.idGeneratorAdapter.generateId(),
       restaurant: this.orderDto.restaurant,
-      products: this.orderDto.products ?? [],
+      products:
+        this.orderDto.products.map((item) => ({
+          id: this.idGeneratorAdapter.generateId(),
+          product: item.product,
+          ingredientsAdded: item.ingredientsAdded.map((ingredient) => ({
+            id: this.idGeneratorAdapter.generateId(),
+            ...ingredient,
+          })),
+          ingredientsRemoved: item.ingredientsAdded.map((ingredient) => ({
+            id: this.idGeneratorAdapter.generateId(),
+            ...ingredient,
+          })),
+        })) ?? [],
       finished: this.orderDto.finished,
       price,
       takeAway: this.orderDto.takeAway ?? false,
@@ -68,14 +80,28 @@ export class OrderEntity extends Entity implements OrderEntityInterface {
     return {
       id: mainOrder.id,
       products:
-        this.orderDto.products ??
+        this.orderDto.products.map((item) => ({
+          id: this.idGeneratorAdapter.generateId(),
+          product: item.product,
+          ingredientsAdded: item.ingredientsAdded.map((ingredient) => ({
+            id: this.idGeneratorAdapter.generateId(),
+            ...ingredient,
+          })),
+          ingredientsRemoved: item.ingredientsAdded.map((ingredient) => ({
+            id: this.idGeneratorAdapter.generateId(),
+            ...ingredient,
+          })),
+        })) ??
         mainOrder.products.map((item) => ({
+          id: item.id,
           product: item.product.id,
           ingredientsAdded: item.ingredientsAdded.map((ingredient) => ({
+            id: ingredient.id,
             ingredient: ingredient.ingredient.id,
             quantity: ingredient.quantity,
           })),
-          ingredientsRemoved: item.ingredientsRemoved.map((ingredient) => ({
+          ingredientsRemoved: item.ingredientsAdded.map((ingredient) => ({
+            id: ingredient.id,
             ingredient: ingredient.ingredient.id,
             quantity: ingredient.quantity,
           })),

@@ -33,7 +33,10 @@ export class ReviewEntity extends Entity implements ReviewEntityInterface {
   public getBody(): ReviewType {
     return {
       id: this.idGeneratorAdapter.generateId(),
-      responses: this.reviewDto.responses,
+      responses: this.reviewDto.responses.map((item) => ({
+        ...item,
+        id: this.idGeneratorAdapter.generateId(),
+      })),
       user: this.reviewDto.user ?? '',
       restaurant: this.reviewDto.restaurant,
       createdAt: this.getDate(),
@@ -45,8 +48,14 @@ export class ReviewEntity extends Entity implements ReviewEntityInterface {
     return {
       id: mainReview.id,
       responses:
-        this.reviewDto.responses ??
+        this.reviewDto.responses.map((item: any) => ({
+          id: item.id,
+          question: item.question,
+          answer: item.answer,
+          stars: item.stars,
+        })) ??
         mainReview.responses.map((response) => ({
+          id: response.id,
           question: response.question.id,
           answer: response.answer,
           stars: response.stars,
