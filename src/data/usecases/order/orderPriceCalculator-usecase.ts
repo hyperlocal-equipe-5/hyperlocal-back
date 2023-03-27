@@ -22,6 +22,7 @@ export class OrderPriceCalculatorUseCase
     orderDto: CreateOrderDto | UpdateOrderDto,
   ): Promise<number> {
     const restaurantId = orderDto.restaurant;
+    let ingredientsPrice = 0;
 
     const priceArray = await Promise.all(
       orderDto.products.map(async (product) => {
@@ -34,14 +35,20 @@ export class OrderPriceCalculatorUseCase
           restaurantId,
         );
 
-        const ingredientsPrice = product.ingredientsAdded
-          .map((ingredient) => {
+        const ingredientPriceArray = product.ingredientsAdded.map(
+          (ingredient) => {
             const ingredientPrice =
               ingredients.find((item) => (item.id = ingredient.ingredient))
                 .price * ingredient.quantity;
             return ingredientPrice;
-          })
-          .reduce((price1, price2) => price1 + price2);
+          },
+        );
+
+        if (ingredientPriceArray.length > 0) {
+          ingredientsPrice = ingredientPriceArray.reduce(
+            (item1, item2) => item1 + item2,
+          );
+        }
 
         const productPrice = foundProduct.price;
 
