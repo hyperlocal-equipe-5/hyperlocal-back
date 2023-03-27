@@ -5,7 +5,7 @@ import { HttpResponse } from 'src/domain/http/httpResponse';
 import { GetAllReviewQuestionsControllerInterface } from 'src/presentation/abstract/controllers/reviewQuestion/getAllReviewQuestionsController-interface';
 import { Response } from 'src/utils/http/response';
 
-export class GetAllReviewQuestionController
+export class GetAllReviewQuestionsController
   implements GetAllReviewQuestionsControllerInterface
 {
   private readonly getAllReviewQuestionsUseCase: GetAllReviewQuestionsUseCaseInterface;
