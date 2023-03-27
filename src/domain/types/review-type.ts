@@ -1,6 +1,7 @@
 export type ReviewType = {
   id: string;
   responses: {
+    id: string;
     question: string;
     answer: string;
     stars: number;

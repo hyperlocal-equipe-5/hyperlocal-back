@@ -11,12 +11,15 @@ export type Order = {
   customerName?: string;
   finished: boolean;
   products: {
+    id: string;
     product: Product;
-    ingredientsAdded?: {
+    ingredientsAdded: {
+      id: string;
       ingredient: Ingredient;
       quantity: number;
     }[];
-    ingredientsRemoved?: {
+    ingredientsRemoved: {
+      id: string;
       ingredient: Ingredient;
       quantity: number;
     }[];

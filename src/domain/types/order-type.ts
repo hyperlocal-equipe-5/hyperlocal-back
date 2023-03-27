@@ -5,12 +5,15 @@ export type OrderType = {
   customerName: string;
   finished: boolean;
   products: {
+    id: string;
     product: string;
     ingredientsAdded: {
+      id: string;
       ingredient: string;
       quantity: number;
     }[];
     ingredientsRemoved: {
+      id: string;
       ingredient: string;
       quantity: number;
     }[];

@@ -5,6 +5,7 @@ import { User } from './user';
 export type Review = {
   id: string;
   responses: {
+    id: string;
     question: ReviewQuestion;
     answer: string;
     stars: number;
