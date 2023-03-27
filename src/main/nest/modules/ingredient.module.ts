@@ -10,8 +10,8 @@ import { DeleteIngredientController } from 'src/presentation/controllers/ingredi
 import { GetAllIngredientsController } from 'src/presentation/controllers/ingredient/getAllIngredients-controller';
 import { GetOneIngredientController } from 'src/presentation/controllers/ingredient/getOneIngredient-controller';
 import { UpdateIngredientController } from 'src/presentation/controllers/ingredient/updateIngredient-controller';
-import { IngredientControllerAdmin } from '../controllers/ingredient.controller.admin';
-import { IngredientController } from '../controllers/ingredient.controller';
+import { IngredientControllerAdmin } from '../controllers/ingredient/ingredient.controller.admin';
+import { IngredientController } from '../controllers/ingredient/ingredient.controller';
 
 @Module({
   controllers: [IngredientControllerAdmin, IngredientController],

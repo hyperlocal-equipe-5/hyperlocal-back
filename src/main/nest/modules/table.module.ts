@@ -10,8 +10,8 @@ import { DeleteTableController } from 'src/presentation/controllers/table/delete
 import { GetAllTablesController } from 'src/presentation/controllers/table/getAllTables-controller';
 import { GetOneTableController } from 'src/presentation/controllers/table/getOneTable-controller';
 import { UpdateTableController } from 'src/presentation/controllers/table/updateTable-controller';
-import { TableControllerAdmin } from '../controllers/table.controller.admin';
-import { TableController } from '../controllers/table.controller';
+import { TableControllerAdmin } from '../controllers/table/table.controller.admin';
+import { TableController } from '../controllers/table/table.controller';
 
 @Module({
   controllers: [TableControllerAdmin, TableController],

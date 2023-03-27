@@ -10,8 +10,8 @@ import { DeleteProductController } from 'src/presentation/controllers/product/de
 import { GetAllProductsController } from 'src/presentation/controllers/product/getAllProducts-controller';
 import { GetOneProductController } from 'src/presentation/controllers/product/getOneProduct-controller';
 import { UpdateProductController } from 'src/presentation/controllers/product/updateProduct-controller';
-import { ProductController } from '../controllers/product.controller';
-import { ProductControllerAdmin } from '../controllers/product.controller.admin';
+import { ProductController } from '../controllers/product/product.controller';
+import { ProductControllerAdmin } from '../controllers/product/product.controller.admin';
 
 @Module({
   controllers: [ProductController, ProductControllerAdmin],

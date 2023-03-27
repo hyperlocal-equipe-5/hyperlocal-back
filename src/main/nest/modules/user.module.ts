@@ -10,8 +10,8 @@ import { DeleteUserController } from 'src/presentation/controllers/user/deleteUs
 import { GetAllUsersController } from 'src/presentation/controllers/user/getAllUsers-controller';
 import { GetOneUserController } from 'src/presentation/controllers/user/getOneUser-controller';
 import { UpdateUserController } from 'src/presentation/controllers/user/updateUser-controller';
-import { UserController } from '../controllers/user.controller';
-import { UserControllerAdmin } from '../controllers/user.controller.admin';
+import { UserController } from '../controllers/user/user.controller';
+import { UserControllerAdmin } from '../controllers/user/user.controller.admin';
 
 @Module({
   controllers: [UserController, UserControllerAdmin],

@@ -10,8 +10,8 @@ import { DeleteCategoryController } from 'src/presentation/controllers/category/
 import { GetAllCategoriesController } from 'src/presentation/controllers/category/getAllCategories-controller';
 import { GetOneCategoryController } from 'src/presentation/controllers/category/getOneCategory-controller';
 import { UpdateCategoryController } from 'src/presentation/controllers/category/updateCategory-controller';
-import { CategoryController } from '../controllers/category.controller';
-import { CategoryControllerAdmin } from '../controllers/category.controller.admin';
+import { CategoryController } from '../controllers/category/category.controller';
+import { CategoryControllerAdmin } from '../controllers/category/category.controller.admin';
 
 @Module({
   controllers: [CategoryController, CategoryControllerAdmin],
