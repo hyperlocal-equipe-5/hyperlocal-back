@@ -23,56 +23,88 @@ model Category {
 }
 
 model Ingredient {
-  id           String     @id
-  name         String
-  price        Float
-  image        String
-  quantity     Int?
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  createdAt    String
-  updatedAt    String
-  restaurantId String
-  Product      Product?   @relation(fields: [productId], references: [id])
-  productId    String?
+  id                      String                    @id
+  name                    String
+  price                   Float
+  image                   String
+  quantity                Int?
+  restaurant              Restaurant                @relation(fields: [restaurantId], references: [id])
+  createdAt               String
+  updatedAt               String
+  restaurantId            String
+  Product                 Product?                  @relation(fields: [productId], references: [id])
+  productId               String?
+  OrderIngredientsAdded   OrderIngredientsAdded[]
+  OrderIngredientsRemoved OrderIngredientsRemoved[]
 }
 
 model Order {
-  id           String     @id
+  id           String          @id
   takeAway     Boolean
   orderNumber  Int?
   customerName String?
-  products     Product[]
-  quantities   Int[]
-  user         User?      @relation(fields: [userId], references: [id])
-  table        Table?     @relation(fields: [tableId], references: [id])
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  finished     Boolean
+  products     OrderProducts[]
+  price        Float
+  user         User?           @relation(fields: [userId], references: [id])
+  userId       String?
+  table        Table?          @relation(fields: [tableId], references: [id])
+  tableId      String?
+  restaurant   Restaurant      @relation(fields: [restaurantId], references: [id])
+  restaurantId String
   createdAt    String
   updatedAt    String
-  userId       String?
-  tableId      String?
-  restaurantId String
+}
+
+model OrderProducts {
+  id                 String                    @id
+  product            Product                   @relation(fields: [productId], references: [id])
+  productId          String
+  ingredientsAdded   OrderIngredientsAdded[]
+  ingredientsRemoved OrderIngredientsRemoved[]
+  Order              Order?                    @relation(fields: [orderId], references: [id])
+  orderId            String?
+}
+
+model OrderIngredientsAdded {
+  id              String         @id
+  ingredient      Ingredient     @relation(fields: [ingredientId], references: [id])
+  quantity        Int
+  OrderProducts   OrderProducts? @relation(fields: [orderProductsId], references: [id])
+  orderProductsId String?
+  ingredientId    String
+}
+
+model OrderIngredientsRemoved {
+  id              String         @id
+  ingredient      Ingredient     @relation(fields: [ingredientId], references: [id])
+  quantity        Int
+  OrderProducts   OrderProducts? @relation(fields: [orderProductsId], references: [id])
+  orderProductsId String?
+  ingredientId    String
 }
 
 model Product {
-  id           String       @id
-  name         String
-  price        Float
-  description  String
-  highlight    Boolean
-  image        String
-  ingredients  Ingredient[]
-  category     Category     @relation(fields: [categoryId], references: [id])
-  restaurant   Restaurant   @relation(fields: [restaurantId], references: [id])
-  createdAt    String
-  updatedAt    String
-  Order        Order?       @relation(fields: [orderId], references: [id])
-  orderId      String?
-  categoryId   String
-  restaurantId String
+  id            String          @id
+  name          String
+  price         Float
+  description   String
+  highlight     Boolean
+  image         String
+  ingredients   Ingredient[]
+  category      Category        @relation(fields: [categoryId], references: [id])
+  restaurant    Restaurant      @relation(fields: [restaurantId], references: [id])
+  createdAt     String
+  updatedAt     String
+  orderId       String?
+  categoryId    String
+  restaurantId  String
+  OrderProducts OrderProducts[]
 }
 
 model Restaurant {
   id          String       @id
+  reference   Int
   telephone   Int
   email       String
   name        String
@@ -92,15 +124,32 @@ model Restaurant {
 }
 
 model Review {
-  id           String     @id
-  stars        Int
-  comment      String
-  user         User?      @relation(fields: [userId], references: [id])
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  id           String         @id
+  responses    ReviewAnswer[]
+  user         User?          @relation(fields: [userId], references: [id])
+  userId       String?
+  restaurant   Restaurant     @relation(fields: [restaurantId], references: [id])
+  restaurantId String
   createdAt    String
   updatedAt    String
-  userId       String?
-  restaurantId String
+}
+
+model ReviewQuestion {
+  id           String         @id
+  question     String
+  ReviewAnswer ReviewAnswer[]
+  createdAt    String
+  updatedAt    String
+}
+
+model ReviewAnswer {
+  id               String         @id
+  answer           String
+  stars            Int
+  question         ReviewQuestion @relation(fields: [reviewQuestionId], references: [id])
+  reviewQuestionId String
+  Review           Review?        @relation(fields: [reviewId], references: [id])
+  reviewId         String?
 }
 
 model Role {
@@ -117,41 +166,45 @@ model Role {
 }
 
 model Access {
-  id                String  @id
-  createRestaurants Boolean
-  createUsers       Boolean
-  createProducts    Boolean
-  createCategories  Boolean
-  createIngredients Boolean
-  createOrders      Boolean
-  createRoles       Boolean
-  createTables      Boolean
-  readRestaurants   Boolean
-  readUsers         Boolean
-  readProducts      Boolean
-  readCategories    Boolean
-  readIngredients   Boolean
-  readOrders        Boolean
-  readRoles         Boolean
-  readTables        Boolean
-  updateRestaurants Boolean
-  updateUsers       Boolean
-  updateProducts    Boolean
-  updateCategories  Boolean
-  updateIngredients Boolean
-  updateOrders      Boolean
-  updateRoles       Boolean
-  updateTables      Boolean
-  deleteRestaurants Boolean
-  deleteUsers       Boolean
-  deleteProducts    Boolean
-  deleteCategories  Boolean
-  deleteIngredients Boolean
-  deleteOrders      Boolean
-  deleteRoles       Boolean
-  deleteTables      Boolean
-  defineAccess      Boolean
-  Role              Role[]
+  id                    String  @id
+  createRestaurants     Boolean
+  createUsers           Boolean
+  createProducts        Boolean
+  createCategories      Boolean
+  createIngredients     Boolean
+  createOrders          Boolean
+  createRoles           Boolean
+  createTables          Boolean
+  createReviewQuestions Boolean
+  readRestaurants       Boolean
+  readUsers             Boolean
+  readProducts          Boolean
+  readCategories        Boolean
+  readIngredients       Boolean
+  readOrders            Boolean
+  readRoles             Boolean
+  readTables            Boolean
+  readReviewQuestions   Boolean
+  updateRestaurants     Boolean
+  updateUsers           Boolean
+  updateProducts        Boolean
+  updateCategories      Boolean
+  updateIngredients     Boolean
+  updateOrders          Boolean
+  updateRoles           Boolean
+  updateTables          Boolean
+  updateReviewQuestions Boolean
+  deleteRestaurants     Boolean
+  deleteUsers           Boolean
+  deleteProducts        Boolean
+  deleteCategories      Boolean
+  deleteIngredients     Boolean
+  deleteOrders          Boolean
+  deleteRoles           Boolean
+  deleteTables          Boolean
+  deleteReviewQuestions Boolean
+  defineAccess          Boolean
+  Role                  Role[]
 }
 
 model Table {

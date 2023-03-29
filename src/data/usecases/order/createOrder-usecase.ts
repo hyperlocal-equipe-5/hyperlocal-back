@@ -20,7 +20,7 @@ export class CreateOrderUseCase implements CreateOrderUseCaseInterface {
     this.entity.setData(createOrderDto);
     this.entity.validate();
 
-    const body = this.entity.getBody();
+    const body = await this.entity.getBody();
     const response = await this.repository.create(body);
 
     return response;

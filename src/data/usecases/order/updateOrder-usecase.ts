@@ -27,7 +27,7 @@ export class UpdateOrderUseCase implements UpdateOrderUseCaseInterface {
       throw new InvalidParamError('Id');
     }
 
-    const body = this.entity.updateBody(fountEntity);
+    const body = await this.entity.updateBody(fountEntity);
     const response = await this.repository.update(body);
 
     return response;

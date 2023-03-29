@@ -10,7 +10,7 @@ import { DeleteRoleController } from 'src/presentation/controllers/role/deleteRo
 import { GetAllRolesController } from 'src/presentation/controllers/role/getAllRoles-controller';
 import { GetOneRoleController } from 'src/presentation/controllers/role/getOneRole-controller';
 import { UpdateRoleController } from 'src/presentation/controllers/role/updateRole-controller';
-import { RoleControllerAdmin } from '../controllers/role.controller.admin';
+import { RoleControllerAdmin } from '../controllers/role/role.controller.admin';
 
 @Module({
   controllers: [RoleControllerAdmin],

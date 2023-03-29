@@ -10,8 +10,8 @@ import { DeleteOrderController } from 'src/presentation/controllers/order/delete
 import { GetAllOrdersController } from 'src/presentation/controllers/order/getAllOrders-controller';
 import { GetOneOrderController } from 'src/presentation/controllers/order/getOneOrder-controller';
 import { UpdateOrderController } from 'src/presentation/controllers/order/updateOrder-controller';
-import { OrderController } from '../controllers/order.controller';
-import { OrderControllerAdmin } from '../controllers/order.controller.admin';
+import { OrderController } from '../controllers/order/order.controller';
+import { OrderControllerAdmin } from '../controllers/order/order.controller.admin';
 
 @Module({
   controllers: [OrderController, OrderControllerAdmin],

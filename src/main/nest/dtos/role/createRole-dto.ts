@@ -1,4 +1,4 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateRole {
   @ApiProperty()
@@ -7,38 +7,43 @@ export class CreateRole {
   @ApiProperty()
   restaurant: string;
 
-
-  @ApiProperty({ example: {createRestaurants: true,  createUsers: true, createProducts: true, createCategories: true,
-    createIngredients: true,
-    createOrders: true,
-    createRoles: true,
-    createTables: true,
-    readRestaurants: true,
-    readUsers: true,
-    readProducts: true,
-    readCategories: true,
-    readIngredients: true,
-    readOrders: true,
-    readRoles: true,
-    readTables: true,
-    updateRestaurants: true,
-    updateUsers: true,
-    updateProducts: true,
-    updateCategories: true,
-    updateIngredients: true,
-    updateOrders: true,
-    updateRoles: true,
-    updateTables: true,
-    deleteRestaurants: true,
-    deleteUsers: true,
-    deleteProducts: true,
-    deleteCategories: true,
-    deleteIngredients: true,
-    deleteOrders: true,
-    deleteRoles: true,
-    deleteTables: true,
-    defineAccess: true}})
-
+  @ApiProperty({
+    example: {
+      createRestaurants: true,
+      createUsers: true,
+      createProducts: true,
+      createCategories: true,
+      createIngredients: true,
+      createOrders: true,
+      createRoles: true,
+      createTables: true,
+      readRestaurants: true,
+      readUsers: true,
+      readProducts: true,
+      readCategories: true,
+      readIngredients: true,
+      readOrders: true,
+      readRoles: true,
+      readTables: true,
+      updateRestaurants: true,
+      updateUsers: true,
+      updateProducts: true,
+      updateCategories: true,
+      updateIngredients: true,
+      updateOrders: true,
+      updateRoles: true,
+      updateTables: true,
+      deleteRestaurants: true,
+      deleteUsers: true,
+      deleteProducts: true,
+      deleteCategories: true,
+      deleteIngredients: true,
+      deleteOrders: true,
+      deleteRoles: true,
+      deleteTables: true,
+      defineAccess: true,
+    },
+  })
   access?: {
     createRestaurants?: boolean;
     createUsers?: boolean;
@@ -48,6 +53,7 @@ export class CreateRole {
     createOrders?: boolean;
     createRoles?: boolean;
     createTables?: boolean;
+    createReviewQuestions?: boolean;
     readRestaurants?: boolean;
     readUsers?: boolean;
     readProducts?: boolean;
@@ -56,6 +62,7 @@ export class CreateRole {
     readOrders?: boolean;
     readRoles?: boolean;
     readTables?: boolean;
+    readReviewQuestions?: boolean;
     updateRestaurants?: boolean;
     updateUsers?: boolean;
     updateProducts?: boolean;
@@ -64,6 +71,7 @@ export class CreateRole {
     updateOrders?: boolean;
     updateRoles?: boolean;
     updateTables?: boolean;
+    updateReviewQuestions?: boolean;
     deleteRestaurants?: boolean;
     deleteUsers?: boolean;
     deleteProducts?: boolean;
@@ -72,6 +80,7 @@ export class CreateRole {
     deleteOrders?: boolean;
     deleteRoles?: boolean;
     deleteTables?: boolean;
+    deleteReviewQuestions?: boolean;
     defineAccess?: boolean;
   };
-};
+}

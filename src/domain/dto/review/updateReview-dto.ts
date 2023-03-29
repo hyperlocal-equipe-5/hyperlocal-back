@@ -1,7 +1,11 @@
 export type UpdateReviewDto = {
   id: string;
   restaurant: string;
-  stars?: number;
-  comment?: string;
+  responses: {
+    id: string;
+    question: string;
+    answer: string;
+    stars: number;
+  }[];
   user?: string;
 };

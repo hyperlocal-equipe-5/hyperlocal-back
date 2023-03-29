@@ -6,6 +6,6 @@ import { RestaurantType } from '../../../domain/types/restaurant-type';
 export interface RestaurantEntityInterface {
   setData(restaurantDto: CreateRestaurantDto | UpdateRestaurantDto): void;
   validate(): void;
-  getBody(): RestaurantType;
+  getBody(): Promise<RestaurantType>;
   updateBody(mainRestaurant: Restaurant): RestaurantType;
 }

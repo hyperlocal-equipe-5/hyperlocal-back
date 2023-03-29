@@ -8,8 +8,8 @@ import { CreateReviewController } from 'src/presentation/controllers/review/crea
 import { DeleteReviewController } from 'src/presentation/controllers/review/deleteReview-controller';
 import { GetAllReviewsController } from 'src/presentation/controllers/review/getAllReviews-controller';
 import { GetOneReviewController } from 'src/presentation/controllers/review/getOneReview-controller';
-import { ReviewController } from '../controllers/review.controller';
-import { ReviewControllerAdmin } from '../controllers/review.controller.admin';
+import { ReviewController } from '../controllers/review/review.controller';
+import { ReviewControllerAdmin } from '../controllers/review/review.controller.admin';
 
 @Module({
   controllers: [ReviewController, ReviewControllerAdmin],

@@ -1,10 +1,15 @@
 import { Restaurant } from './restaurant';
+import { ReviewQuestion } from './reviewQuestion';
 import { User } from './user';
 
 export type Review = {
   id: string;
-  stars: number;
-  comment: string;
+  responses: {
+    id: string;
+    question: ReviewQuestion;
+    answer: string;
+    stars: number;
+  }[];
   user?: User;
   restaurant: Restaurant;
   createdAt: string;

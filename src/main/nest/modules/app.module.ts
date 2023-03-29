@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AppController } from '../controllers/app.controller';
+import { AppController } from '../controllers/app/app.controller';
 import { AppService } from '../services/app.service';
 import { CategoryModule } from './category.module';
 import { IngredientModule } from './ingredient.module';
@@ -14,6 +14,7 @@ import { UserModule } from './user.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ResponseInterceptor } from '../interceptors/response-interceptor';
 import { PasswordRecoveryModule } from './passwordRecovery.module';
+import { ReviewQuestionModule } from './reviewQuestion.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { PasswordRecoveryModule } from './passwordRecovery.module';
     ProductModule,
     RestaurantModule,
     ReviewModule,
+    ReviewQuestionModule,
     RoleModule,
     TableModule,
     UserModule,

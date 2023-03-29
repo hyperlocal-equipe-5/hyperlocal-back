@@ -5,9 +5,28 @@ import { prismaDatabase } from '../database/prisma-database';
 
 export class ReviewRepository implements ReviewRepositoryInterface {
   public async create(reviewBody: ReviewType): Promise<Review> {
+    const createdAnswers = await Promise.all(
+      await reviewBody.responses.map(
+        async (response) =>
+          await prismaDatabase.reviewAnswer.create({
+            data: {
+              id: response.id,
+              question: { connect: { id: response.question } },
+              answer: response.answer,
+              stars: response.stars,
+            },
+          }),
+      ),
+    );
+
     const data: any = {
       ...reviewBody,
       restaurant: { connect: { id: reviewBody.restaurant } },
+      responses: {
+        connect: createdAnswers.map((answer) => {
+          return { id: answer.id };
+        }),
+      },
     };
 
     if (reviewBody.user && reviewBody.user !== '') {
@@ -27,6 +46,11 @@ export class ReviewRepository implements ReviewRepositoryInterface {
               restaurant: true,
             },
           },
+          responses: {
+            include: {
+              question: true,
+            },
+          },
         },
       })
       .then((data) => {
@@ -36,7 +60,7 @@ export class ReviewRepository implements ReviewRepositoryInterface {
   }
 
   public async delete(reviewId: string, restaurantId: string): Promise<Review> {
-    return prismaDatabase.review
+    return await prismaDatabase.review
       .delete({
         where: { id: reviewId },
         include: {
@@ -45,6 +69,11 @@ export class ReviewRepository implements ReviewRepositoryInterface {
             include: {
               role: { include: { restaurant: true, access: true } },
               restaurant: true,
+            },
+          },
+          responses: {
+            include: {
+              question: true,
             },
           },
         },
@@ -56,7 +85,7 @@ export class ReviewRepository implements ReviewRepositoryInterface {
   }
 
   public async getOne(reviewId: string, restaurantId: string): Promise<Review> {
-    return prismaDatabase.review
+    return await prismaDatabase.review
       .findUnique({
         where: { id: reviewId },
         include: {
@@ -65,6 +94,11 @@ export class ReviewRepository implements ReviewRepositoryInterface {
             include: {
               role: { include: { restaurant: true, access: true } },
               restaurant: true,
+            },
+          },
+          responses: {
+            include: {
+              question: true,
             },
           },
         },
@@ -76,15 +110,20 @@ export class ReviewRepository implements ReviewRepositoryInterface {
   }
 
   public async getAll(restaurantId: string): Promise<Review[]> {
-    return prismaDatabase.review
+    return await prismaDatabase.review
       .findMany({
-        where: { id: restaurantId },
+        where: { restaurantId: restaurantId },
         include: {
           restaurant: true,
           user: {
             include: {
               role: { include: { restaurant: true, access: true } },
               restaurant: true,
+            },
+          },
+          responses: {
+            include: {
+              question: true,
             },
           },
         },
@@ -96,9 +135,29 @@ export class ReviewRepository implements ReviewRepositoryInterface {
   }
 
   public async update(reviewBody: ReviewType): Promise<Review> {
+    const createdAnswers = await Promise.all(
+      await reviewBody.responses.map(
+        async (response) =>
+          await prismaDatabase.reviewAnswer.update({
+            where: { id: response.id },
+            data: {
+              id: reviewBody.id,
+              question: { connect: { id: response.question } },
+              answer: response.answer,
+              stars: response.stars,
+            },
+          }),
+      ),
+    );
+
     const data: any = {
       ...reviewBody,
       restaurant: { connect: { id: reviewBody.restaurant } },
+      responses: {
+        connect: createdAnswers.map((answer) => {
+          return { id: answer.id };
+        }),
+      },
     };
 
     if (reviewBody.user && reviewBody.user !== '') {
@@ -117,6 +176,11 @@ export class ReviewRepository implements ReviewRepositoryInterface {
             include: {
               role: { include: { restaurant: true, access: true } },
               restaurant: true,
+            },
+          },
+          responses: {
+            include: {
+              question: true,
             },
           },
         },

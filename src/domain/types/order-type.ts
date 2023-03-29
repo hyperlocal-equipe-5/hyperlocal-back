@@ -3,8 +3,22 @@ export type OrderType = {
   takeAway: boolean;
   orderNumber: number;
   customerName: string;
-  products: string[];
-  quantities: number[];
+  finished: boolean;
+  products: {
+    id: string;
+    product: string;
+    ingredientsAdded: {
+      id: string;
+      ingredient: string;
+      quantity: number;
+    }[];
+    ingredientsRemoved: {
+      id: string;
+      ingredient: string;
+      quantity: number;
+    }[];
+  }[];
+  price: number;
   user: string;
   table: string;
   restaurant: string;

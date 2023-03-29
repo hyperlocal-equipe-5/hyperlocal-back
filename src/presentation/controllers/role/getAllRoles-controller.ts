@@ -19,7 +19,7 @@ export class GetAllRolesController implements GetAllRolesInterface {
   ): Promise<HttpResponse<Role[]>> {
     try {
       const loggedUser: User = httpRequest.body.loggedUser;
-      if (UserPermissionValidator.validate(loggedUser, 'readRoles')) {
+      if (!UserPermissionValidator.validate(loggedUser, 'readRoles')) {
         return Response.unauthorized(
           'This user has no permition to perform this action.',
         );
