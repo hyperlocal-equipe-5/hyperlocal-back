@@ -1,4 +1,4 @@
-import { Controller, Query, Get, Delete, Param } from '@nestjs/common';
+import { Controller, Query, Get, Delete, Param, Body } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HttpRequest } from 'src/domain/http/httpRequest';
 import { DeleteReviewController } from 'src/presentation/controllers/review/deleteReview-controller';
@@ -34,9 +34,9 @@ export class ReviewControllerAdmin {
   })
   @ApiBearerAuth()
   @Get()
-  async getAll(@Query() query: GetAllReviews) {
+  async getAll(@Query() query: GetAllReviews, @Body() body: any) {
     const { restaurant } = query;
-    const httpRequest: HttpRequest = { restaurant };
+    const httpRequest: HttpRequest = { restaurant, body };
     return await this.getAllReviewsController.execute(httpRequest);
   }
 
@@ -46,9 +46,13 @@ export class ReviewControllerAdmin {
   })
   @ApiBearerAuth()
   @Delete(':id')
-  async delete(@Param('id') id: string, @Query() query: GetOneRestaurant) {
+  async delete(
+    @Param('id') id: string,
+    @Query() query: GetOneRestaurant,
+    @Body() body: any,
+  ) {
     const { restaurant } = query;
-    const httpRequest: HttpRequest = { id, restaurant };
+    const httpRequest: HttpRequest = { id, restaurant, body };
     return await this.deleteReviewController.execute(httpRequest);
   }
 }

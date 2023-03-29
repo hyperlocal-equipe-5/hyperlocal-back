@@ -19,7 +19,7 @@ export class GetAllOrdersController implements GetAllOrdersInterface {
   ): Promise<HttpResponse<Order[]>> {
     try {
       const loggedUser: User = httpRequest.body.loggedUser;
-      if (UserPermissionValidator.validate(loggedUser, 'readOrders')) {
+      if (!UserPermissionValidator.validate(loggedUser, 'readOrders')) {
         return Response.unauthorized(
           'This user has no permition to perform this action.',
         );

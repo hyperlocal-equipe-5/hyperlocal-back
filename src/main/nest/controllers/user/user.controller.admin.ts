@@ -47,9 +47,13 @@ export class UserControllerAdmin {
   })
   @ApiBearerAuth()
   @Delete(':id')
-  async delete(@Param('id') id: string, @Query() query: GetOneRestaurant) {
+  async delete(
+    @Param('id') id: string,
+    @Query() query: GetOneRestaurant,
+    @Body() body: any,
+  ) {
     const { restaurant } = query;
-    const httpRequest: HttpRequest = { id, restaurant };
+    const httpRequest: HttpRequest = { id, restaurant, body };
     return await this.deleteUserController.execute(httpRequest);
   }
 
@@ -70,9 +74,13 @@ export class UserControllerAdmin {
   })
   @ApiBearerAuth()
   @Get(':id')
-  async getOne(@Param('id') id: string, @Query() query: GetOneUser) {
+  async getOne(
+    @Param('id') id: string,
+    @Query() query: GetOneUser,
+    @Body() body: any,
+  ) {
     const { restaurant } = query;
-    const httpRequest: HttpRequest = { id, restaurant };
+    const httpRequest: HttpRequest = { id, restaurant, body };
     return await this.getOneUserController.execute(httpRequest);
   }
 
@@ -82,9 +90,9 @@ export class UserControllerAdmin {
   })
   @ApiBearerAuth()
   @Get()
-  async getAll(@Query() query: GetOneRestaurant) {
+  async getAll(@Query() query: GetOneRestaurant, @Body() body: any) {
     const { restaurant } = query;
-    const httpRequest: HttpRequest = { restaurant };
+    const httpRequest: HttpRequest = { restaurant, body };
     return await this.getAllUsersController.execute(httpRequest);
   }
 }

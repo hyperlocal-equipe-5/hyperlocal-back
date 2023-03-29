@@ -71,9 +71,13 @@ export class OrderControllerAdmin {
   })
   @ApiBearerAuth()
   @Get(':id')
-  async getOne(@Param('id') id: string, @Query() query: GetOneRestaurant) {
+  async getOne(
+    @Param('id') id: string,
+    @Query() query: GetOneRestaurant,
+    @Body() body: any,
+  ) {
     const { restaurant } = query;
-    const httpRequest: HttpRequest = { id, restaurant };
+    const httpRequest: HttpRequest = { id, restaurant, body };
     return await this.getOneOrderController.execute(httpRequest);
   }
 
@@ -83,9 +87,9 @@ export class OrderControllerAdmin {
   })
   @ApiBearerAuth()
   @Get()
-  async getAll(@Query() query: GetAllOrders) {
+  async getAll(@Query() query: GetAllOrders, @Body() body: any) {
     const { restaurant } = query;
-    const httpRequest: HttpRequest = { restaurant };
+    const httpRequest: HttpRequest = { restaurant, body };
     return await this.getAllOrdersController.execute(httpRequest);
   }
 }

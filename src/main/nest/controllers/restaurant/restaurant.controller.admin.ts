@@ -39,8 +39,8 @@ export class RestaurantControllerAdmin {
   })
   @ApiBearerAuth()
   @Delete(':id')
-  async delete(@Param('id') id: string) {
-    const httpRequest: HttpRequest = { id };
+  async delete(@Param('id') id: string, @Body() body: any) {
+    const httpRequest: HttpRequest = { id, body };
     return await this.deleteRestaurantController.execute(httpRequest);
   }
 

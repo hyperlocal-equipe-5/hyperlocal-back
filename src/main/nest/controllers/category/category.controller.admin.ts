@@ -42,9 +42,13 @@ export class CategoryControllerAdmin {
   })
   @ApiBearerAuth()
   @Delete(':id')
-  async delete(@Param('id') id: string, @Query() query: GetOneRestaurant) {
+  async delete(
+    @Param('id') id: string,
+    @Query() query: GetOneRestaurant,
+    @Body() body: any,
+  ) {
     const { restaurant } = query;
-    const httpRequest: HttpRequest = { id, restaurant };
+    const httpRequest: HttpRequest = { id, restaurant, body };
     return await this.deleteCategoryController.execute(httpRequest);
   }
 
