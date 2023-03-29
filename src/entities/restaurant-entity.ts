@@ -38,6 +38,13 @@ export class RestaurantEntity
     }
 
     if (
+      this.restaurantDto.telephone &&
+      typeof this.restaurantDto.telephone !== 'number'
+    ) {
+      throw new InvalidParamError('Telephone must be of type number.');
+    }
+
+    if (
       this.restaurantDto.email &&
       !this.emailValidator(this.restaurantDto.email).result
     ) {
