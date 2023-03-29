@@ -1,3 +1,4 @@
+import { Ingredient } from './ingredient';
 import { Product } from './product';
 import { Restaurant } from './restaurant';
 import { Table } from './table';
@@ -8,8 +9,22 @@ export type Order = {
   takeAway: boolean;
   orderNumber?: number;
   customerName?: string;
-  products: Product[];
-  quantities: number[];
+  finished: boolean;
+  products: {
+    id: string;
+    product: Product;
+    ingredientsAdded: {
+      id: string;
+      ingredient: Ingredient;
+      quantity: number;
+    }[];
+    ingredientsRemoved: {
+      id: string;
+      ingredient: Ingredient;
+      quantity: number;
+    }[];
+  }[];
+  price: number;
   user?: User;
   table?: Table;
   restaurant: Restaurant;

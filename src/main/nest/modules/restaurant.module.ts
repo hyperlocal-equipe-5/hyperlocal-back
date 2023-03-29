@@ -10,8 +10,8 @@ import { DeleteRestaurantController } from 'src/presentation/controllers/restaur
 import { GetAllRestaurantsController } from 'src/presentation/controllers/restaurant/getAllRestaurants-controller';
 import { GetOneRestaurantController } from 'src/presentation/controllers/restaurant/getOneRestaurant-controller';
 import { UpdateRestaurantController } from 'src/presentation/controllers/restaurant/updateRestaurant-controller';
-import { RestaurantControllerAdmin } from '../controllers/restaurant.controller.admin';
-import { RestaurantController } from '../controllers/restaurant.controller';
+import { RestaurantControllerAdmin } from '../controllers/restaurant/restaurant.controller.admin';
+import { RestaurantController } from '../controllers/restaurant/restaurant.controller';
 
 @Module({
   controllers: [RestaurantControllerAdmin, RestaurantController],

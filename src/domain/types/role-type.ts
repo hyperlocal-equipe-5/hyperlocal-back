@@ -12,6 +12,7 @@ export type RoleType = {
     createOrders: boolean;
     createRoles: boolean;
     createTables: boolean;
+    createReviewQuestions: boolean;
     readRestaurants: boolean;
     readUsers: boolean;
     readProducts: boolean;
@@ -20,6 +21,7 @@ export type RoleType = {
     readOrders: boolean;
     readRoles: boolean;
     readTables: boolean;
+    readReviewQuestions: boolean;
     updateRestaurants: boolean;
     updateUsers: boolean;
     updateProducts: boolean;
@@ -28,6 +30,7 @@ export type RoleType = {
     updateOrders: boolean;
     updateRoles: boolean;
     updateTables: boolean;
+    updateReviewQuestions: boolean;
     deleteRestaurants: boolean;
     deleteUsers: boolean;
     deleteProducts: boolean;
@@ -36,6 +39,7 @@ export type RoleType = {
     deleteOrders: boolean;
     deleteRoles: boolean;
     deleteTables: boolean;
+    deleteReviewQuestions: boolean;
     defineAccess: boolean;
   };
   createdAt: string;

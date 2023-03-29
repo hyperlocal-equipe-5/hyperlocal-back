@@ -45,10 +45,10 @@ class Seeder {
     this.idGenerator = idGeneratorAdapter;
 
     const generatedId = this.idGenerator.generateId();
-    const customerRoleId = this.idGenerator.generateId();
 
     this.adminRestaurant = {
       id: generatedId,
+      reference: 1,
       telephone: restaurant.telephone,
       email: restaurant.email,
       name: restaurant.name,
@@ -73,6 +73,7 @@ class Seeder {
         createOrders: true,
         createRoles: true,
         createTables: true,
+        createReviewQuestions: true,
         readRestaurants: true,
         readUsers: true,
         readProducts: true,
@@ -81,6 +82,7 @@ class Seeder {
         readOrders: true,
         readRoles: true,
         readTables: true,
+        readReviewQuestions: true,
         updateRestaurants: true,
         updateUsers: true,
         updateProducts: true,
@@ -89,6 +91,7 @@ class Seeder {
         updateOrders: true,
         updateRoles: true,
         updateTables: true,
+        updateReviewQuestions: true,
         deleteRestaurants: true,
         deleteUsers: true,
         deleteProducts: true,
@@ -97,6 +100,7 @@ class Seeder {
         deleteOrders: true,
         deleteRoles: true,
         deleteTables: true,
+        deleteReviewQuestions: true,
         defineAccess: true,
       },
       createdAt: this.getDate(),

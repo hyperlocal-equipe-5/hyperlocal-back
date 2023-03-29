@@ -1,3 +1,4 @@
+import { GetRestaurantReferenceNumberUseCase } from 'src/data/usecases/restaurant/getRestaurantReferenceNumber-usecase';
 import { UpdateRestaurantUseCase } from 'src/data/usecases/restaurant/updateRestaurant-usecase';
 import { RestaurantEntity } from 'src/entities/restaurant-entity';
 import { RestaurantRepository } from 'src/infra/repositories/restaurant-repository';
@@ -7,11 +8,17 @@ import { IdGeneratorAdapter } from 'src/utils/adapters/idGenerator-adapter';
 
 export function makeUpdateRestaurantFactory(): UpdateRestaurantInterface {
   const idGeneratorAdapter = new IdGeneratorAdapter();
-  const entity = new RestaurantEntity(idGeneratorAdapter);
-  const repository = new RestaurantRepository();
+  const restaurantRepository = new RestaurantRepository();
+  const getRestaurantReferenceNumber = new GetRestaurantReferenceNumberUseCase(
+    restaurantRepository,
+  );
+  const entity = new RestaurantEntity(
+    idGeneratorAdapter,
+    getRestaurantReferenceNumber,
+  );
   const updateRestaurantUseCase = new UpdateRestaurantUseCase(
     entity,
-    repository,
+    restaurantRepository,
   );
 
   return new UpdateRestaurantController(updateRestaurantUseCase);

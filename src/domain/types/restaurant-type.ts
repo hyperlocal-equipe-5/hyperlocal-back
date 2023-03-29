@@ -1,5 +1,6 @@
 export type RestaurantType = {
   id: string;
+  reference: number;
   telephone: number;
   email: string;
   name: string;
