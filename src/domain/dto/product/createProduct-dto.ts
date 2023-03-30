@@ -5,6 +5,6 @@ export type CreateProductDto = {
   highlight?: boolean;
   image?: string;
   ingredients?: string[];
-  category?: string;
+  category: string;
   restaurant: string;
 };

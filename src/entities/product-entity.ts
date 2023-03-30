@@ -25,6 +25,10 @@ export class ProductEntity extends Entity implements ProductEntityInterface {
       throw new MissingParamError('name');
     }
 
+    if (!this.productDto.category) {
+      throw new MissingParamError('category');
+    }
+
     if (!this.productDto.restaurant) {
       throw new MissingParamError('restaurant');
     }
