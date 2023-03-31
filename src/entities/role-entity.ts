@@ -86,7 +86,7 @@ export class RoleEntity extends Entity implements RoleEntityInterface {
           : this.roleDto.access.createTables ?? false,
         createReviewQuestions: !this.roleDto.access
           ? false
-          : this.roleDto.access.createReviewQuestions,
+          : this.roleDto.access.createReviewQuestions ?? false,
         readRestaurants: !this.roleDto.access
           ? false
           : this.roleDto.access.readRestaurants ?? false,
@@ -113,7 +113,7 @@ export class RoleEntity extends Entity implements RoleEntityInterface {
           : this.roleDto.access.readTables ?? false,
         readReviewQuestions: !this.roleDto.access
           ? false
-          : this.roleDto.access.readReviewQuestions,
+          : this.roleDto.access.readReviewQuestions ?? false,
         updateRestaurants: !this.roleDto.access
           ? false
           : this.roleDto.access.updateRestaurants ?? false,
@@ -140,7 +140,7 @@ export class RoleEntity extends Entity implements RoleEntityInterface {
           : this.roleDto.access.updateTables ?? false,
         updateReviewQuestions: !this.roleDto.access
           ? false
-          : this.roleDto.access.updateReviewQuestions,
+          : this.roleDto.access.updateReviewQuestions ?? false,
         deleteRestaurants: !this.roleDto.access
           ? false
           : this.roleDto.access.deleteRestaurants ?? false,
@@ -167,7 +167,7 @@ export class RoleEntity extends Entity implements RoleEntityInterface {
           : this.roleDto.access.deleteTables ?? false,
         deleteReviewQuestions: !this.roleDto.access
           ? false
-          : this.roleDto.access.deleteReviewQuestions,
+          : this.roleDto.access.deleteReviewQuestions ?? false,
         defineAccess: !this.roleDto.access
           ? false
           : this.roleDto.access.defineAccess ?? false,
