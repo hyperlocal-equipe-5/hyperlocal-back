@@ -5,7 +5,7 @@ import { CreateOrderController } from 'src/presentation/controllers/order/create
 import { CreateOrder } from '../../dtos/order/createOrder-dto';
 
 @ApiTags('/order')
-@Controller()
+@Controller('/order')
 export class OrderController {
   constructor(private readonly createOrderController: CreateOrderController) {}
 
