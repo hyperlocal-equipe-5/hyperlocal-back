@@ -25,7 +25,7 @@ export class OrderRepository implements OrderRepositoryInterface {
     }
 
     const orderProductsCreated = await Promise.all(
-      await orderBody.products.map(async (product) => {
+      await orderBody.products.map(async (product, index) => {
         const orderData: any = {
           id: product.id,
           product: { connect: { id: product.id } },
@@ -59,7 +59,7 @@ export class OrderRepository implements OrderRepositoryInterface {
 
         return await prismaDatabase.orderProducts.create({
           data: {
-            id: orderBody.id,
+            id: orderBody.id + index.toString(),
             product: { connect: { id: product.product } },
             ingredientsAdded: {
               connect: orderIngredientsAddedCreated.map((ingredientId) => {
